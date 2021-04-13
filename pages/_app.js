@@ -35,6 +35,10 @@ h1, h2, h3, h4, h5 {
 p {
   font-family: Avenir, sans-serif;
 }
+
+a {
+  transition: 0.2s;
+}
 `;
 
 const theme = {
