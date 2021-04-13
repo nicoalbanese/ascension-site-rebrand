@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import Image from "next/image";
-import NavBar from "../components/navbar";
+import NavBar from "../components/NavBar";
 import Hero from "../components/Hero";
 import PortfolioSection from "../components/PortfolioSection";
 import Footer from "../components/Footer";
