@@ -28,9 +28,12 @@ const Wrapper = styled.section`
   #lower {
     width: 50%;
     font-size: 1.3rem;
+    @media (max-width: 768px) {
+      width: 85%;
+    }
 
     span {
-        font-weight: 800;
+      font-weight: 800;
     }
   }
 `;

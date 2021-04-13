@@ -38,6 +38,10 @@ const PortfolioSnapshot = styled.div`
     font-family: "Avenir";
     font-weight: 500;
 
+    @media (max-width: 768px) {
+      width: 90%;
+    }
+
     a {
       color: ${({ theme }) => theme.colors.primaryThree};
       transition: 0.2s;

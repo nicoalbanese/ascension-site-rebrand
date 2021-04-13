@@ -62,6 +62,12 @@ const Wrapper = styled.nav`
 
     .limited {
       display: none;
+      font-size: 1.5rem;
+
+      &:hover {
+        opacity: 0.5;
+        cursor: pointer;
+      }
 
       @media (max-width: 768px) {
         display: block;
