@@ -4,13 +4,13 @@ import Link from "next/link";
 const Wrapper = styled.section``;
 
 const portfolioCompanies = [
-  { name: "Moteefe", id: 0, url: "https://moteefe.com" },
-  { name: "Wagestream", id: 1, url: "https://wagestream.com" },
+  { name: "Wagestream", id: 0, url: "https://wagestream.com" },
+  { name: "Lick", id: 1, url: "https://lickhome.com" },
   { name: "Heygo", id: 2, url: "https://heygo.com" },
   { name: "WeGift", id: 3, url: "https://wegift.com" },
   { name: "zeroheight", id: 4, url: "https://zeroheight.com" },
-  { name: "Credit Kudos", id: 5, url: "https://creditkudos.com" },
-  { name: "Vidsy", id: 6, url: "https://vidsy.co" },
+  { name: "Organise", id: 5, url: "https://organise.network/" },
+  { name: "Moteefe", id: 6, url: "https://moteefe.com" },
 ];
 
 const Seperator = styled.div`
