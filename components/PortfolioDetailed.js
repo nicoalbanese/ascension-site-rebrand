@@ -118,9 +118,9 @@ const FilterWrapper = styled.div`
 
 const Button = styled.button`
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 0.3rem .8rem;
   font-size: 0.8rem;
-  border-radius: 5px;
+  border-radius: 10px;
   color: ${({ isSelected, theme }) =>
     !isSelected ? theme.colors.primaryOne : "white"};
   background: ${({ isSelected, theme }) =>
