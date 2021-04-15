@@ -24,17 +24,18 @@ const Wrapper = styled.section`
 `;
 
 const companyDetailed = ({ company }) => {
-  console.log(company);
   return (
     <Layout>
       <Wrapper>
-        <div className='main-container'>
-          <Image src={company.logoUrl} height={300} width={300} />
-          <div>
-            <h1>{company.name}</h1>
-            <p>{company.description}</p>
+        {company && (
+          <div className='main-container'>
+            <Image src={company.logoUrl} height={300} width={300} />
+            <div>
+              <h1>{company.name}</h1>
+              <p>{company.description}</p>
+            </div>
           </div>
-        </div>
+        )}
       </Wrapper>
     </Layout>
   );
