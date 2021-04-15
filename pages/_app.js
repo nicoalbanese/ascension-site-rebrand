@@ -1,10 +1,12 @@
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import NextLink from "next/link";
+import NavBar from "../components/NavBar";
 
 const GlobalStyle = createGlobalStyle`
   html, body {
 	margin: 0;
 	font-family: sans-serif;
+  background: ${({ theme }) => theme.colors.primaryTwo};
 }
 
 *,
@@ -55,7 +57,7 @@ const theme = {
 export default function App({ Component, pageProps }) {
   return (
     <>
-      <GlobalStyle />
+      <GlobalStyle theme={theme} />
       <ThemeProvider theme={theme}>
         <Component {...pageProps} />
       </ThemeProvider>

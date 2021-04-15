@@ -35,10 +35,15 @@ const Wrapper = styled.nav`
     margin-right: 1.3rem;
   }
 
+  #logo {
+    opacity: 1;
+  }
+
   a {
     text-decoration: none;
     color: inherit;
     opacity: 0.4;
+
     &:hover {
       opacity: 1;
       cursor: pointer;
@@ -98,7 +103,11 @@ const NavBar = () => {
   return (
     <Wrapper>
       <div>
-        <Image src={"/images/a solo.png"} width='35' height='35' />
+        <Link href='/'>
+          <a id='logo'>
+            <Image src={"/images/a solo.png"} width='35' height='35' />
+          </a>
+        </Link>
       </div>
       <div className='nav-right'>
         <div className='full-width'>
@@ -114,7 +123,7 @@ const NavBar = () => {
               </Link>
             </li>
             <li>
-              <Link href='/'>
+              <Link href='/portfolio'>
                 <a>Portfolio</a>
               </Link>
             </li>

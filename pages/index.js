@@ -6,6 +6,7 @@ import Hero from "../components/Hero";
 import PortfolioSection from "../components/PortfolioSection";
 import Footer from "../components/Footer";
 import TeamSummary from "../components/TeamSummary";
+import Layout from "../components/Layout";
 
 const AppWrapper = styled.main`
   width: 100%;
@@ -14,22 +15,46 @@ const AppWrapper = styled.main`
   overflow-y: auto;
 `;
 
-const InnerWrapper = styled.div`
-  max-width: 1024px;
-  margin: auto;
-  padding: 20px;
-`;
-
-export default function Home() {
+export default function Home({ companyData }) {
   return (
     <AppWrapper>
-      <InnerWrapper>
-        <NavBar />
+      <Layout>
         <Hero />
-        <PortfolioSection />
+        <PortfolioSection portfolioCompanies={companyData} />
         <TeamSummary />
-      </InnerWrapper>
-      <Footer />
+      </Layout>
     </AppWrapper>
   );
+}
+
+export async function getStaticProps() {
+  let myHeaders = new Headers();
+  myHeaders.append("Authorization", "Bearer keyLUXLM28pTbdyTx");
+  myHeaders.append("Cookie", "brw=brwy1TrDiZyNAsU5u");
+
+  let requestOptions = {
+    method: "GET",
+    headers: myHeaders,
+    redirect: "follow",
+  };
+  const AIRTABLE_URL =
+    "https://api.airtable.com/v0/appm10v13QJCjL2PL/Website%20Highlight?maxRecords=9&view=PortfolioHighlightAPI";
+
+  const res = await fetch(AIRTABLE_URL, requestOptions);
+  const data = await res.json();
+  console.log(res);
+
+  const dataStructured = data.records.map((company) => {
+    return {
+      name: company.fields["Known As"],
+      url: company.fields["Website"],
+      id: company.fields["[website] Highlight Rank"],
+    };
+  });
+
+  return {
+    props: {
+      companyData: dataStructured,
+    }, // will be passed to the page component as props
+  };
 }

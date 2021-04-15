@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Image from "next/image";
 
 const Wrapper = styled.section`
-  height: 500px;
+  height: 400px;
   /* background: white; */
   width: 100%;
   display: flex;
