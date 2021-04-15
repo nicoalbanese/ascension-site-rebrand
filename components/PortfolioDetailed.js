@@ -2,6 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 
 import Image from "next/image";
+import Link from "next/link";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -11,7 +12,7 @@ const CollectionWrapper = styled.div`
   /* background: wh/ite; */
   margin-top: 2rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-gap: 1rem;
   transition: 0.3s;
 `;
@@ -20,14 +21,44 @@ const Company = styled.div`
   background: white;
   padding: 1rem;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
+  transition: 0.3s;
+  box-shadow: 0px 2px 1px lightgray;
+
+  &:hover {
+    opacity: 0.5;
+    cursor: pointer;
+  }
+
+  .pill-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    /* width: 130%; */
+    * {
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+  }
 `;
 
 const PortfolioDetailed = ({ companies }) => {
   const COMPANIES = companies;
   const [companiesShown, setCompaniesShown] = useState(COMPANIES);
+
+  const [filter, setFilter] = useState([
+    { name: "FinTech", isSelected: false },
+    { name: "Commerce", isSelected: false },
+    { name: "Sustainability", isSelected: false },
+    { name: "New Work", isSelected: false },
+    { name: "Next Gen Media", isSelected: false },
+    { name: "Health", isSelected: false },
+    { name: "DeepTech", isSelected: false },
+  ]);
 
   let handleFilterChange = (activeOption) => {
     console.log(activeOption);
@@ -35,6 +66,13 @@ const PortfolioDetailed = ({ companies }) => {
       setCompaniesShown(
         COMPANIES.filter((company) => company.category.includes(activeOption))
       );
+      const newFilterSet = filter.map((option) => {
+        if (option.name === activeOption) {
+          return { name: option.name, isSelected: true };
+        }
+        return { name: option.name, isSelected: false };
+      });
+      setFilter(newFilterSet);
     } else {
       setCompaniesShown(COMPANIES);
     }
@@ -42,14 +80,24 @@ const PortfolioDetailed = ({ companies }) => {
 
   return (
     <Wrapper>
-      <PortfolioFilter handleFilterChange={handleFilterChange} />
+      <PortfolioFilter
+        handleFilterChange={handleFilterChange}
+        filter={filter}
+      />
       <CollectionWrapper>
         {companiesShown.map((company) => {
           return (
-            <Company key={company.id}>
-              <Image src={company.logoUrl} height={100} width={100} />
-              <h5>{company.name}</h5>
-            </Company>
+            <Link key={company.id} href={`/portfolio/${company.slug}`}>
+              <Company>
+                <Image src={company.logoUrl} height={150} width={150} />
+                <h5>{company.name}</h5>
+                <div className='pill-wrapper'>
+                  {company.category.map((cat) => (
+                    <Pill category={cat} />
+                  ))}
+                </div>
+              </Company>
+            </Link>
           );
         })}
       </CollectionWrapper>
@@ -61,22 +109,11 @@ export default PortfolioDetailed;
 
 // PORTFOLIO FILTER BELOW
 
-const filterOptions = [
-  { name: "FinTech", isSelected: false },
-  { name: "Commerce", isSelected: false },
-  { name: "Sustainability", isSelected: false },
-  { name: "New Work", isSelected: false },
-  { name: "Next Gen Media", isSelected: false },
-  { name: "Health", isSelected: false },
-  { name: "DeepTech", isSelected: false },
-];
-
-let activeSelection = [];
-
 const FilterWrapper = styled.div`
   margin-top: 2rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  grid-gap: 1rem;
 `;
 
 const Button = styled.button`
@@ -87,13 +124,22 @@ const Button = styled.button`
   color: ${({ isSelected, theme }) =>
     !isSelected ? theme.colors.primaryOne : "white"};
   background: ${({ isSelected, theme }) =>
-    isSelected ? theme.colors.primaryOne : "white"};
+    isSelected ? theme.colors.primaryOne : theme.colors.primaryTwo};
+  border: solid 2px;
+  border-color: ${({ theme }) => theme.colors.primaryOne};
+  transition: 0.3s;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.primaryOne};
+    opacity: 0.7;
+    color: white;
+  }
 `;
 
-const PortfolioFilter = ({ handleFilterChange }) => {
+const PortfolioFilter = ({ handleFilterChange, filter }) => {
   return (
     <FilterWrapper>
-      {filterOptions.map((option) => (
+      {filter.map((option) => (
         <Button
           key={option.name}
           isSelected={option.isSelected}
@@ -109,4 +155,17 @@ const PortfolioFilter = ({ handleFilterChange }) => {
       ))}
     </FilterWrapper>
   );
+};
+
+const CatWrap = styled.span`
+  background-color: ${({ theme }) => theme.colors.primaryTwo};
+  padding: 5px 10px;
+  font-size: 0.6rem;
+  /* text-transform: uppercase; */
+  /* font-weight: 800; */
+  border-radius: 25px;
+`;
+
+const Pill = ({ category }) => {
+  return <CatWrap>{category}</CatWrap>;
 };

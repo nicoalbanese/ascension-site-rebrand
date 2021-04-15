@@ -1,17 +1,22 @@
-import Layout from "../components/Layout";
-import PortfolioDetailed from "../components/PortfolioDetailed";
+import Layout from "../../components/Layout";
+import head from "next/head";
+
+import PortfolioDetailed from "../../components/PortfolioDetailed";
 
 const portfolio = ({ companies }) => {
   //   console.log(companies, moreData);
   return (
     <Layout>
+      <head>
+        <title>Portfolio</title>
+      </head>
       <div className='description'>
         <h1>Portfolio</h1>
         <p>
           We manage (S)EIS and Institutional Seed funds that invest in UK
           technology and impact businesses across these key focus areas: Next
           Gen Media, New Work, Health, Sustainability, FinTech, Commerce,
-          DeepTech.{" "}<br/>
+          DeepTech.{" "}
         </p>
         <p>Number of portfolio companies {companies.length}</p>
       </div>
@@ -46,6 +51,7 @@ export async function getStaticProps() {
     return {
       name: company.fields.Name,
       url: company.fields.Website,
+      slug: company.fields["[website] slug"],
       description: company.fields.Description,
       logoUrl: company.fields.Logo[0].url,
       id: company.id,
@@ -64,6 +70,7 @@ export async function getStaticProps() {
       return {
         name: company.fields.Name,
         url: company.fields.Website,
+        slug: company.fields["[website] slug"],
         description: company.fields.Description,
         logoUrl: company.fields.Logo[0].url,
         id: company.id,
