@@ -27,6 +27,7 @@ const companyDetailed = ({ company }) => {
   return (
     <Layout>
       <Wrapper>
+        <Link href="/portfolio"><a>Back to portfolio</a></Link>
         {company && (
           <div className='main-container'>
             <Image src={company.logoUrl} height={300} width={300} />
