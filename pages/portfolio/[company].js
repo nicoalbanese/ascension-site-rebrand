@@ -2,7 +2,9 @@ import Layout from "../../components/Layout";
 import { getPortfolio } from "../../lib/airtable";
 
 import Image from "next/image";
+import Link from "next/link";
 import styled from "styled-components";
+import Pill from "../../components/Pill";
 
 const Wrapper = styled.section`
   height: 100%;
@@ -21,18 +23,55 @@ const Wrapper = styled.section`
     grid-gap: 1rem;
     grid-template-columns: 1fr 2fr;
   }
+
+  #back-button {
+    margin-bottom: 1.5rem;
+  }
+
+  a {
+    color: ${({ theme }) => theme.colors.primaryOne};
+    opacity: 0.6;
+    transition: 0.3s;
+    text-decoration: none;
+
+    &:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+  }
+
+  .pill-wrapper {
+    margin-top: 1rem;
+    * {
+      background: ${({ theme }) => theme.colors.primaryOne};
+      color: white;
+      margin-right: .5rem;
+      font-size: .7rem;
+      padding: 8px 16px;
+    }
+  }
 `;
 
 const companyDetailed = ({ company }) => {
   return (
     <Layout>
       <Wrapper>
-        <Link href="/portfolio"><a>Back to portfolio</a></Link>
+        <div id='back-button'>
+          <Link href='/portfolio'>
+            <a>Back to portfolio</a>
+          </Link>
+        </div>
         {company && (
           <div className='main-container'>
             <Image src={company.logoUrl} height={300} width={300} />
             <div>
               <h1>{company.name}</h1>
+              <a href={company.url}>{company.url}</a>
+              <div className='pill-wrapper'>
+                {company.category.map((cat) => (
+                  <Pill key={cat.name} category={cat} />
+                ))}
+              </div>
               <p>{company.description}</p>
             </div>
           </div>

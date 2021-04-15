@@ -4,6 +4,8 @@ import styled from "styled-components";
 import Image from "next/image";
 import Link from "next/link";
 
+import Pill from "../components/Pill"
+
 const Wrapper = styled.div`
   width: 100%;
 `;
@@ -51,13 +53,13 @@ const PortfolioDetailed = ({ companies }) => {
   const [companiesShown, setCompaniesShown] = useState(COMPANIES);
 
   const [filter, setFilter] = useState([
-    { name: "FinTech", isSelected: false },
-    { name: "Commerce", isSelected: false },
-    { name: "Sustainability", isSelected: false },
-    { name: "New Work", isSelected: false },
-    { name: "Next Gen Media", isSelected: false },
-    { name: "Health", isSelected: false },
-    { name: "DeepTech", isSelected: false },
+    { name: "FinTech", isSelected: false, id: 0 },
+    { name: "Commerce", isSelected: false, id: 1 },
+    { name: "Sustainability", isSelected: false, id: 2 },
+    { name: "New Work", isSelected: false, id: 3 },
+    { name: "Next Gen Media", isSelected: false, id: 4 },
+    { name: "Health", isSelected: false, id: 5 },
+    { name: "DeepTech", isSelected: false, id: 6 },
   ]);
 
   let handleFilterChange = (activeOption) => {
@@ -87,17 +89,19 @@ const PortfolioDetailed = ({ companies }) => {
       <CollectionWrapper>
         {companiesShown.map((company) => {
           return (
-            <Link key={company.id} href={`/portfolio/${company.slug}`}>
-              <Company>
-                <Image src={company.logoUrl} height={150} width={150} />
-                <h5>{company.name}</h5>
-                <div className='pill-wrapper'>
-                  {company.category.map((cat) => (
-                    <Pill category={cat} />
-                  ))}
-                </div>
-              </Company>
-            </Link>
+            <div key={company.id}>
+              <Link href={`/portfolio/${company.slug}`}>
+                <Company>
+                  <Image src={company.logoUrl} height={150} width={150} />
+                  <h5>{company.name}</h5>
+                  <div className='pill-wrapper'>
+                    {company.category.map((cat) => (
+                      <Pill key={cat.id} category={cat} />
+                    ))}
+                  </div>
+                </Company>
+              </Link>
+            </div>
           );
         })}
       </CollectionWrapper>
@@ -118,7 +122,7 @@ const FilterWrapper = styled.div`
 
 const Button = styled.button`
   border: none;
-  padding: 0.3rem .8rem;
+  padding: 0.3rem 0.8rem;
   font-size: 0.8rem;
   border-radius: 10px;
   color: ${({ isSelected, theme }) =>
@@ -141,7 +145,7 @@ const PortfolioFilter = ({ handleFilterChange, filter }) => {
     <FilterWrapper>
       {filter.map((option) => (
         <Button
-          key={option.name}
+          key={option.id}
           isSelected={option.isSelected}
           onClick={() => {
             option.isSelected
@@ -155,17 +159,4 @@ const PortfolioFilter = ({ handleFilterChange, filter }) => {
       ))}
     </FilterWrapper>
   );
-};
-
-const CatWrap = styled.span`
-  background-color: ${({ theme }) => theme.colors.primaryTwo};
-  padding: 5px 10px;
-  font-size: 0.6rem;
-  /* text-transform: uppercase; */
-  /* font-weight: 800; */
-  border-radius: 25px;
-`;
-
-const Pill = ({ category }) => {
-  return <CatWrap>{category}</CatWrap>;
 };
