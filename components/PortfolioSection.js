@@ -26,7 +26,7 @@ const PortfolioSnapshot = styled.div`
     text-transform: uppercase;
     color: ${({ theme }) => theme.colors.primaryOne};
     font-size: 1rem;
-    font-family: "Avenir";
+    font-family: Avenir;
     margin-bottom: 1rem;
     font-weight: 600;
   }
@@ -35,7 +35,7 @@ const PortfolioSnapshot = styled.div`
     color: ${({ theme }) => theme.colors.primaryThree};
     font-size: 2rem;
     width: 55%;
-    font-family: "Avenir";
+    font-family: Avenir;
     font-weight: 500;
 
     @media (max-width: 768px) {

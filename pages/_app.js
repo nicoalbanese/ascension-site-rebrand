@@ -20,18 +20,16 @@ h1, h2, h3, h4, h5, p {
 }
 
 @font-face {
-  font-family: "Montserrat";
-  src: url("fonts/Montserrat/Montserrat-Bold.ttf");
-  font-weight: 800;
+  font-family: "Montserrat-Bold";
+  src: url("/static/fonts/Montserrat/Montserrat-Bold.ttf");
 }
 @font-face {
-  font-family: "Montserrat";
-  src: url("fonts/Montserrat/Montserrat-Regular.ttf");
-  font-weight: 500;
+  font-family: "Montserrat-Regular";
+  src: url("/static/fonts/Montserrat/Montserrat-Regular.ttf");
 }
 
 h1, h2, h3, h4, h5 {
-  font-family: "Montserrat";
+  font-family: "Montserrat-Bold";
 }
 
 p {
@@ -47,7 +45,7 @@ const theme = {
   colors: {
     primaryOne: "#2d2d41",
     primaryTwo: "#f4ebe5",
-    primaryThree: "#9da6fc",
+    primaryThree: "#287aa9",
     secondaryOne: "#a8a3c6",
     secondaryTwo: "#ddabbb",
     secondaryThree: "#f2e2ff",

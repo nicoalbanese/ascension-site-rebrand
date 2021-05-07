@@ -28,7 +28,7 @@ const Wrapper = styled.nav`
   li {
     margin: none;
     text-transform: uppercase;
-    font-family: "Montserrat";
+    font-family: "Montserrat-Regular";
   }
 
   li:not(:last-of-type) {

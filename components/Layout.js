@@ -6,8 +6,9 @@ import NavBar from "./NavBar";
 
 const InnerWrapper = styled.div`
   max-width: 1024px;
-  margin: auto; 
+  margin: auto;
   padding: 2rem;
+  width: 70%;
 `;
 
 const ChildrenContainer = styled.div`
@@ -17,11 +18,11 @@ const ChildrenContainer = styled.div`
 const Layout = ({ children }) => {
   return (
     <>
-      <InnerWrapper>
+      <InnerWrapper class='inner'>
         <NavBar />
         <ChildrenContainer>{children}</ChildrenContainer>
       </InnerWrapper>
-      <Footer />
+      <Footer class='footer' />
     </>
   );
 };

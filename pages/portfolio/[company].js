@@ -3,6 +3,7 @@ import { getPortfolio } from "../../lib/airtable";
 
 import Image from "next/image";
 import Link from "next/link";
+import Head from "next/head"
 import styled from "styled-components";
 import Pill from "../../components/Pill";
 
@@ -55,6 +56,9 @@ const Wrapper = styled.section`
 const companyDetailed = ({ company }) => {
   return (
     <Layout>
+      <Head>
+        <title>{company.name}</title>
+      </Head>
       <Wrapper>
         <div id='back-button'>
           <Link href='/portfolio'>
@@ -68,8 +72,8 @@ const companyDetailed = ({ company }) => {
               <h1>{company.name}</h1>
               <a href={company.url}>{company.url}</a>
               <div className='pill-wrapper'>
-                {company.category.map((cat) => (
-                  <Pill key={cat.name} category={cat} />
+                {company.category.map((cat, idx) => (
+                  <Pill key={idx} category={cat} />
                 ))}
               </div>
               <p>{company.description}</p>

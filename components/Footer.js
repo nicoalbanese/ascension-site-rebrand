@@ -15,7 +15,7 @@ const InnerWrapper = styled.div`
   text-align: center;
 
   p {
-      margin-bottom: 1rem;
+    margin-bottom: 1rem;
   }
 `;
 const Footer = () => {

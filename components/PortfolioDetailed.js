@@ -91,8 +91,8 @@ const PortfolioDetailed = ({ companies }) => {
           return (
             <div key={company.id}>
               <Link href={`/portfolio/${company.slug}`}>
-                <Company>
-                  <Image src={company.logoUrl} height={150} width={150} />
+                <Company key={company.id}>
+                  <Image src={company.logoUrl} height={125} width={125} />
                   <h5>{company.name}</h5>
                   <div className='pill-wrapper'>
                     {company.category.map((cat) => (
