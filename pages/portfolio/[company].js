@@ -3,7 +3,7 @@ import { getPortfolio } from "../../lib/airtable";
 
 import Image from "next/image";
 import Link from "next/link";
-import Head from "next/head"
+import Head from "next/head";
 import styled from "styled-components";
 import Pill from "../../components/Pill";
 
@@ -46,8 +46,8 @@ const Wrapper = styled.section`
     * {
       background: ${({ theme }) => theme.colors.primaryOne};
       color: white;
-      margin-right: .5rem;
-      font-size: .7rem;
+      margin-right: 0.5rem;
+      font-size: 0.7rem;
       padding: 8px 16px;
     }
   }
@@ -69,7 +69,7 @@ const companyDetailed = ({ company }) => {
           <div className='main-container'>
             <Image src={company.logoUrl} height={300} width={300} />
             <div>
-              <h1>{company.name}</h1>
+              <h1>{company.name && company.name}</h1>
               <a href={company.url}>{company.url}</a>
               <div className='pill-wrapper'>
                 {company.category.map((cat, idx) => (
