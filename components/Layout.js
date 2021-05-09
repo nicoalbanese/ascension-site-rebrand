@@ -5,10 +5,14 @@ import Footer from "./Footer";
 import NavBar from "./NavBar";
 
 const InnerWrapper = styled.div`
+  width: 70%;
   max-width: 1024px;
   margin: auto;
   padding: 2rem;
-  width: 70%;
+`;
+
+const OuterWrapper = styled.div`
+  width: 100%;
 `;
 
 const ChildrenContainer = styled.div`
@@ -18,11 +22,11 @@ const ChildrenContainer = styled.div`
 const Layout = ({ children }) => {
   return (
     <>
-      <InnerWrapper class='inner'>
+      <InnerWrapper className='inner'>
         <NavBar />
         <ChildrenContainer>{children}</ChildrenContainer>
       </InnerWrapper>
-      <Footer class='footer' />
+      <Footer className='footer' />
     </>
   );
 };
