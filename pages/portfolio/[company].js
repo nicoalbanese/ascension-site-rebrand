@@ -54,10 +54,14 @@ const Wrapper = styled.section`
 `;
 
 const companyDetailed = ({ company }) => {
+  if (company.name === undefined) {
+    console.log("this is undefined", company);
+  }
+
   return (
     <Layout>
       <Head>
-        <title>{company.name}</title>
+        <title>{company.name && company.name}</title>
       </Head>
       <Wrapper>
         <div id='back-button'>
