@@ -1,10 +1,11 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 import Image from "next/image";
 import Link from "next/link";
 
-import Pill from "../components/Pill"
+import Pill from "../components/Pill";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -87,9 +88,26 @@ const PortfolioDetailed = ({ companies }) => {
         filter={filter}
       />
       <CollectionWrapper>
-        {companiesShown.map((company) => {
+        {companiesShown.map((company, i) => {
           return (
-            <div key={company.id}>
+            <motion.div
+              initial='hidden'
+              animate='visible'
+              variants={{
+                hidden: {
+                  scale: 0.8,
+                  opacity: 0,
+                },
+                visible: {
+                  scale: 1,
+                  opacity: 1,
+                  transition: {
+                    delay: 0.1 * i,
+                  },
+                },
+              }}
+              key={company.id}
+            >
               <Link href={`/portfolio/${company.slug}`}>
                 <Company key={company.id}>
                   <Image src={company.logoUrl} height={125} width={125} />
@@ -101,7 +119,7 @@ const PortfolioDetailed = ({ companies }) => {
                   </div>
                 </Company>
               </Link>
-            </div>
+            </motion.div>
           );
         })}
       </CollectionWrapper>

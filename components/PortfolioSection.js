@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const Wrapper = styled.section``;
 
@@ -53,7 +54,7 @@ const PortfolioSnapshot = styled.div`
   }
 `;
 
-const PortfolioSection = ({portfolioCompanies}) => {
+const PortfolioSection = ({ portfolioCompanies }) => {
   return (
     <Wrapper>
       <Seperator />
@@ -63,12 +64,29 @@ const PortfolioSection = ({portfolioCompanies}) => {
           {portfolioCompanies &&
             portfolioCompanies.map((company, i) => {
               return (
-                <span key={company.id}>
+                <motion.span
+                  initial='hidden'
+                  animate='visible'
+                  variants={{
+                    hidden: {
+                      scale: 0.8,
+                      opacity: 0,
+                    },
+                    visible: {
+                      scale: 1,
+                      opacity: 1,
+                      transition: {
+                        delay: 0.2 * i,
+                      },
+                    },
+                  }}
+                  key={company.id}
+                >
                   <Link href={company.url}>
                     <a>{company.name}</a>
                   </Link>
                   {", "}
-                </span>
+                </motion.span>
               );
             })}
           and more...
