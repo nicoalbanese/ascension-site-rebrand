@@ -30,9 +30,14 @@ const Company = styled.div`
   flex-direction: column;
   transition: 0.3s;
   box-shadow: 0px 2px 1px lightgray;
+  height: 13rem;
+
+  .small-text {
+    font-size: 0.75rem;
+  }
 
   &:hover {
-    transform: translateY(-.9rem) translateZ(1rem);
+    /* transform: translateY(-0.2rem) translateZ(1rem); */
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     opacity: 0.8;
@@ -120,9 +125,35 @@ const PortfolioDetailed = ({ companies }) => {
 
 export default PortfolioDetailed;
 
+const CompanyDetailed = styled(motion.div)`
+  height: 12rem;
+  overflow-y: scroll;
+  transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+
+  p {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+  }
+  #description {
+    flex: 3;
+  }
+  #find-out-more {
+    color: ${({ theme }) => theme.colors.primaryThree};
+    opacity: 0.8;
+
+    &:hover {
+      opacity: 0.4;
+    }
+  }
+`;
+
 const CompanyTile = ({ company, i }) => {
   const controls = useAnimation();
   const { ref, inView } = useInView();
+
+  const [isHovering, setIsHovering] = useState(false);
 
   useEffect(() => {
     if (inView) {
@@ -150,16 +181,46 @@ const CompanyTile = ({ company, i }) => {
       animate={controls}
       variants={boxVariants}
       key={company.id}
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
     >
       <Link href={`/portfolio/${company.slug}`}>
         <Company key={company.id}>
-          <Image src={company.logoUrl} height={125} width={125} />
-          <h5>{company.name}</h5>
-          <div className='pill-wrapper'>
-            {company.category.map((cat) => (
-              <Pill key={cat.id} category={cat} />
-            ))}
-          </div>
+          {isHovering ? (
+            <CompanyDetailed
+              initial='initial'
+              animate='in'
+              exit='out'
+              variants={{
+                initial: {
+                  opacity: 0,
+                },
+                in: {
+                  opacity: 1,
+                  transition: { duration: 0.05 },
+                },
+                out: {
+                  opacity: 0,
+                },
+              }}
+            >
+              <h5>{company.name}</h5>
+              <p id='description'>{company.descriptionCondensed}</p>
+              <p id='find-out-more'>find out more...</p>
+            </CompanyDetailed>
+          ) : (
+            <>
+              <Image src={company.logoUrl} height={125} width={125} />
+              <h5 className={company.name.length > 20 && "small-text"}>
+                {company.name}
+              </h5>
+              <div className='pill-wrapper'>
+                {company.category.map((cat) => (
+                  <Pill key={cat.id} category={cat} />
+                ))}
+              </div>
+            </>
+          )}
         </Company>
       </Link>
     </motion.div>
@@ -180,7 +241,7 @@ const Button = styled.button`
   box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.1);
   border: none;
   padding: 0.8rem 0.6rem;
-  font-size: .8rem;
+  font-size: 0.8rem;
   border-radius: 10px;
   color: ${({ isSelected, theme }) =>
     !isSelected ? theme.colors.primaryOne : "white"};
