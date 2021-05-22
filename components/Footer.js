@@ -6,6 +6,7 @@ const Wrapper = styled(motion.footer)`
   height: auto;
   background: ${({ theme }) => theme.colors.primaryOne};
   width: 100%;
+  font-size: .8rem;
   /* height: 300px; */
 `;
 

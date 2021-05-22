@@ -46,7 +46,7 @@ const Company = styled.div`
   .image-container {
     width: 100px;
     position: relative;
-    width: 300px;
+    /* width: 300px; */
     height: 100px;
   }
 
@@ -188,11 +188,13 @@ const CompanyTile = ({ company, i }) => {
       animate={controls}
       variants={boxVariants}
       key={company.id}
-      onMouseEnter={() => setIsHovering(true)}
-      onMouseLeave={() => setIsHovering(false)}
     >
       <Link href={`/portfolio/${company.slug}`}>
-        <Company key={company.id}>
+        <Company
+          key={company.id}
+          onMouseEnter={() => setIsHovering(true)}
+          onMouseLeave={() => setIsHovering(false)}
+        >
           {isHovering ? (
             <CompanyDetailed
               initial='initial'
@@ -225,7 +227,9 @@ const CompanyTile = ({ company, i }) => {
                   objectFit='contain'
                 />
               </div>
-              <h5 className={company.name.length > 20 && "small-text"}>
+              <h5
+                className={company.name.length > 20 ? "small-text" : undefined}
+              >
                 {company.name}
               </h5>
               <div className='pill-wrapper'>
