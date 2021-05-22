@@ -80,7 +80,7 @@ const Wrapper = styled.nav`
     }
 
     button {
-      padding: 10px 20px;
+      padding: 7.5px 15px;
       border: none;
       background-color: ${({ theme }) => theme.colors.primaryThree};
       color: white;
@@ -89,6 +89,7 @@ const Wrapper = styled.nav`
       cursor: pointer;
       border: solid 1px transparent;
       transition: 0.3s;
+      border-radius: 5px;
       &:hover {
         background-color: white;
         border: solid 1px;
@@ -98,6 +99,44 @@ const Wrapper = styled.nav`
     }
   }
 `;
+
+const LinkWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+  margin-top: 0.5rem;
+  align-items: center;
+  transition: 0.3s;
+  &:hover {
+    opacity: 1;
+    .accent {
+      opacity: 1;
+    }
+  }
+`;
+
+const Accentuator = styled.div`
+  transition: 0.3s;
+  opacity: 0;
+  height: 0.1rem;
+  width: 100%;
+  margin-top: 0.2rem;
+  background-color: ${({ theme }) => theme.colors.primaryThree};
+`;
+
+const CoolLink = ({ text, url }) => {
+  return (
+    <LinkWrapper>
+      <Link href={url}>
+        <>
+          <a>{text}</a>
+          <Accentuator className='accent' />
+        </>
+      </Link>
+    </LinkWrapper>
+  );
+};
 
 const NavBar = () => {
   return (
@@ -113,24 +152,16 @@ const NavBar = () => {
         <div className='full-width'>
           <ul>
             <li>
-              <Link href='/'>
-                <a>Investors</a>
-              </Link>
+              <CoolLink text={"Investors"} url='/investors' />
             </li>
             <li>
-              <Link href='/'>
-                <a>Founders</a>
-              </Link>
+              <CoolLink text={"Founders"} url='/founders' />
             </li>
             <li>
-              <Link href='/portfolio'>
-                <a>Portfolio</a>
-              </Link>
+              <CoolLink text={"Portfolio"} url='/portfolio' />
             </li>
             <li>
-              <Link href='/'>
-                <a>Team</a>
-              </Link>
+              <CoolLink text={"Team"} url='/team' />
             </li>
           </ul>
           <button>log in</button>
