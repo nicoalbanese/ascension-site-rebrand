@@ -10,8 +10,17 @@ const InnerWrapper = styled(motion.div)`
   width: 70%;
   max-width: 1024px;
   margin: auto;
-  padding: 2rem;
   flex-grow: 1;
+  padding: 2rem; 
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+    width: 85%;
+  }
+
+  @media (max-width: 550px) {
+    width: 95%;
+  }
 `;
 
 const pageVariants = {
