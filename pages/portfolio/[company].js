@@ -23,6 +23,11 @@ const Wrapper = styled.section`
     display: grid;
     grid-gap: 1rem;
     grid-template-columns: 1fr 2fr;
+
+    @media (max-width: 600px) {
+      /* background: green; */
+      grid-template-columns: 1fr;
+    }
   }
 
   #back-button {
@@ -42,7 +47,7 @@ const Wrapper = styled.section`
   }
 
   .pill-wrapper {
-    margin-top: 1rem;
+    margin-top: 1.3rem;
     * {
       background: ${({ theme }) => theme.colors.primaryOne};
       color: white;
@@ -71,7 +76,9 @@ const companyDetailed = ({ company }) => {
         </div>
         {company && (
           <div className='main-container'>
-            <Image src={company.logoUrl} height={300} width={300} />
+            <div className='image-container'>
+              <Image src={company.logoUrl} height={300} width={300} />
+            </div>
             <div>
               <h1>{company.name && company.name}</h1>
               <a href={company.url}>{company.url}</a>

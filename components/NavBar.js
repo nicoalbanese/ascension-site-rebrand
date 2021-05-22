@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 import styled from "styled-components";
 
@@ -146,7 +146,9 @@ const NavBar = () => {
   return (
     <Wrapper>
       {showOverlayMenu && (
-        <OverlayMenu setShowOverlayMenu={setShowOverlayMenu} />
+        <AnimatePresence>
+          <OverlayMenu setShowOverlayMenu={setShowOverlayMenu} />
+        </AnimatePresence>
       )}
       <div>
         <Link href='/'>
@@ -225,23 +227,9 @@ const UpperContainer = styled.div`
 const OverlayMenu = ({ setShowOverlayMenu }) => {
   return (
     <OverlayWrapper
-      initial='initial'
-      animate='in'
-      exit='out'
-      variants={{
-        initial: {
-          opacity: 0,
-          transition: { duration: 0.5 },
-        },
-        in: {
-          opacity: 1,
-          transition: { duration: 0.5 },
-        },
-        out: {
-          opacity: 0,
-          transition: { duration: 0.5 },
-        },
-      }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
     >
       <UpperContainer>
         <Image src={"/images/a logo light.png"} width='35' height='35' />

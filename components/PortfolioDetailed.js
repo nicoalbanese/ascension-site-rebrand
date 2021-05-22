@@ -43,6 +43,13 @@ const Company = styled.div`
     opacity: 0.8;
   }
 
+  .image-container {
+    width: 100px;
+    position: relative;
+    width: 300px;
+    height: 100px;
+  }
+
   .pill-wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -210,7 +217,14 @@ const CompanyTile = ({ company, i }) => {
             </CompanyDetailed>
           ) : (
             <>
-              <Image src={company.logoUrl} height={125} width={125} />
+              {/* <Image src={company.logoUrl} height={125} width={125} /> */}
+              <div className='image-container'>
+                <Image
+                  src={company.logoUrl}
+                  layout='fill'
+                  objectFit='contain'
+                />
+              </div>
               <h5 className={company.name.length > 20 && "small-text"}>
                 {company.name}
               </h5>
