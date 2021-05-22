@@ -11,6 +11,7 @@ const InnerWrapper = styled(motion.div)`
   max-width: 1024px;
   margin: auto;
   padding: 2rem;
+  flex-grow: 1;
 `;
 
 const pageVariants = {
@@ -25,13 +26,20 @@ const pageVariants = {
   },
 };
 
+const OuterWrapper = styled.div`
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+`;
+
 const ChildrenContainer = styled.div`
   margin-top: 3rem;
 `;
 
 const Layout = ({ children }) => {
   return (
-    <>
+    <OuterWrapper>
       <InnerWrapper
         className='inner'
         initial='initial'
@@ -42,8 +50,8 @@ const Layout = ({ children }) => {
         <NavBar />
         <ChildrenContainer>{children}</ChildrenContainer>
       </InnerWrapper>
-      <Footer className='footer' />
-    </>
+      <Footer className='footer' pageVariants={pageVariants} />
+    </OuterWrapper>
   );
 };
 

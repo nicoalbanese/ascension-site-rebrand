@@ -1,6 +1,9 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
-const Wrapper = styled.footer`
+const Wrapper = styled(motion.footer)`
+  margin-top: auto;
+  height: auto;
   background: ${({ theme }) => theme.colors.primaryOne};
   width: 100%;
   /* height: 300px; */
@@ -11,16 +14,16 @@ const InnerWrapper = styled.div`
   margin: 0 auto;
   color: white;
   padding: 4rem 20px;
-  margin-top: 6rem;
+  /* margin-top: 6rem; */
   text-align: center;
 
   p {
     margin-bottom: 1rem;
   }
 `;
-const Footer = () => {
+const Footer = ({ pageVariants }) => {
   return (
-    <Wrapper>
+    <Wrapper initial='initial' animate='in' exit='out' variants={pageVariants}>
       <InnerWrapper>
         <div>
           <p>© 2010 - 2021 Ascension Ventures Limited. All Rights Reserved. </p>

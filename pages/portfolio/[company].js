@@ -8,6 +8,7 @@ import styled from "styled-components";
 import Pill from "../../components/Pill";
 
 const Wrapper = styled.section`
+  margin-top: auto;
   height: 100%;
   width: 100%;
 
