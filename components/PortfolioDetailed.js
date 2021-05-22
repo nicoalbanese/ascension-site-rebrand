@@ -30,9 +30,12 @@ const Company = styled.div`
   flex-direction: column;
   transition: 0.3s;
   box-shadow: 0px 2px 1px lightgray;
+  opacity: 0.8;
 
   &:hover {
-    opacity: 0.5;
+    /* opacity: 0.5; */
+    transform: scale(1.08);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
     cursor: pointer;
   }
 
@@ -109,7 +112,7 @@ const PortfolioDetailed = ({ companies }) => {
       >
         {companiesShown &&
           companiesShown.map((company, i) => {
-            return <CompanyTile company={company} i={i} />;
+            return <CompanyTile company={company} i={i} key={company.id} />;
           })}
       </CollectionWrapper>
     </Wrapper>
