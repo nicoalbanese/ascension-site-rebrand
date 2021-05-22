@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+
+import { motion } from "framer-motion";
 
 import styled from "styled-components";
 
@@ -139,12 +141,17 @@ const CoolLink = ({ text, url }) => {
 };
 
 const NavBar = () => {
+  const [showOverlayMenu, setShowOverlayMenu] = useState(false);
+
   return (
     <Wrapper>
+      {showOverlayMenu && (
+        <OverlayMenu setShowOverlayMenu={setShowOverlayMenu} />
+      )}
       <div>
         <Link href='/'>
           <a id='logo'>
-            <Image src={"/images/a solo.png"} width='35' height='35' />
+            <Image src={"/images/a logo dark.png"} width='35' height='35' />
           </a>
         </Link>
       </div>
@@ -166,10 +173,104 @@ const NavBar = () => {
           </ul>
           <button>log in</button>
         </div>
-        <div className='limited'>Menu</div>
+        <div className='limited' onClick={() => setShowOverlayMenu(true)}>
+          Menu
+        </div>
       </div>
     </Wrapper>
   );
 };
 
 export default NavBar;
+
+const OverlayWrapper = styled(motion.div)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 30rem;
+  width: 100%;
+  background: ${({ theme }) => theme.colors.primaryOne};
+  color: ${({ theme }) => theme.colors.primaryTwo};
+  z-index: 2;
+
+  @media (min-width: 776px) {
+    display: none;
+  }
+`;
+
+const InnerContainer = styled.div`
+  margin-top: 2rem;
+  padding: 0 2rem;
+
+  h2 {
+    margin-top: 0.7rem;
+  }
+`;
+
+const UpperContainer = styled.div`
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+
+  #close {
+    cursor: pointer;
+    opacity: 0.6;
+    font-weight: 300;
+    &:hover {
+      opacity: 1;
+    }
+  }
+`;
+
+const OverlayMenu = ({ setShowOverlayMenu }) => {
+  return (
+    <OverlayWrapper
+      initial='initial'
+      animate='in'
+      exit='out'
+      variants={{
+        initial: {
+          opacity: 0,
+          transition: { duration: 0.5 },
+        },
+        in: {
+          opacity: 1,
+          transition: { duration: 0.5 },
+        },
+        out: {
+          opacity: 0,
+          transition: { duration: 0.5 },
+        },
+      }}
+    >
+      <UpperContainer>
+        <Image src={"/images/a logo light.png"} width='35' height='35' />
+        <h1 id='close' onClick={() => setShowOverlayMenu(false)}>
+          X
+        </h1>
+      </UpperContainer>
+      <InnerContainer>
+        <h2>
+          <Link href='/'>
+            <a>Home</a>
+          </Link>
+        </h2>
+        <h2>
+          <Link href='/investors'>
+            <a>Investor</a>
+          </Link>
+        </h2>
+        <h2>
+          <Link href='/portfolio'>
+            <a>Portfolio</a>
+          </Link>
+        </h2>
+        <h2>
+          <Link href='/team'>
+            <a>Team</a>
+          </Link>
+        </h2>
+      </InnerContainer>
+    </OverlayWrapper>
+  );
+};

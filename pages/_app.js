@@ -6,6 +6,7 @@ const GlobalStyle = createGlobalStyle`
   html, body {
 	margin: 0;
 	font-family: sans-serif;
+  color: ${({ theme }) => theme.colors.primaryOne};
   background: ${({ theme }) => theme.colors.primaryTwo};
 }
 
