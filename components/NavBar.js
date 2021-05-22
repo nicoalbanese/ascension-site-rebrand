@@ -129,10 +129,10 @@ const CoolLink = ({ text, url }) => {
   return (
     <LinkWrapper>
       <Link href={url}>
-        <>
-          <a>{text}</a>
+        <a>
+          {text}
           <Accentuator className='accent' />
-        </>
+        </a>
       </Link>
     </LinkWrapper>
   );
