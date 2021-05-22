@@ -30,13 +30,12 @@ const Company = styled.div`
   flex-direction: column;
   transition: 0.3s;
   box-shadow: 0px 2px 1px lightgray;
-  opacity: 0.8;
 
   &:hover {
-    /* opacity: 0.5; */
-    transform: scale(1.08);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    transform: translateY(-.9rem) translateZ(1rem);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
     cursor: pointer;
+    opacity: 0.8;
   }
 
   .pill-wrapper {
@@ -172,14 +171,16 @@ const CompanyTile = ({ company, i }) => {
 const FilterWrapper = styled.div`
   margin-top: 2rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  justify-content: center;
+  grid-gap: 0.7rem 1rem;
 `;
 
 const Button = styled.button`
+  box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.1);
   border: none;
   padding: 0.8rem 0.6rem;
-  font-size: 0.7rem;
+  font-size: .8rem;
   border-radius: 10px;
   color: ${({ isSelected, theme }) =>
     !isSelected ? theme.colors.primaryOne : "white"};
