@@ -21,9 +21,12 @@ const InnerWrapper = styled.div`
     margin-bottom: 1rem;
   }
 `;
+
+// initial='initial' animate='in' exit='out' variants={pageVariants} <= for footer animation
+
 const Footer = ({ pageVariants }) => {
   return (
-    <Wrapper initial='initial' animate='in' exit='out' variants={pageVariants}>
+    <Wrapper>
       <InnerWrapper>
         <div>
           <p>© 2010 - 2021 Ascension Ventures Limited. All Rights Reserved. </p>
