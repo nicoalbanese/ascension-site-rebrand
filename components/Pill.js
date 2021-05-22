@@ -9,8 +9,8 @@ const CatWrap = styled.span`
   border-radius: 25px;
 `;
 
-const Pill = ({ category }) => {
-  return <CatWrap>{category}</CatWrap>;
+const Pill = ({ category, i }) => {
+  return <CatWrap key={category.id}>{category}</CatWrap>;
 };
 
 export default Pill;

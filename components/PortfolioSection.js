@@ -89,7 +89,25 @@ const PortfolioSection = ({ portfolioCompanies }) => {
                 </motion.span>
               );
             })}
-          and more...
+          <motion.span
+            initial='hidden'
+            animate='visible'
+            variants={{
+              hidden: {
+                scale: 0.8,
+                opacity: 0,
+              },
+              visible: {
+                scale: 1,
+                opacity: 1,
+                transition: {
+                  delay: 0.2 * 8,
+                },
+              },
+            }}
+          >
+            and more...
+          </motion.span>
         </h4>
       </PortfolioSnapshot>
     </Wrapper>
