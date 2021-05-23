@@ -4,14 +4,18 @@ import Link from "next/link";
 import Image from "next/image";
 import { getTeam } from "../../lib/airtable";
 
+import { motion } from "framer-motion";
+
 import styled from "styled-components";
 
 const TeamZoomContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   background: black;
   grid-gap: 0.5rem;
   padding: 0.5rem;
+  justify-content: center;
+  align-items: center;
 `;
 
 const ZoomStatusBar = styled.div`
@@ -32,12 +36,13 @@ const ZoomStatusBar = styled.div`
 
   #window-options {
     display: flex;
+    margin-left: 4px;
   }
 `;
 
 const Circle = styled.div`
-  height: 1rem;
-  width: 1rem;
+  height: 0.8rem;
+  width: 0.8rem;
   border-radius: 100%;
   margin-right: 4px;
   margin-left: 2px;
@@ -68,8 +73,8 @@ const index = ({ team }) => {
         <div id='zoom-meeting'>Ascension Team Meeting</div>
       </ZoomStatusBar>
       <TeamZoomContainer>
-        {team.map((person) => (
-          <PersonTile key={person.id} person={person} />
+        {team.map((person, i) => (
+          <PersonTile key={person.id} person={person} i={i} />
         ))}
       </TeamZoomContainer>
       {/* <div className='team-container'>
@@ -87,10 +92,11 @@ const index = ({ team }) => {
 
 export default index;
 
-const Card = styled.article`
+const Card = styled(motion.div)`
   background: #222222;
   width: 255px;
   height: 140px;
+  margin: 0 auto;
   .image-container {
     position: relative;
     height: 70%;
@@ -123,9 +129,25 @@ const Card = styled.article`
   }
 `;
 
-const PersonTile = ({ person }) => {
+const PersonTile = ({ person, i }) => {
   return (
-    <Card>
+    <Card
+      initial='hidden'
+      animate='visible'
+      variants={{
+        hidden: {
+          scale: 0.8,
+          opacity: 0,
+        },
+        visible: {
+          scale: 1,
+          opacity: 1,
+          transition: {
+            delay: i * .2,
+          },
+        },
+      }}
+    >
       <Link href={`/team/${person.slug}`}>
         <a id='a-container'>
           <div className='image-container'>
