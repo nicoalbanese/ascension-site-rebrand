@@ -249,16 +249,18 @@ const CompanyTile = ({ company, i }) => {
 
 const FilterWrapper = styled.div`
   margin-top: 2rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  /* display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); */
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  grid-gap: 0.7rem 1rem;
+  grid-gap: 0.5rem 0.5rem;
 `;
 
 const Button = styled.button`
   box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.1);
   border: none;
-  padding: 0.8rem 0.6rem;
+  padding: 0.6rem 0.8rem;
   font-size: 0.8rem;
   border-radius: 10px;
   color: ${({ isSelected, theme }) =>
@@ -268,6 +270,7 @@ const Button = styled.button`
   border: solid 2px;
   border-color: ${({ theme }) => theme.colors.primaryOne};
   transition: 0.3s;
+  width: max-content;
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.primaryOne};
