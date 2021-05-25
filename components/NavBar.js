@@ -39,6 +39,10 @@ const Wrapper = styled.nav`
 
   #logo {
     opacity: 1;
+
+    &:hover {
+      opacity: 0.7;
+    }
   }
 
   a {

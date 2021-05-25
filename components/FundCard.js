@@ -9,11 +9,12 @@ const Card = styled.div`
   background: white;
   padding: 2rem 2rem 1rem 2rem;
   border-radius: 5px;
+
   h3 {
     text-align: left;
   }
   .main-content {
-      flex: 1;
+    flex: 1;
   }
 
   .button-container {

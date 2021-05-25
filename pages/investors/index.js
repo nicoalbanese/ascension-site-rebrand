@@ -6,6 +6,10 @@ import { getFunds } from "../../lib/airtable";
 
 const FundsSection = styled.div``;
 const TopSection = styled.div`
+  p {
+    line-height: 1.3rem;
+    margin-bottom: 1rem;
+  }
   h1,
   div {
     margin-bottom: 1rem;
@@ -27,6 +31,7 @@ const ImpactFunds = styled.div`
 `;
 
 const FundGrid = styled.div`
+  margin-top: 2rem;
   display: flex;
   flex-wrap: wrap;
   grid-gap: 0rem 1.2rem;
@@ -39,33 +44,33 @@ const FundsPage = ({ funds }) => {
     <Layout>
       <TopSection className='top-section'>
         <h1>Funds</h1>
-        <div>
+        <p>
           Since 2013, Ascension has established itself as one of the leading UK
           Seed investors, participating in some of the most exciting deals
           alongside high calibre angels and VCs.
-        </div>
+        </p>
 
-        <div>
+        <p>
           As a go-to place for UK entrepreneurs seeking funding, our team gains
           a ‘first look’ at over 2,000 investment opportunities a year through
           our comprehensive and proven network.
-        </div>
+        </p>
 
-        <div>
+        <p>
           Ascension is run by business operators, fundamental when deciding
           which early-stage businesses to back, and then providing the support
           necessary to scale.
-        </div>
+        </p>
       </TopSection>
       <FundsSection>
         <TEFunds className='tax-effecient'>
           <h2>Tax-Efficient Funds</h2>
-          <div>
+          <p>
             Ascension is an experienced (S)EIS Fund Manager with a strong track
             record and multiple exits. Our (S)EIS and Syndicate Funds aim to
             deliver tax-free capital growth via a portfolio of early-stage tech
             businesses.{" "}
-          </div>
+          </p>
           <FundGrid>
             {funds.map((fund) => {
               if (fund.type === "Tax Efficient") {
