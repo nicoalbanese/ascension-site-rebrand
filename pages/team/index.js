@@ -60,10 +60,113 @@ const Circle = styled.div`
   }};
 `;
 
+const TeamBackground = styled.div`
+  margin-top: 1rem;
+  p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+`;
+
 const index = ({ team }) => {
   return (
     <Layout>
       <h1>Team</h1>
+      {/* <ZoomStyle team={team} /> */}
+      <TeamBackground id='team-background'>
+        <p>
+          Run by an experienced and diverse team of successful entrepreneurs, we
+          have been relentlessly dedicated to finding the UK’s best Seed-stage
+          tech startups since 2013.{" "}
+        </p>
+
+        <p>
+          Ascension benefits from the active industry connections essential for
+          the sourcing and development of deal-flow and due diligence. The team
+          has co-invested with the UK’s leading angels and VCs, key to securing
+          follow-on funding as the portfolio businesses move to their next stage
+          of growth. We believe in building an inclusive, community driven brand
+          that can benefit the wider UK tech ecosystem and strive to work with
+          conviction, integrity, humour, and humility.{" "}
+        </p>
+      </TeamBackground>
+      <NormalStyle team={team} />
+    </Layout>
+  );
+};
+
+export default index;
+
+// NORMAL DESIGN BELOW START
+const NormalStyle = ({ team }) => {
+  return (
+    <>
+      {" "}
+      <NormalCardContainer className='team-container'>
+        {team.map((person) => (
+          <NormalCard key={person.id}>
+            <Link href={`/team/${person.slug}`}>
+              <a>
+                <div className='image-container'>
+                  <Image
+                    src={person.picture}
+                    layout='fill'
+                    objectFit='contain'
+                  />
+                </div>
+              </a>
+            </Link>
+          </NormalCard>
+        ))}
+      </NormalCardContainer>
+    </>
+  );
+};
+
+const NormalCardContainer = styled.section`
+  display: flex;
+  flex-wrap: wrap;
+  grid-gap: 1rem;
+
+  .image-container {
+    position: relative;
+    /* display: block; */
+    height: 250px;
+    width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+`;
+
+const NormalCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  /* padding: 2rem; */
+  /* width: 200px; */
+  /* height: 150px; */
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  /* background: ${({ theme }) => theme.colors.primaryOne}; */
+  /* color: white; */
+  a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+  }
+
+  #person-name {
+    margin-top: 1rem;
+  }
+`;
+
+// NORMAL DESIGN BELOW START
+
+// ZOOM DESIGN BELOW START
+const ZoomStyle = ({ team }) => {
+  return (
+    <>
       <ZoomStatusBar>
         <div id='window-options'>
           <Circle color='red' />
@@ -77,20 +180,9 @@ const index = ({ team }) => {
           <PersonTile key={person.id} person={person} i={i} />
         ))}
       </TeamZoomContainer>
-      {/* <div className='team-container'>
-        {team.map((person) => (
-          <div key={person.id}>
-            <Link href={`/team/${person.slug}`}>
-              <a>{person.name}</a>
-            </Link>
-          </div>
-        ))}
-      </div> */}
-    </Layout>
+    </>
   );
 };
-
-export default index;
 
 const Card = styled(motion.div)`
   background: #222222;
@@ -143,7 +235,7 @@ const PersonTile = ({ person, i }) => {
           scale: 1,
           opacity: 1,
           transition: {
-            delay: i * .2,
+            delay: i * 0.2,
           },
         },
       }}
@@ -166,7 +258,9 @@ const PersonTile = ({ person, i }) => {
     </Card>
   );
 };
+// ZOOM DESIGN BELOW END
 
+// PULLING IN TEAM FROM AT
 export async function getStaticProps() {
   const team = await getTeam();
   return { props: { team } };

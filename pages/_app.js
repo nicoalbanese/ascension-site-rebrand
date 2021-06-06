@@ -39,6 +39,10 @@ p {
 
 a {
   transition: 0.2s;
+  color: ${({ theme }) => theme.colors.primaryThree};
+  &:hover{ 
+    opacity: 0.6;
+  }
 }
 `;
 

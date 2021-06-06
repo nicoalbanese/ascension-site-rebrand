@@ -14,9 +14,10 @@ const TopSection = styled.div`
   div {
     margin-bottom: 1rem;
   }
+  margin-bottom: 6rem;
 `;
 const TEFunds = styled.div`
-  margin-top: 2rem;
+  margin-bottom: 6rem;
   h2,
   div {
     margin-bottom: 1rem;
@@ -33,6 +34,8 @@ const ImpactFunds = styled.div`
 const FundGrid = styled.div`
   margin-top: 2rem;
   display: flex;
+  /* align-items: center;
+  justify-content: center; */
   flex-wrap: wrap;
   grid-gap: 0rem 1.2rem;
   width: 100%;

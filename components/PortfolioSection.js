@@ -106,7 +106,10 @@ const PortfolioSection = ({ portfolioCompanies }) => {
               },
             }}
           >
-            and more...
+            and{" "}
+            <Link href='/portfolio'>
+              <a>more...</a>
+            </Link>
           </motion.span>
         </h4>
       </PortfolioSnapshot>

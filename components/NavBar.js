@@ -85,6 +85,9 @@ const Wrapper = styled.nav`
       }
     }
 
+    #login-button {
+      opacity: 1;
+    }
     button {
       padding: 7.5px 15px;
       border: none;
@@ -96,11 +99,21 @@ const Wrapper = styled.nav`
       border: solid 1px transparent;
       transition: 0.3s;
       border-radius: 5px;
+      a {
+        color: white;
+        opacity: 1;
+        &:hover {
+          color: ${({ theme }) => theme.colors.primaryThree};
+        }
+      }
       &:hover {
         background-color: white;
         border: solid 1px;
         border-color: ${({ theme }) => theme.colors.primaryThree};
         color: ${({ theme }) => theme.colors.primaryThree};
+        a {
+          color: ${({ theme }) => theme.colors.primaryThree};
+        }
       }
     }
   }
@@ -177,7 +190,11 @@ const NavBar = () => {
               <CoolLink text={"Team"} url='/team' />
             </li>
           </ul>
-          <button>log in</button>
+          <Link href='https://ascension.mainspringfs.com/Login'>
+            <a id='login-button'>
+              <button>log in</button>
+            </a>
+          </Link>
         </div>
         <div className='limited' onClick={() => setShowOverlayMenu(true)}>
           Menu

@@ -40,7 +40,7 @@ const Company = styled.div`
     /* transform: translateY(-0.2rem) translateZ(1rem); */
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
     cursor: pointer;
-    opacity: 0.8;
+    opacity: 0.9;
   }
 
   .image-container {
@@ -76,6 +76,7 @@ const PortfolioDetailed = ({ companies }) => {
     { name: "Next Gen Media", isSelected: false, id: 4 },
     { name: "Health", isSelected: false, id: 5 },
     { name: "DeepTech", isSelected: false, id: 6 },
+    { name: "Fair By Design", isSelected: false, id: 7 },
   ]);
 
   // useEffect(() => {

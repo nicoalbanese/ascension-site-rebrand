@@ -8,6 +8,9 @@ import Footer from "../components/Footer";
 import TeamSummary from "../components/TeamSummary";
 import Layout from "../components/Layout";
 
+import { getPortfolio } from "../lib/airtable";
+import HomePageContent from "../components/HomePageContent";
+
 const AppWrapper = styled.main`
   width: 100%;
   height: 100vh;
@@ -15,13 +18,14 @@ const AppWrapper = styled.main`
   overflow-y: auto;
 `;
 
-export default function Home({ companyData }) {
+export default function Home({ companyData, portfolio }) {
   return (
     <AppWrapper>
       <Layout>
         <Hero />
         <PortfolioSection portfolioCompanies={companyData} />
         <TeamSummary />
+        <HomePageContent portfolioSize={portfolio.length} />
       </Layout>
     </AppWrapper>
   );
@@ -52,9 +56,12 @@ export async function getStaticProps() {
     };
   });
 
+  const portfolio = await getPortfolio();
+
   return {
     props: {
       companyData: dataStructured,
+      portfolio,
     }, // will be passed to the page component as props
   };
 }
