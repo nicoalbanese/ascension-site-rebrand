@@ -79,14 +79,16 @@ const index = ({ team }) => {
           have been relentlessly dedicated to finding the UK’s best Seed-stage
           tech startups since 2013.{" "}
         </p>
-
         <p>
           Ascension benefits from the active industry connections essential for
           the sourcing and development of deal-flow and due diligence. The team
           has co-invested with the UK’s leading angels and VCs, key to securing
           follow-on funding as the portfolio businesses move to their next stage
-          of growth. We believe in building an inclusive, community driven brand
-          that can benefit the wider UK tech ecosystem and strive to work with
+          of growth.{" "}
+        </p>
+        <p>
+          We believe in building an inclusive, community driven brand that can
+          benefit the wider UK tech ecosystem and strive to work with
           conviction, integrity, humour, and humility.{" "}
         </p>
       </TeamBackground>
@@ -128,16 +130,19 @@ const NormalStyle = ({ team }) => {
 };
 
 const NormalCardContainer = styled.section`
-  display: flex;
-  flex-wrap: wrap;
+  /* display: flex;
+  flex-wrap: wrap; */
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-gap: 1rem;
   justify-content: center;
 
   .image-container {
     position: relative;
     /* display: block; */
-    height: 225px;
-    width: 225px;
+    height: 250px;
+    width: 250px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -165,7 +170,9 @@ const NormalCard = styled.div`
   #person-name {
     /* margin-top: 1rem; */
     opacity: 0;
-    color: ${({ theme }) => theme.colors.primaryOne};
+    /* color: ${({ theme }) => theme.colors.primaryOne}; */
+    color: black;
+    text-align: center;
     z-index: 1;
     background: ${({ theme }) => theme.colors.primaryTwo};
     height: 100%;
