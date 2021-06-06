@@ -113,6 +113,10 @@ const NormalStyle = ({ team }) => {
                     layout='fill'
                     objectFit='contain'
                   />
+                  <div id='person-name'>
+                    <h3>{person.name}</h3>
+                    <h5>{person.position}</h5>
+                  </div>
                 </div>
               </a>
             </Link>
@@ -127,15 +131,17 @@ const NormalCardContainer = styled.section`
   display: flex;
   flex-wrap: wrap;
   grid-gap: 1rem;
+  justify-content: center;
 
   .image-container {
     position: relative;
     /* display: block; */
-    height: 250px;
-    width: 250px;
+    height: 225px;
+    width: 225px;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
   }
 `;
 
@@ -157,7 +163,22 @@ const NormalCard = styled.div`
   }
 
   #person-name {
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
+    opacity: 0;
+    color: ${({ theme }) => theme.colors.primaryOne};
+    z-index: 1;
+    background: ${({ theme }) => theme.colors.primaryTwo};
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    &:hover {
+      opacity: 0.8;
+      transition: 0.3s;
+    }
   }
 `;
 

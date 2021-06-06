@@ -61,9 +61,41 @@ const Wrapper = styled.section`
       padding: 8px 16px;
     }
   }
+
+  .profile-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 1rem;
+    @media (max-width: 850px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .social-container {
+    margin-top: 1rem;
+    a {
+      opacity: 1;
+      &: hover {
+        opacity: 0.6;
+      }
+    }
+    svg {
+      stroke: ${({ theme }) => theme.colors.primaryOne};
+      fill: ${({ theme }) => theme.colors.primaryOne};
+      &:first-of-type {
+        margin-right: 1rem;
+      }
+    }
+    display: flex;
+    justify-content: center;
+    &:first-child {
+      margin-right: 200px;
+    }
+  }
 `;
 
 const companyDetailed = ({ person }) => {
+  console.log(person);
   return (
     <Layout>
       <Head>
@@ -75,12 +107,54 @@ const companyDetailed = ({ person }) => {
             <a>Back to team</a>
           </Link>
         </div>
-        <h1>{person.name}</h1>
-        {person.bio.split("\n").map((para, i) => (
-          <div className='para' key={i}>
-            {para}
+        <div className='profile-container'>
+          <div>
+            <Image src={person.picture} height={250} width={250} />
+            <div className='social-container'>
+              {person.twitter && (
+                <Link href={person.twitter}>
+                  <a>
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      width='24'
+                      height='24'
+                      viewBox='0 0 24 24'
+                      fill='none'
+                      strokeWidth='2'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                    >
+                      <path d='M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z'></path>
+                    </svg>
+                  </a>
+                </Link>
+              )}
+              {person.linkedin && (
+                <Link href={person.linkedin}>
+                  <a>
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      width='24'
+                      height='24'
+                      viewBox='0 0 24 24'
+                    >
+                      <path d='M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z' />
+                    </svg>
+                  </a>
+                </Link>
+              )}
+            </div>
           </div>
-        ))}
+          <div>
+            <h4>{person.position}</h4>
+            <h1>{person.name}</h1>
+            {person.bio.split("\n").map((para, i) => (
+              <p className='para' key={i}>
+                {para}
+              </p>
+            ))}
+          </div>
+        </div>
       </Wrapper>
     </Layout>
   );
