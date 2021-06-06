@@ -143,6 +143,17 @@ const NormalCardContainer = styled.section`
     /* display: block; */
     height: 250px;
     width: 250px;
+
+    @media (min-width: 1375px ) {
+      height: 300px;
+      width: 300px;
+    }
+
+    @media (max-width: 650px) {
+      height: 350px;
+      width: 350px;
+      font-size: 1.5rem;
+    }
     display: flex;
     align-items: center;
     justify-content: center;
@@ -153,6 +164,7 @@ const NormalCardContainer = styled.section`
 const NormalCard = styled.div`
   display: flex;
   flex-direction: column;
+  /* background-color: red; */
   /* padding: 2rem; */
   /* width: 200px; */
   /* height: 150px; */

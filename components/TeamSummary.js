@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Wrapper = styled.section`
   margin-top: 6rem;
-  margin-bottom: 6rem;
+  /* margin-bottom: 6rem; */
   width: 100%;
   height: 100%;
   display: flex;

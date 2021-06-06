@@ -92,11 +92,15 @@ const Wrapper = styled.section`
     &:first-child {
       margin-right: 200px;
     }
+    @media (max-width: 850px) {
+      /* background: red; */
+      justify-content: start;
+    }
   }
 `;
 
 const companyDetailed = ({ person }) => {
-  console.log(person);
+  // console.log(person);
   return (
     <Layout>
       <Head>
@@ -110,7 +114,7 @@ const companyDetailed = ({ person }) => {
         </div>
         <div className='profile-container'>
           <div>
-            <Image src={person.picture} height={250} width={250} />
+            <Image src={person.picture} height={300} width={300} />
             <div className='social-container'>
               {person.twitter && (
                 <Link href={person.twitter}>

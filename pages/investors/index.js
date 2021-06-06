@@ -33,11 +33,13 @@ const ImpactFunds = styled.div`
 
 const FundGrid = styled.div`
   margin-top: 2rem;
-  display: flex;
-  /* align-items: center;
-  justify-content: center; */
-  flex-wrap: wrap;
-  grid-gap: 0rem 1.2rem;
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* flex-wrap: wrap; */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 250px);
+  grid-gap: 1rem 1.2rem;
   width: 100%;
 `;
 

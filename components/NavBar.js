@@ -7,6 +7,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import styled from "styled-components";
 
 const Wrapper = styled.nav`
+  svg {
+    stroke: ${({ theme }) => theme.colors.primaryOne};
+  }
+
   margin: 0;
   margin-top: 40px;
   padding: 0;
@@ -197,7 +201,20 @@ const NavBar = () => {
           </Link>
         </div>
         <div className='limited' onClick={() => setShowOverlayMenu(true)}>
-          Menu
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            width='32'
+            height='32'
+            viewBox='0 0 24 24'
+            fill='none'
+            strokeWidth='2'
+            strokeLinecap='round'
+            strokeLinejoin='round'
+          >
+            <line x1='3' y1='12' x2='21' y2='12'></line>
+            <line x1='3' y1='6' x2='21' y2='6'></line>
+            <line x1='3' y1='18' x2='21' y2='18'></line>
+          </svg>
         </div>
       </div>
     </Wrapper>
@@ -210,10 +227,8 @@ const OverlayWrapper = styled(motion.div)`
   position: absolute;
   top: 0;
   left: 0;
-  height: 30rem;
+  height: 100vh;
   width: 100%;
-  background: ${({ theme }) => theme.colors.primaryOne};
-  color: ${({ theme }) => theme.colors.primaryTwo};
   z-index: 2;
 
   @media (min-width: 776px) {
@@ -245,6 +260,11 @@ const UpperContainer = styled.div`
   }
 `;
 
+const ContainerWrapper = styled.div`
+  height: 30rem;
+  background: ${({ theme }) => theme.colors.primaryOne};
+  color: ${({ theme }) => theme.colors.primaryTwo};
+`;
 const OverlayMenu = ({ setShowOverlayMenu }) => {
   return (
     <OverlayWrapper
@@ -252,34 +272,36 @@ const OverlayMenu = ({ setShowOverlayMenu }) => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <UpperContainer>
-        <Image src={"/images/a logo light.png"} width='35' height='35' />
-        <h1 id='close' onClick={() => setShowOverlayMenu(false)}>
-          X
-        </h1>
-      </UpperContainer>
-      <InnerContainer>
-        <h2>
-          <Link href='/'>
-            <a>Home</a>
-          </Link>
-        </h2>
-        <h2>
-          <Link href='/investors'>
-            <a>Investor</a>
-          </Link>
-        </h2>
-        <h2>
-          <Link href='/portfolio'>
-            <a>Portfolio</a>
-          </Link>
-        </h2>
-        <h2>
-          <Link href='/team'>
-            <a>Team</a>
-          </Link>
-        </h2>
-      </InnerContainer>
+      <ContainerWrapper>
+        <UpperContainer>
+          <Image src={"/images/a logo light.png"} width='35' height='35' />
+          <h1 id='close' onClick={() => setShowOverlayMenu(false)}>
+            X
+          </h1>
+        </UpperContainer>
+        <InnerContainer>
+          <h2>
+            <Link href='/'>
+              <a>Home</a>
+            </Link>
+          </h2>
+          <h2>
+            <Link href='/investors'>
+              <a>Investor</a>
+            </Link>
+          </h2>
+          <h2>
+            <Link href='/portfolio'>
+              <a>Portfolio</a>
+            </Link>
+          </h2>
+          <h2>
+            <Link href='/team'>
+              <a>Team</a>
+            </Link>
+          </h2>
+        </InnerContainer>
+      </ContainerWrapper>
     </OverlayWrapper>
   );
 };

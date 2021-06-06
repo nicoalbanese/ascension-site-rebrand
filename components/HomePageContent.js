@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Link from "next/link";
 
 const Wrapper = styled.section`
-  margin-top: 4rem;
+  /* margin-top: 4rem; */
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -18,7 +18,7 @@ const Wrapper = styled.section`
 
   .ascension-overview-section {
     margin-top: 1.2rem;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     /* background-color: ${({ theme }) => theme.colors.primaryOne}; */
     /* color: ${({ theme }) => theme.colors.primaryTwo}; */
     /* padding: 2rem 0rem; */
@@ -31,7 +31,7 @@ const Wrapper = styled.section`
   }
 
   section {
-    margin-bottom: 4rem;
+    margin-bottom: 6rem;
   }
 
   #news {
@@ -57,12 +57,15 @@ const HomePageContent = ({ portfolioSize }) => {
       </section> */}
       <section className='ascension-overview-section'>
         <p>
-          Ascension is one of the most active Seed investors in the UK.
+          Ascension is one of the most active Seed investors in the UK.  We have{" "}
           <Link href='/portfolio' id='we-have-backed'>
             <a>
-              We have backed {portfolioSize} tech and impact startups to date
-              through our (S)EIS & Institutional Funds
+            backed {portfolioSize} tech and impact startups
             </a>
+          </Link>
+          {" "} to date through{" "}
+          <Link href="/investors">
+            <a>our (S)EIS & Institutional Funds</a>
           </Link>
           . Beyond our capital, we devote our proven operational expertise,
           platform resources, and extensive network to support founders on their

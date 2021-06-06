@@ -46,7 +46,7 @@ export async function getStaticProps() {
 
   const res = await fetch(AIRTABLE_URL, requestOptions);
   const data = await res.json();
-  console.log(res);
+  // console.log(res);
 
   const dataStructured = data.records.map((company) => {
     return {

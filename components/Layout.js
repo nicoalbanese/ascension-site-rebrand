@@ -13,7 +13,7 @@ const InnerWrapper = styled(motion.div)`
   flex-grow: 1;
   padding: 2rem; 
 
-  @media (max-width: 768px) {
+  @media (max-width: 968px) {
     padding: 1rem;
     width: 85%;
   }
