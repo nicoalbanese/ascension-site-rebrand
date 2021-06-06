@@ -75,7 +75,8 @@ const Wrapper = styled.section`
     margin-top: 1rem;
     a {
       opacity: 1;
-      &: hover {
+
+      &:hover {
         opacity: 0.6;
       }
     }
