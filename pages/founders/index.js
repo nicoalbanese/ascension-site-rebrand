@@ -143,6 +143,7 @@ const Founders = () => {
                 content={card.content}
                 link={card.link}
                 linkText={card.linkText}
+                key={card.id}
               />
             ))}
           </div>

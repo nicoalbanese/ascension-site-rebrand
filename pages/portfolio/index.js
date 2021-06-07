@@ -19,7 +19,7 @@ const portfolio = ({ companies }) => {
           Gen Media, New Work, Health, Sustainability, FinTech, Commerce,
           DeepTech.{" "}
         </p>
-        <p>Number of portfolio companies {companies.length}</p>
+        {/* <p>Number of portfolio companies {companies.length}</p> */}
       </div>
       <div className='portfolioCards'>
         {companies && <PortfolioDetailed companies={companies} />}

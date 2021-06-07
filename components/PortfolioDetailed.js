@@ -44,10 +44,11 @@ const Company = styled.div`
   }
 
   .image-container {
-    width: 100px;
+    width: 160px;
     position: relative;
     /* width: 300px; */
-    height: 100px;
+    height: 160px;
+    /* flex: 2; */
   }
 
   .pill-wrapper {
@@ -195,6 +196,7 @@ const CompanyTile = ({ company, i }) => {
           key={company.id}
           onMouseEnter={() => setIsHovering(true)}
           onMouseLeave={() => setIsHovering(false)}
+          hovering={isHovering}
         >
           {isHovering ? (
             <CompanyDetailed
@@ -225,14 +227,14 @@ const CompanyTile = ({ company, i }) => {
                 <Image
                   src={company.logoUrl}
                   layout='fill'
-                  objectFit='contain'
+                  objectFit='cover'
                 />
               </div>
-              <h5
+              {/* <h5
                 className={company.name.length > 20 ? "small-text" : undefined}
               >
                 {company.name}
-              </h5>
+              </h5> */}
               <div className='pill-wrapper'>
                 {company.category.map((cat) => (
                   <Pill key={cat.id} category={cat} />

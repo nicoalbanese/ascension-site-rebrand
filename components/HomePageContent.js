@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 import Link from "next/link";
+import { motion } from "framer-motion";
 
-const Wrapper = styled.section`
+const Wrapper = styled(motion.section)`
   /* margin-top: 4rem; */
   display: flex;
   flex-direction: column;
@@ -49,22 +50,36 @@ const Wrapper = styled.section`
   }
 `;
 
+const pageVariants = {
+  initial: {
+    opacity: 0,
+  },
+  in: {
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      delay: 0.6
+    },
+  },
+  out: {
+    opacity: 0,
+  },
+};
+
 const HomePageContent = ({ portfolioSize }) => {
   return (
-    <Wrapper>
+    <Wrapper initial='initial' animate='in' exit='out' variants={pageVariants}>
       {/* <section className='stat-section'>
         <Stat title='Unique Investments' stat={String(portfolioSize)} />
       </section> */}
       <section className='ascension-overview-section'>
         <p>
-          Ascension is one of the most active Seed investors in the UK.  We have{" "}
+          Ascension is one of the most active Seed investors in the UK. We have{" "}
           <Link href='/portfolio' id='we-have-backed'>
-            <a>
-            backed {portfolioSize} tech and impact startups
-            </a>
-          </Link>
-          {" "} to date through{" "}
-          <Link href="/investors">
+            <a>backed {portfolioSize} tech and impact startups</a>
+          </Link>{" "}
+          to date through{" "}
+          <Link href='/investors'>
             <a>our (S)EIS & Institutional Funds</a>
           </Link>
           . Beyond our capital, we devote our proven operational expertise,
