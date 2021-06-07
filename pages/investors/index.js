@@ -39,11 +39,11 @@ const FundGrid = styled.div`
   /* flex-wrap: wrap; */
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  @media (max-width: 1400px) {
+  @media (max-width: 1200px) {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
   /* grid-template-columns: 1fr 1fr 1fr; */
-  grid-gap: 1rem 1.2rem;
+  grid-gap: 1rem;
   width: 100%;
 `;
 
@@ -90,7 +90,7 @@ const FundsPage = ({ funds }) => {
         </TEFunds>
         <ImpactFunds className='impact-funds'>
           <h2>Institutional Funds</h2>
-          <FundGrid id='institutional-wrapper'>
+          <FundGrid institutional>
             {funds.map((fund) => {
               if (fund.type === "Institutional") {
                 return <FundCard fund={fund} key={fund.id} />;

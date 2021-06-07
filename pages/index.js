@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-import Image from "next/image";
-import NavBar from "../components/NavBar";
+// import Image from "next/image";
+// import NavBar from "../components/NavBar";
 import Hero from "../components/Hero";
 import PortfolioSection from "../components/PortfolioSection";
-import Footer from "../components/Footer";
+// import Footer from "../components/Footer";
 import TeamSummary from "../components/TeamSummary";
 import Layout from "../components/Layout";
 

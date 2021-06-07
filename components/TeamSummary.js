@@ -3,7 +3,9 @@ import styled from "styled-components";
 import Image from "next/image";
 import Link from "next/link";
 
-const Wrapper = styled.section`
+import { motion } from "framer-motion";
+
+const Wrapper = styled(motion.section)`
   margin-top: 8rem;
   /* margin-bottom: 6rem; */
   width: 100%;
@@ -26,9 +28,24 @@ const Wrapper = styled.section`
   }
 `;
 
+const pageVariants = {
+  initial: {
+    opacity: 0,
+  },
+  in: {
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      delay: 0.3
+    },
+  },
+  out: {
+    opacity: 0,
+  },
+};
 const TeamSummary = ({ portfolioSize }) => {
   return (
-    <Wrapper>
+    <Wrapper initial='initial' animate='in' exit='out' variants={pageVariants}>
       <h2>Our Team</h2>
       <div className='image-wrapper'>
         <Link href='/team'>
