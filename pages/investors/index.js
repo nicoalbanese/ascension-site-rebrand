@@ -38,13 +38,17 @@ const FundGrid = styled.div`
   /* justify-content: center; */
   /* flex-wrap: wrap; */
   display: grid;
-  grid-template-columns: repeat(auto-fit, 250px);
+  grid-template-columns: 1fr 1fr 1fr;
+  @media (max-width: 1400px) {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  /* grid-template-columns: 1fr 1fr 1fr; */
   grid-gap: 1rem 1.2rem;
   width: 100%;
 `;
 
 const FundsPage = ({ funds }) => {
-  console.log(funds);
+  // console.log(funds);
   return (
     <Layout>
       <TopSection className='top-section'>
@@ -86,7 +90,7 @@ const FundsPage = ({ funds }) => {
         </TEFunds>
         <ImpactFunds className='impact-funds'>
           <h2>Institutional Funds</h2>
-          <FundGrid>
+          <FundGrid id='institutional-wrapper'>
             {funds.map((fund) => {
               if (fund.type === "Institutional") {
                 return <FundCard fund={fund} key={fund.id} />;

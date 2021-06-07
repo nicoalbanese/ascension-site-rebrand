@@ -3,6 +3,7 @@ import { getFunds } from "../../lib/airtable";
 import Layout from "../../components/Layout";
 
 const Fund = ({ fund }) => {
+  console.log(fund);
   return (
     <Layout>
       <h1>{fund.name}</h1>

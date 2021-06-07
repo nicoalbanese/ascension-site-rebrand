@@ -5,7 +5,7 @@ import Link from "next/link";
 const Card = styled.div`
   display: flex;
   flex-direction: column;
-  width: 16rem;
+  /* width: 16rem; */
   background: white;
   padding: 2rem 2rem 1rem 2rem;
   border-radius: 5px;

@@ -33,12 +33,13 @@ h1, h2, h3, h4, h5 {
   font-family: "Montserrat-Bold";
 }
 
-p {
+p, ul, li {
   font-family: Avenir, sans-serif;
 }
 
 a {
   transition: 0.2s;
+  font-family: Avenir, sans-serif;
   color: ${({ theme }) => theme.colors.primaryThree};
   &:hover{ 
     opacity: 0.6;

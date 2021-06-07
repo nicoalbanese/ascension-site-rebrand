@@ -286,8 +286,13 @@ const OverlayMenu = ({ setShowOverlayMenu }) => {
             </Link>
           </h2>
           <h2>
+            <Link href='/founders'>
+              <a>Founders</a>
+            </Link>
+          </h2>
+          <h2>
             <Link href='/investors'>
-              <a>Investor</a>
+              <a>Investors</a>
             </Link>
           </h2>
           <h2>
