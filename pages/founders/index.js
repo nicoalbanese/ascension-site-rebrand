@@ -7,6 +7,11 @@ const Wrapper = styled.div`
     margin-top: 1rem;
   }
 
+  p {
+    margin-top: 1rem;
+
+  }
+
   h2 {
     margin-top: 4rem;
   }
@@ -16,26 +21,33 @@ const Wrapper = styled.div`
   li {
     margin-bottom: 1rem;
   }
+
+  #founders-section {
+    margin-bottom: 8rem;
+    h1 {
+      margin-bottom: 2rem;
+    }
+  }
 `;
 
 const Founders = () => {
   return (
     <Layout>
       <Wrapper>
-        <div>
+        <div id="founders-section">
           <h1>For Founders</h1>
-          <div>
+          <p>
             If you’re a UK business raising your first or second round, we would
             love to hear from you. Ascension can lead rounds or follow alongside
             other funds or angels via our SEIS & EIS Funds or our Social Impact
             Funds (the Fair By Design & Good Food Funds). We have also created
             the Ascension Syndicate Club, a group of early-stage angels that
             co-invest with Ascension alongside its Funds.
-          </div>
-          <div>
+          </p>
+          <p>
             Our goal is to partner with you to accelerate growth towards Series
             A and beyond.{" "}
-          </div>
+          </p>
         </div>
         <div>
           <h2>What we're looking for</h2>

@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Wrapper = styled.section`
-  margin-top: 6rem;
+  margin-top: 8rem;
   /* margin-bottom: 6rem; */
   width: 100%;
   height: 100%;
