@@ -195,15 +195,6 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params }) {
-  const companies = await getPortfolio();
-  const [company] = companies.filter((c) => c.slug === params.company);
-
-  const articles = await getPortfolioNewsFull(company.name);
-
-  return { props: { company, articles } };
-}
-
 const ArticleWrapper = styled.div`
   margin-top: 0.5rem;
 `;
@@ -217,3 +208,12 @@ const Article = ({ article }) => {
     </ArticleWrapper>
   );
 };
+
+export async function getStaticProps({ params }) {
+  const companies = await getPortfolio();
+  const [company] = companies.filter((c) => c.slug === params.company);
+
+  const articles = await getPortfolioNewsFull(company.name);
+
+  return { props: { company, articles }, revalidate: 10 }; // In seconds
+}
