@@ -226,6 +226,7 @@ const CompanyTile = ({ company, i }) => {
               <div className='image-container'>
                 <Image
                   src={company.logoUrl}
+                  alt={company.name}
                   layout='fill'
                   objectFit='cover'
                 />
