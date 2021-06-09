@@ -48,6 +48,9 @@ const Company = styled.div`
     position: relative;
     /* width: 300px; */
     height: 160px;
+    img {
+      z-index: 3;
+    }
     /* flex: 2; */
 
     #hidden-name {
@@ -56,6 +59,9 @@ const Company = styled.div`
       align-items: center;
       height: 100%;
       width: 100%;
+      position: absolute;
+      opacity: 0.5;
+      text-align: center;
       /* inset: 0; */
       /* opacity: 0; */
     }
