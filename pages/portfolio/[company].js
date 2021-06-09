@@ -70,7 +70,7 @@ const companyDetailed = ({ company }) => {
     console.log("this is undefined", company);
   }
 
-  console.log(company);
+  // console.log(company);
 
   return (
     <Layout>
