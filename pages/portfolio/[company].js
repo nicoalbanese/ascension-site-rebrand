@@ -215,5 +215,5 @@ export async function getStaticProps({ params }) {
 
   const articles = await getPortfolioNewsFull(company.name);
 
-  return { props: { company, articles }, revalidate: 10 }; // In seconds
+  return { props: { company, articles } };
 }
