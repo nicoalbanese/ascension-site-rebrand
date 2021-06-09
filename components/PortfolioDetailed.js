@@ -49,6 +49,16 @@ const Company = styled.div`
     /* width: 300px; */
     height: 160px;
     /* flex: 2; */
+
+    #hidden-name {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      /* inset: 0; */
+      /* opacity: 0; */
+    }
   }
 
   .pill-wrapper {
@@ -184,16 +194,10 @@ const CompanyTile = ({ company, i }) => {
   };
 
   return (
-    <motion.div
-      custom={i}
-      ref={ref}
-      animate={controls}
-      variants={boxVariants}
-      key={company.id}
-    >
+    <motion.div custom={i} ref={ref} animate={controls} variants={boxVariants}>
       <Link href={`/portfolio/${company.slug}`}>
         <Company
-          key={company.id}
+          // key={company.id}
           onMouseEnter={() => setIsHovering(true)}
           onMouseLeave={() => setIsHovering(false)}
           hovering={isHovering}
@@ -226,10 +230,11 @@ const CompanyTile = ({ company, i }) => {
               <div className='image-container'>
                 <Image
                   src={company.logoUrl}
-                  alt={company.name}
+                  alt={`${company.name} logo`}
                   layout='fill'
                   objectFit='cover'
                 />
+                <div id='hidden-name'>{company.name}</div>
               </div>
               {/* <h5
                 className={company.name.length > 20 ? "small-text" : undefined}

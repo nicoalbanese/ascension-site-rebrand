@@ -9,7 +9,7 @@ import TeamSummary from "../components/TeamSummary";
 import Layout from "../components/Layout";
 import Head from "next/head";
 
-import { getPortfolio, getPortfolioNews } from "../lib/airtable";
+import { getPortfolio, getPortfolioNewsCompact } from "../lib/airtable";
 import HomePageContent from "../components/HomePageContent";
 
 const AppWrapper = styled.main`
@@ -64,7 +64,7 @@ export async function getStaticProps() {
   });
 
   const portfolio = await getPortfolio();
-  const portfolioNews = await getPortfolioNews();
+  const portfolioNews = await getPortfolioNewsCompact();
 
   return {
     props: {

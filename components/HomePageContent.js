@@ -97,7 +97,7 @@ const HomePageContent = ({ portfolioSize, portfolioNews }) => {
         </div>
       </section> */}
       <section id='portfolio-news'>
-        <h2>Portfolio in the News</h2>
+        <h2>Portfolio News</h2>
         <div className='article-container'>
           {portfolioNews &&
             portfolioNews.map((article, i) => (

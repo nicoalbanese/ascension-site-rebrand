@@ -53,6 +53,7 @@ const Wrapper = styled.nav`
     text-decoration: none;
     color: inherit;
     opacity: 0.4;
+    font-weight: bold;
 
     &:hover {
       opacity: 1;
@@ -183,10 +184,10 @@ const NavBar = () => {
         <div className='full-width'>
           <ul>
             <li>
-              <CoolLink text={"Investors"} url='/investors' />
+              <CoolLink text={"For Investors"} url='/investors' />
             </li>
             <li>
-              <CoolLink text={"Founders"} url='/founders' />
+              <CoolLink text={"For Founders"} url='/founders' />
             </li>
             <li>
               <CoolLink text={"Portfolio"} url='/portfolio' />
@@ -287,13 +288,13 @@ const OverlayMenu = ({ setShowOverlayMenu }) => {
             </Link>
           </h2>
           <h2>
-            <Link href='/founders'>
-              <a>Founders</a>
+            <Link href='/investors'>
+              <a>For Investors</a>
             </Link>
           </h2>
           <h2>
-            <Link href='/investors'>
-              <a>Investors</a>
+            <Link href='/founders'>
+              <a>For Founders</a>
             </Link>
           </h2>
           <h2>
