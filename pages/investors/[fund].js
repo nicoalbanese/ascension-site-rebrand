@@ -42,6 +42,7 @@ const Wrapper = styled.div`
   #col-middle {
     p {
       margin-bottom: 2rem;
+      
       :nth-of-type(2) {
         margin-bottom: 1rem;
       }
