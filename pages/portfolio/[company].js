@@ -1,11 +1,12 @@
 import Layout from "../../components/Layout";
-import { getPortfolio } from "../../lib/airtable";
+import { getPortfolio, getPortfolioNewsFull } from "../../lib/airtable";
 
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
 import styled from "styled-components";
 import Pill from "../../components/Pill";
+import { useEffect } from "react";
 
 const Wrapper = styled.section`
   height: 100%;
@@ -48,6 +49,7 @@ const Wrapper = styled.section`
 
   .pill-wrapper {
     margin-top: 1.3rem;
+    margin-bottom: 1.4rem;
     * {
       background: ${({ theme }) => theme.colors.primaryOne};
       color: white;
@@ -63,14 +65,19 @@ const Wrapper = styled.section`
     margin-bottom: 1rem;
     font-size: 1rem;
   }
+
+  #in-the-news {
+    margin-top: 2rem;
+  }
 `;
 
-const companyDetailed = ({ company }) => {
+const companyDetailed = ({ company, articles }) => {
   if (company.name === undefined) {
     console.log("this is undefined", company);
   }
 
   // console.log(company);
+  console.log(articles);
 
   return (
     <Layout>
@@ -87,6 +94,28 @@ const companyDetailed = ({ company }) => {
           <div className='main-container'>
             <div className='image-container'>
               <Image src={company.logoUrl} height={300} width={300} />
+              {company.founders !== null && company.founderLinkedins !== null && (
+                <>
+                  {company.founders.length ===
+                    company.founderLinkedins.length && (
+                    <div id='founders'>
+                      <h3 id='founder-title'>Founders</h3>
+                      {company.founders.map((founder, i) => (
+                        <Founder
+                          key={i}
+                          founder={{
+                            name: founder,
+                            photo: company.founderPhotos[i]
+                              ? company.founderPhotos[i]
+                              : null,
+                            linkedin: company.founderLinkedins[i],
+                          }}
+                        />
+                      ))}
+                    </div>
+                  )}
+                </>
+              )}
             </div>
             <div>
               <h1>{company.name && company.name}</h1>
@@ -97,29 +126,15 @@ const companyDetailed = ({ company }) => {
                 ))}
               </div>
               <p>{company.description}</p>
+              {articles.length > 0 && (
+                <div id='in-the-news'>
+                  <h3>In the News</h3>
+                  {articles.map((article) => (
+                    <Article article={article} />
+                  ))}
+                </div>
+              )}
             </div>
-            {company.founders !== null && company.founderLinkedins !== null && (
-              <>
-                {company.founders.length ===
-                  company.founderLinkedins.length && (
-                  <div id='founders'>
-                    <h3 id='founder-title'>Founders</h3>
-                    {company.founders.map((founder, i) => (
-                      <Founder
-                        key={i}
-                        founder={{
-                          name: founder,
-                          photo: company.founderPhotos[i]
-                            ? company.founderPhotos[i]
-                            : null,
-                          linkedin: company.founderLinkedins[i],
-                        }}
-                      />
-                    ))}
-                  </div>
-                )}
-              </>
-            )}
           </div>
         )}
       </Wrapper>
@@ -183,5 +198,22 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const companies = await getPortfolio();
   const [company] = companies.filter((c) => c.slug === params.company);
-  return { props: { company } };
+
+  const articles = await getPortfolioNewsFull(company.name);
+
+  return { props: { company, articles } };
 }
+
+const ArticleWrapper = styled.div`
+  margin-top: 0.5rem;
+`;
+
+const Article = ({ article }) => {
+  return (
+    <ArticleWrapper>
+      <Link href={article.url}>
+        <a>{article.headline}</a>
+      </Link>
+    </ArticleWrapper>
+  );
+};
