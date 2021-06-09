@@ -35,7 +35,8 @@ const Wrapper = styled(motion.section)`
     margin-bottom: 6rem;
   }
 
-  #news {
+  #news,
+  #portfolio-news {
     margin-top: 2rem;
     width: 100%;
     h2 {
@@ -58,7 +59,7 @@ const pageVariants = {
     opacity: 1,
     transition: {
       duration: 0.5,
-      delay: 0.6
+      delay: 0.6,
     },
   },
   out: {
@@ -66,7 +67,7 @@ const pageVariants = {
   },
 };
 
-const HomePageContent = ({ portfolioSize }) => {
+const HomePageContent = ({ portfolioSize, portfolioNews }) => {
   return (
     <Wrapper initial='initial' animate='in' exit='out' variants={pageVariants}>
       {/* <section className='stat-section'>
@@ -87,12 +88,21 @@ const HomePageContent = ({ portfolioSize }) => {
           journey.
         </p>
       </section>
-      <section id='news'>
+      {/* <section id='news'>
         <h2>News</h2>
         <div className='article-container'>
           <Article />
           <Article />
           <Article />
+        </div>
+      </section> */}
+      <section id='portfolio-news'>
+        <h2>Portfolio in the News</h2>
+        <div className='article-container'>
+          {portfolioNews &&
+            portfolioNews.map((article, i) => (
+              <PortfolioNewsArticle article={article} key={i} />
+            ))}
         </div>
       </section>
     </Wrapper>
@@ -146,5 +156,34 @@ const Article = () => {
         <a>read more...</a>
       </Link>
     </ArticleWrapper>
+  );
+};
+
+const PortfolioNewsWrapper = styled.div`
+  padding: 0.75rem 0rem;
+  display: flex;
+  flex-direction: column;
+
+  #company-name {
+    font-weight: 300;
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: ${({ theme }) => theme.colors.primaryOne};
+  }
+  #headline {
+    font-size: 1.2rem;
+  }
+`;
+
+const PortfolioNewsArticle = ({ article }) => {
+  return (
+    <PortfolioNewsWrapper>
+      <Link href={`/portfolio/${article.slug}`}>
+        <a id='company-name'>{article.companyName}</a>
+      </Link>
+      <Link href={article.url}>
+        <a id='headline'>{article.headline}</a>
+      </Link>
+    </PortfolioNewsWrapper>
   );
 };

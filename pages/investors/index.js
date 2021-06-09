@@ -1,6 +1,8 @@
 import Layout from "../../components/Layout";
 import styled from "styled-components";
 
+import Head from "next/head"
+
 import FundCard from "../../components/FundCard";
 import { getFunds } from "../../lib/airtable";
 
@@ -51,6 +53,9 @@ const FundsPage = ({ funds }) => {
   // console.log(funds);
   return (
     <Layout>
+      <Head>
+        <title>Investors</title>
+      </Head>
       <TopSection className='top-section'>
         <h1>Funds</h1>
         <p>

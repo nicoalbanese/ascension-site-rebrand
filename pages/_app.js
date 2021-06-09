@@ -33,7 +33,7 @@ h1, h2, h3, h4, h5 {
   font-family: "Montserrat-Bold";
 }
 
-p, ul, li {
+p, ul, li, div {
   font-family: Avenir, sans-serif;
 }
 

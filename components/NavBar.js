@@ -107,16 +107,17 @@ const Wrapper = styled.nav`
         color: white;
         opacity: 1;
         &:hover {
-          color: ${({ theme }) => theme.colors.primaryThree};
+          /* color: ${({ theme }) => theme.colors.primaryThree}; */
         }
       }
       &:hover {
-        background-color: white;
-        border: solid 1px;
-        border-color: ${({ theme }) => theme.colors.primaryThree};
-        color: ${({ theme }) => theme.colors.primaryThree};
+        opacity: 0.4;
+        /* background-color: white; */
+        /* border: solid 1px; */
+        /* border-color: ${({ theme }) => theme.colors.primaryThree}; */
+        /* color: ${({ theme }) => theme.colors.primaryThree}; */
         a {
-          color: ${({ theme }) => theme.colors.primaryThree};
+          /* color: ${({ theme }) => theme.colors.primaryThree}; */
         }
       }
     }

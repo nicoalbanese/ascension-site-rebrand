@@ -1,7 +1,9 @@
 import Layout from "../../components/Layout";
 
 import styled from "styled-components";
-import Link from "next/link";
+import Link from "next/link"
+
+import Head from "next/head";
 
 const PlatformCards = [
   {
@@ -74,6 +76,9 @@ const Wrapper = styled.div`
 const Founders = () => {
   return (
     <Layout>
+      <Head>
+        <title>Founders</title>
+      </Head>
       <Wrapper>
         <div id='founders-section'>
           <h1>For Founders</h1>

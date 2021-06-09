@@ -2,6 +2,7 @@ import Layout from "../../components/Layout";
 
 import Link from "next/link";
 import Image from "next/image";
+import Head from "next/head"
 import { getTeam } from "../../lib/airtable";
 
 import { motion } from "framer-motion";
@@ -71,6 +72,9 @@ const TeamBackground = styled.div`
 const index = ({ team }) => {
   return (
     <Layout>
+      <Head>
+        <title>Team</title>
+      </Head>
       <h1>Team</h1>
       {/* <ZoomStyle team={team} /> */}
       <TeamBackground id='team-background'>

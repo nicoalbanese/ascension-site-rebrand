@@ -34,7 +34,7 @@ const Wrapper = styled.section`
     margin-bottom: 1.5rem;
   }
 
-  a {
+  /* a {
     color: ${({ theme }) => theme.colors.primaryOne};
     opacity: 0.6;
     transition: 0.3s;
@@ -44,7 +44,7 @@ const Wrapper = styled.section`
       opacity: 1;
       text-decoration: underline;
     }
-  }
+  } */
 
   .pill-wrapper {
     margin-top: 1.3rem;

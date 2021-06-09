@@ -2,6 +2,7 @@ import { getFunds } from "../../lib/airtable";
 
 import Layout from "../../components/Layout";
 
+import Head from "next/head"
 import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
@@ -42,7 +43,6 @@ const Wrapper = styled.div`
   #col-middle {
     p {
       margin-bottom: 2rem;
-      
       :nth-of-type(2) {
         margin-bottom: 1rem;
       }
@@ -59,6 +59,9 @@ const Fund = ({ fund }) => {
   console.log(fund);
   return (
     <Layout>
+      <Head>
+        <title>{fund.name}</title>
+      </Head>
       <Wrapper>
         <Link href="/investors"><a id="back-button">Back to funds</a></Link>
         <h1>{fund.name}</h1>
