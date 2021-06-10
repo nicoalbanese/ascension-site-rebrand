@@ -58,7 +58,7 @@ export async function getStaticProps() {
   const dataStructured = data.records.map((company) => {
     return {
       name: company.fields["Known As"],
-      url: company.fields["Website"],
+      url: `/portfolio/${company.fields["[website] slug"]}`,
       id: company.fields["[website] Highlight Rank"],
     };
   });

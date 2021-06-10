@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import Link from "next/link";
+import ReactMarkdown from "react-markdown";
 
 const Card = styled.div`
   display: flex;
@@ -73,7 +74,8 @@ const FundCard = ({ fund }) => {
     <Card>
       <div className='main-content'>
         <h3>{name}</h3>
-        <div className='stat-container'>
+        <ReactMarkdown className="stat-container">{fund.summary}</ReactMarkdown>
+        {/* <div className='stat-container'>
           <div className='title'>Stage</div>
           <div className='content'>{stage}</div>
         </div>
@@ -84,7 +86,7 @@ const FundCard = ({ fund }) => {
         <div className='stat-container'>
           <div className='title'>Stage</div>
           <div className='content'>Pre-Seed</div>
-        </div>
+        </div> */}
       </div>
       <div className='button-container'>
         <Link href={`/investors/${slug}`}>

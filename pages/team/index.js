@@ -2,12 +2,14 @@ import Layout from "../../components/Layout";
 
 import Link from "next/link";
 import Image from "next/image";
-import Head from "next/head"
-import { getTeam } from "../../lib/airtable";
+import Head from "next/head";
+import { getTeam, getVenturePartners } from "../../lib/airtable";
 
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 
 import styled from "styled-components";
+import { useInView } from "react-intersection-observer";
+import { useEffect } from "react";
 
 const TeamZoomContainer = styled.div`
   display: grid;
@@ -69,13 +71,17 @@ const TeamBackground = styled.div`
   }
 `;
 
-const index = ({ team }) => {
+const VenturePartnerSection = styled.section`
+  margin-top: 8rem;
+`;
+
+const index = ({ team, vps }) => {
   return (
     <Layout>
       <Head>
         <title>Team</title>
       </Head>
-      <h1>Team</h1>
+      <h1>Operating Team</h1>
       {/* <ZoomStyle team={team} /> */}
       <TeamBackground id='team-background'>
         <p>
@@ -96,7 +102,21 @@ const index = ({ team }) => {
           conviction, integrity, humour, and humility.{" "}
         </p>
       </TeamBackground>
-      <NormalStyle team={team} />
+      <NormalStyle team={team} type='operating-team' />
+      <VenturePartnerSection id='venture-partners'>
+        <h1>Venture Partners</h1>
+        <TeamBackground>
+          <p>
+            Venture Partners are successful entrepreneurs, active investors, and
+            shareholders in Ascension Ventures, with multiple $100m+ and $1bn
+            exits from their own businesses and personal investments. They
+            introduce deal-flow, bring corporate development initiatives, assess
+            investment opportunities as part of our due diligence, and mentor
+            relevant portfolio businesses.
+          </p>
+        </TeamBackground>
+        <NormalStyle team={vps} type='venture-partners' />
+      </VenturePartnerSection>
     </Layout>
   );
 };
@@ -104,32 +124,74 @@ const index = ({ team }) => {
 export default index;
 
 // NORMAL DESIGN BELOW START
-const NormalStyle = ({ team }) => {
+const NormalStyle = ({ team, type }) => {
   return (
     <>
       {" "}
       <NormalCardContainer className='team-container'>
-        {team.map((person) => (
-          <NormalCard key={person.id}>
-            <Link href={`/team/${person.slug}`}>
-              <a>
-                <div className='image-container'>
-                  <Image
-                    src={person.picture}
-                    layout='fill'
-                    objectFit='contain'
-                  />
-                  <div id='person-name'>
-                    <h3>{person.name}</h3>
-                    <h5>{person.position}</h5>
-                  </div>
-                </div>
-              </a>
-            </Link>
-          </NormalCard>
+        {team.map((person, i) => (
+          <TeamMember person={person} key={person.id} type={type} />
         ))}
       </NormalCardContainer>
     </>
+  );
+};
+
+const PositionContainer = styled.div`
+  #top {
+    margin-top: 1rem;
+    font-size: .8rem;
+    margin-bottom: 0;
+  }
+
+  #bottom {
+    margin-top: 0.3rem;
+    margin-bottom: 0;
+  }
+`;
+
+const TeamMember = ({ person, type }) => {
+  const controls = useAnimation();
+  const { ref, inView } = useInView();
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+    if (!inView) {
+      controls.start("hidden");
+    }
+  }, [controls, inView]);
+
+  const boxVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+      },
+    },
+  };
+  return (
+    <NormalCard ref={ref} animate={controls} variants={boxVariants}>
+      <Link href={`/team/${person.slug}`}>
+        <a>
+          <div className='image-container'>
+            <Image src={person.picture} layout='fill' objectFit='contain' />
+            <div id='person-name'>
+              <h3>{person.name}</h3>
+              {type === "operating-team" && <h5>{person.position}</h5>}
+              {type === "venture-partners" && (
+                <PositionContainer>
+                  <h6 id='top'>{person.headline}</h6>
+                  <h6 id='bottom'>{person.position}</h6>
+                </PositionContainer>
+              )}
+            </div>
+          </div>
+        </a>
+      </Link>
+    </NormalCard>
   );
 };
 
@@ -141,6 +203,9 @@ const NormalCardContainer = styled.section`
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-gap: 1rem;
   justify-content: center;
+  img {
+    filter: grayscale(100%);
+  }
 
   .image-container {
     position: relative;
@@ -148,7 +213,7 @@ const NormalCardContainer = styled.section`
     height: 250px;
     width: 250px;
 
-    @media (min-width: 1375px ) {
+    @media (min-width: 1375px) {
       height: 300px;
       width: 300px;
     }
@@ -165,7 +230,7 @@ const NormalCardContainer = styled.section`
   }
 `;
 
-const NormalCard = styled.div`
+const NormalCard = styled(motion.div)`
   display: flex;
   flex-direction: column;
   /* background-color: red; */
@@ -307,5 +372,6 @@ const PersonTile = ({ person, i }) => {
 // PULLING IN TEAM FROM AT
 export async function getStaticProps() {
   const team = await getTeam();
-  return { props: { team } };
+  const vps = await getVenturePartners();
+  return { props: { team, vps } };
 }

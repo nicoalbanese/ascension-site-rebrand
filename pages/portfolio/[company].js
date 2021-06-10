@@ -6,7 +6,6 @@ import Link from "next/link";
 import Head from "next/head";
 import styled from "styled-components";
 import Pill from "../../components/Pill";
-import { useEffect } from "react";
 
 const Wrapper = styled.section`
   height: 100%;
@@ -76,9 +75,6 @@ const companyDetailed = ({ company, articles }) => {
     console.log("this is undefined", company);
   }
 
-  // console.log(company);
-  console.log(articles);
-
   return (
     <Layout>
       <Head>
@@ -129,8 +125,8 @@ const companyDetailed = ({ company, articles }) => {
               {articles.length > 0 && (
                 <div id='in-the-news'>
                   <h3>In the News</h3>
-                  {articles.map((article) => (
-                    <Article article={article} />
+                  {articles.map((article, i) => (
+                    <Article article={article} key={i} />
                   ))}
                 </div>
               )}
@@ -197,11 +193,17 @@ export async function getStaticPaths() {
 
 const ArticleWrapper = styled.div`
   margin-top: 0.5rem;
+  p {
+    font-size: 0.7rem;
+    /* opacity: 0.8; */
+    font-weight: 800;
+  }
 `;
 
 const Article = ({ article }) => {
   return (
     <ArticleWrapper>
+      <p>{article.date}</p>
       <Link href={article.url}>
         <a>{article.headline}</a>
       </Link>
@@ -215,5 +217,5 @@ export async function getStaticProps({ params }) {
 
   const articles = await getPortfolioNewsFull(company.name);
 
-  return { props: { company, articles } };
+  return { props: { company, articles }, revalidate: 1 };
 }

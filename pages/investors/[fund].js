@@ -2,7 +2,7 @@ import { getFunds } from "../../lib/airtable";
 
 import Layout from "../../components/Layout";
 
-import Head from "next/head"
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   #page-info {
     margin-top: 2rem;
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 2fr 3fr;
     grid-gap: 2rem;
     @media (max-width: 850px) {
       grid-template-columns: 1fr;
@@ -32,7 +32,7 @@ const Wrapper = styled.div`
     padding: 0.75rem 1rem;
     text-align: center;
     display: block;
-    background-color: ${({ theme }) => theme.colors.primaryThree};
+    background-color: ${({ theme }) => theme.colors.primaryOne};
     text-decoration: none;
     /* margin-bottom: .rem; */
     border-radius: 10px;
@@ -63,15 +63,18 @@ const Fund = ({ fund }) => {
         <title>{fund.name}</title>
       </Head>
       <Wrapper>
-        <Link href="/investors"><a id="back-button">Back to funds</a></Link>
+        <Link href='/investors'>
+          <a id='back-button'>Back to funds</a>
+        </Link>
         <h1>{fund.name}</h1>
         <div id='page-info'>
           <div id='col-left'>
-            {fund.coverImage != null ? (
+            {/* {fund.coverImage != null ? (
               <Image src={fund.coverImage} height={490} width={350} />
             ) : (
               <div id='fund-no-cover'>{fund.name}</div>
-            )}
+            )} */}
+            <FundStats fund={fund} />
           </div>
           <div id='col-middle'>
             {/* <h1>{fund.name}</h1> */}
@@ -125,3 +128,78 @@ export async function getStaticPaths() {
     fallback: false,
   };
 }
+
+const Card = styled.div`
+  display: flex;
+  background-color: ${({ theme }) => theme.colors.primaryOne};
+  color: ${({ theme }) => theme.colors.primaryTwo};
+  padding: 1rem;
+  border-radius: 5px;
+  flex-direction: column;
+  h3 {
+    text-align: left;
+  }
+  .main-content {
+    flex: 1;
+  }
+
+  .button-container {
+    display: flex;
+    width: 100%;
+  }
+
+  .stat-container {
+    :first-of-type {
+      margin-top: 0;
+    }
+    margin-top: 1.5rem;
+
+    .title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      font-weight: 800;
+      /* color: ${({ theme }) => theme.colors.primaryThree}; */
+      opacity: 0.6;
+      margin-bottom: 0.3rem;
+    }
+
+    .content {
+      font-weight: 300;
+    }
+  }
+`;
+
+const FundStats = ({ fund }) => {
+  const {
+    stage,
+    ticketSize,
+    roundRange,
+    businessCharacteristics,
+    leadingPreference,
+  } = fund;
+  console.log(fund);
+  return (
+    <Card>
+      <div className='stat-container'>
+        <div className='title'>Stage</div>
+        <div className='content'>{stage}</div>
+      </div>
+      <div className='stat-container'>
+        <div className='title'>Ticket Size</div>
+        <div className='content'>{ticketSize}</div>
+      </div>
+      <div className='stat-container'>
+        <div className='title'>Round Size</div>
+        <div className='content'>{roundRange}</div>
+      </div>
+      <div className='stat-container'>
+        <div className='title'>Business Characteristics</div>
+        <div className='content'>{businessCharacteristics}</div>
+      </div>
+      <div className='stat-container'>
+        <div className='title'>Leads?</div>
+        <div className='content'>{leadingPreference}</div>
+      </div>
+    </Card>
+  );
+};
