@@ -56,7 +56,7 @@ const Wrapper = styled.div`
 `;
 
 const Fund = ({ fund }) => {
-  console.log(fund);
+  // console.log(fund);
   return (
     <Layout>
       <Head>
@@ -177,7 +177,7 @@ const FundStats = ({ fund }) => {
     businessCharacteristics,
     leadingPreference,
   } = fund;
-  console.log(fund);
+  // console.log(fund);
   return (
     <Card>
       <div className='stat-container'>

@@ -108,7 +108,7 @@ const companyDetailed = ({ person }) => {
       </Head>
       <Wrapper>
         <div id='back-button'>
-          <Link href='/team'>
+          <Link href={`/team#${person.slug}`}>
             <a>Back to team</a>
           </Link>
         </div>

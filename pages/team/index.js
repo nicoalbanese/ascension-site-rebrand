@@ -140,7 +140,7 @@ const NormalStyle = ({ team, type }) => {
 const PositionContainer = styled.div`
   #top {
     margin-top: 1rem;
-    font-size: .8rem;
+    font-size: 0.8rem;
     margin-bottom: 0;
   }
 
@@ -173,7 +173,12 @@ const TeamMember = ({ person, type }) => {
     },
   };
   return (
-    <NormalCard ref={ref} animate={controls} variants={boxVariants}>
+    <NormalCard
+      ref={ref}
+      animate={controls}
+      variants={boxVariants}
+      id={person.slug}
+    >
       <Link href={`/team/${person.slug}`}>
         <a>
           <div className='image-container'>

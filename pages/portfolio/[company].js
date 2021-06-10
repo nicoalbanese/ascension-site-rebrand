@@ -82,7 +82,7 @@ const companyDetailed = ({ company, articles }) => {
       </Head>
       <Wrapper>
         <div id='back-button'>
-          <Link href='/portfolio'>
+          <Link href={`/portfolio#${company.slug}`}>
             <a>Back to portfolio</a>
           </Link>
         </div>
@@ -157,7 +157,7 @@ const FounderWrapper = styled.div`
 `;
 
 const Founder = ({ founder }) => {
-  console.log(founder.linkedin);
+  // console.log(founder.linkedin);
   return (
     <FounderWrapper>
       <Link href={founder.linkedin}>

@@ -200,7 +200,13 @@ const CompanyTile = ({ company, i }) => {
   };
 
   return (
-    <motion.div custom={i} ref={ref} animate={controls} variants={boxVariants}>
+    <motion.div
+      custom={i}
+      ref={ref}
+      animate={controls}
+      variants={boxVariants}
+      id={company.slug}
+    >
       <Link href={`/portfolio/${company.slug}`}>
         <Company
           // key={company.id}
