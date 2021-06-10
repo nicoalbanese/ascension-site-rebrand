@@ -67,7 +67,7 @@ const pageVariants = {
   },
 };
 
-const HomePageContent = ({ portfolioSize, portfolioNews }) => {
+const HomePageContent = ({ portfolioSize, portfolioNews, posts }) => {
   return (
     <Wrapper initial='initial' animate='in' exit='out' variants={pageVariants}>
       {/* <section className='stat-section'>
@@ -88,14 +88,6 @@ const HomePageContent = ({ portfolioSize, portfolioNews }) => {
           journey to Series A and beyond.
         </p>
       </section>
-      {/* <section id='news'>
-        <h2>News</h2>
-        <div className='article-container'>
-          <Article />
-          <Article />
-          <Article />
-        </div>
-      </section> */}
       <section id='portfolio-news'>
         <h2>Portfolio News</h2>
         <div className='article-container'>
@@ -105,6 +97,16 @@ const HomePageContent = ({ portfolioSize, portfolioNews }) => {
             ))}
         </div>
       </section>
+      {posts && (
+        <section id='news'>
+          <h2>Recent Posts</h2>
+          <div className='article-container'>
+            {posts.map((post, i) => (
+              <Article post={post} key={i} />
+            ))}
+          </div>
+        </section>
+      )}
     </Wrapper>
   );
 };
@@ -141,18 +143,19 @@ const Stat = ({ title, stat }) => {
 
 const ArticleWrapper = styled.article`
   margin-bottom: 1.2rem;
+  p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 `;
 
-const Article = () => {
+const Article = ({ post }) => {
   return (
     <ArticleWrapper>
-      <h3>Ascesnion Launches Conduit EIS Fund</h3>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, velit.
-        Ipsam blanditiis quod itaque expedita inventore nesciunt accusantium
-        rerum et...
-      </p>
-      <Link href='/'>
+      <h3>{post.headline}</h3>
+      <p>{post.content}</p>
+      <Link href={`/posts/${post.slug}`}>
         <a>read more...</a>
       </Link>
     </ArticleWrapper>

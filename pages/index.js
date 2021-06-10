@@ -9,7 +9,11 @@ import TeamSummary from "../components/TeamSummary";
 import Layout from "../components/Layout";
 import Head from "next/head";
 
-import { getPortfolio, getPortfolioNewsCompact } from "../lib/airtable";
+import {
+  getBlogPosts,
+  getPortfolio,
+  getPortfolioNewsCompact,
+} from "../lib/airtable";
 import HomePageContent from "../components/HomePageContent";
 
 const AppWrapper = styled.main`
@@ -19,7 +23,7 @@ const AppWrapper = styled.main`
   overflow-y: auto;
 `;
 
-export default function Home({ companyData, portfolio, portfolioNews }) {
+export default function Home({ companyData, portfolio, portfolioNews, posts }) {
   return (
     <AppWrapper>
       <Head>
@@ -32,6 +36,7 @@ export default function Home({ companyData, portfolio, portfolioNews }) {
         <HomePageContent
           portfolioSize={portfolio.length}
           portfolioNews={portfolioNews}
+          posts={posts}
         />
       </Layout>
     </AppWrapper>
@@ -65,12 +70,14 @@ export async function getStaticProps() {
 
   const portfolio = await getPortfolio();
   const portfolioNews = await getPortfolioNewsCompact();
+  const posts = await getBlogPosts();
 
   return {
     props: {
       companyData: dataStructured,
       portfolio,
       portfolioNews,
+      posts,
     }, // will be passed to the page component as props
     revalidate: 1, // In seconds
   };
