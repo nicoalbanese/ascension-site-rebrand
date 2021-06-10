@@ -45,7 +45,10 @@ export default function Home({ companyData, portfolio, portfolioNews, posts }) {
 
 export async function getStaticProps() {
   let myHeaders = new Headers();
-  myHeaders.append("Authorization", "Bearer keyLUXLM28pTbdyTx");
+  myHeaders.append(
+    "Authorization",
+    `Bearer ${process.env.NEXT_PUBLIC_AIRTABLE_API_KEY}`
+  );
   myHeaders.append("Cookie", "brw=brwy1TrDiZyNAsU5u");
 
   let requestOptions = {
