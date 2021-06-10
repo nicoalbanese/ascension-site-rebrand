@@ -1,7 +1,7 @@
 import Layout from "../../components/Layout";
 
 import styled from "styled-components";
-import Link from "next/link"
+import Link from "next/link";
 
 import Head from "next/head";
 
@@ -17,7 +17,7 @@ const PlatformCards = [
   {
     header: "Events",
     content:
-      "Across our investor showcases, workshops, social events, and our annual summit, we facilitate knowledge sharing and new connections, through our community driven approach to portfolio management",
+      "Across our physical and virtual investor showcases, workshops, social events, and our annual summit, we facilitate knowledge sharing and new connections, through our community driven approach to portfolio management",
     link: "/events",
     linkText: "View Upcoming Events",
     id: 1,
@@ -86,9 +86,10 @@ const Founders = () => {
             If you’re a UK business raising your first or second round, we would
             love to hear from you. Ascension can lead rounds or follow alongside
             other funds or angels via our SEIS & EIS Funds or our Social Impact
-            Funds (the Fair By Design & Good Food Funds). We have also created
-            the Ascension Syndicate Club, a group of early-stage angels that
-            co-invest with Ascension alongside its Funds.
+            Funds (the Fair By Design, Good Food, Conduit and Life Sciences
+            Funds). We've also built the Ascension Syndicate Club, a group
+            of early-stage angels that co-invest with Ascension alongside its
+            Funds.
           </p>
           <p>
             Our goal is to partner with you to accelerate growth towards Series
@@ -109,7 +110,7 @@ const Founders = () => {
             </p>
             <ul>
               <li>
-                A strong, dedicated team with a deep understanding of the
+                Strong, dedicated Founder(s) with a deep understanding of the
                 problem their product is trying to solve
               </li>
               <li>Robustness of IP / tech development </li>
