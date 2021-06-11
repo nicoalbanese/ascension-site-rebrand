@@ -30,7 +30,7 @@ const Company = styled.div`
   flex-direction: column;
   transition: 0.3s;
   box-shadow: 0px 2px 1px lightgray;
-  height: 13rem;
+  height: 14rem;
 
   .small-text {
     font-size: 0.75rem;

@@ -7,15 +7,15 @@ import Footer from "./Footer";
 import NavBar from "./NavBar";
 
 const InnerWrapper = styled(motion.div)`
-  width: 70%;
-  max-width: 1024px;
+  width: 85%;
+  max-width: 1124px;
   margin: auto;
   flex-grow: 1;
-  padding: 2rem; 
+  padding: 1rem; 
 
   @media (max-width: 968px) {
     padding: 1rem;
-    width: 85%;
+    /* width: 85%; */
   }
 
   @media (max-width: 550px) {

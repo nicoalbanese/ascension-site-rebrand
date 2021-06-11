@@ -205,7 +205,7 @@ const NormalCardContainer = styled.section`
   flex-wrap: wrap; */
   margin-top: 2rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
   grid-gap: 1rem;
   justify-content: center;
   img {
@@ -215,8 +215,8 @@ const NormalCardContainer = styled.section`
   .image-container {
     position: relative;
     /* display: block; */
-    height: 250px;
-    width: 250px;
+    height: 225px;
+    width: 225px;
 
     @media (min-width: 1375px) {
       height: 300px;
