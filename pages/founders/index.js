@@ -51,7 +51,7 @@ const Wrapper = styled.div`
   line-height: 1.4rem;
 
   li {
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
   }
 
   #founders-section {
@@ -73,6 +73,40 @@ const Wrapper = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-gap: 0.5rem;
+  }
+
+  #apply-button {
+    display: block;
+    width: max-content;
+    margin-top: 2rem;
+    text-decoration: none;
+    padding: 7.5px 15px;
+    border: none;
+    background-color: ${({ theme }) => theme.colors.primaryThree};
+    color: white;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border: solid 1px transparent;
+    transition: 0.3s;
+    border-radius: 5px;
+    a {
+      color: white;
+      opacity: 1;
+      &:hover {
+        /* color: ${({ theme }) => theme.colors.primaryThree}; */
+      }
+    }
+    &:hover {
+      opacity: 0.4;
+      /* background-color: white; */
+      /* border: solid 1px; */
+      /* border-color: ${({ theme }) => theme.colors.primaryThree}; */
+      /* color: ${({ theme }) => theme.colors.primaryThree}; */
+      a {
+        /* color: ${({ theme }) => theme.colors.primaryThree}; */
+      }
+    }
   }
 `;
 
@@ -108,8 +142,11 @@ const Founders = () => {
               investors.{" "}
             </p>
             <p>
-              Please view the <Link  href="/investors"><a>individual fund pages</a></Link> for further details, but key
-              criteria of our assessment include:
+              Please view the{" "}
+              <Link href='/investors'>
+                <a>individual fund pages</a>
+              </Link>{" "}
+              for further details, but key criteria of our assessment include:
             </p>
             <ul>
               <li>
@@ -132,6 +169,9 @@ const Founders = () => {
               </li>
             </ul>{" "}
           </div>
+          <Link href='/apply-for-funding'>
+            <a id='apply-button'>Apply for funding!</a>
+          </Link>
         </div>
         <div id='our-platform-section'>
           <h2>Our Platform</h2>
