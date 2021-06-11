@@ -211,6 +211,9 @@ const NormalCardContainer = styled.section`
   img {
     filter: grayscale(100%);
   }
+  @media (min-width: 1375px) {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
 
   .image-container {
     position: relative;
