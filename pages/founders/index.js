@@ -9,8 +9,8 @@ const PlatformCards = [
   {
     header: "Mentor Network",
     content:
-      "Over the years, we've been fortunate to partner with people who have defined what success in tech looks like. If we can't directly help with something, we probably know someone who can,.",
-    link: "/mentors",
+      "Over the years, we've been fortunate to partner with people who have defined what success in tech looks like. If we can't directly help with something, we probably know someone who can",
+    link: null,
     linkText: "Meet our Mentors",
     id: 0,
   },
@@ -18,7 +18,7 @@ const PlatformCards = [
     header: "Events",
     content:
       "Across our physical and virtual investor showcases, workshops, social events, and our annual summit, we facilitate knowledge sharing and new connections, through our community driven approach to portfolio management",
-    link: "/events",
+    link: null,
     linkText: "View Upcoming Events",
     id: 1,
   },
@@ -40,15 +40,18 @@ const Wrapper = styled.div`
   p {
     margin-top: 1rem;
   }
+  ul {
+    margin-top: 2rem;
+  }
 
   h2 {
     margin-top: 4rem;
   }
 
-  line-height: 1.3rem;
+  line-height: 1.4rem;
 
   li {
-    margin-bottom: 1rem;
+    margin-bottom: .5rem;
   }
 
   #founders-section {
@@ -87,8 +90,8 @@ const Founders = () => {
             love to hear from you. Ascension can lead rounds or follow alongside
             other funds or angels via our SEIS & EIS Funds or our Social Impact
             Funds (the Fair By Design, Good Food, Conduit and Life Sciences
-            Funds). We've also built the Ascension Syndicate Club, a group
-            of early-stage angels that co-invest with Ascension alongside its
+            Funds). We've also built the Ascension Syndicate Club, a group of
+            early-stage angels that co-invest with Ascension alongside its
             Funds.
           </p>
           <p>
@@ -97,7 +100,7 @@ const Founders = () => {
           </p>
         </div>
         <div>
-          <h2>What we're looking for</h2>
+          <h2>What We're Looking For</h2>
           <div>
             <p>
               Ascension runs a number of UK funds from Seed to Series A, and is
@@ -105,7 +108,7 @@ const Founders = () => {
               investors.{" "}
             </p>
             <p>
-              Please view the individual fund pages for further details, but key
+              Please view the <Link  href="/investors"><a>individual fund pages</a></Link> for further details, but key
               criteria of our assessment include:
             </p>
             <ul>
@@ -175,9 +178,11 @@ const PlatformCard = ({ header, content, link, linkText }) => {
       {" "}
       <h3>{header}</h3>
       <p>{content}</p>{" "}
-      <Link href={link}>
-        <a>{linkText}</a>
-      </Link>
+      {link !== null && (
+        <Link href={link}>
+          <a>{linkText}</a>
+        </Link>
+      )}
     </CardWrapper>
   );
 };
