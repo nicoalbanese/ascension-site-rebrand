@@ -89,7 +89,12 @@ const companyDetailed = ({ company, articles }) => {
         {company && (
           <div className='main-container'>
             <div className='image-container'>
-              <Image src={company.logoUrl} height={300} width={300} />
+              <Image
+                src={company.logoUrl}
+                alt={`${company.name} logo`}
+                height={300}
+                width={300}
+              />
               {company.founders !== null && company.founderLinkedins !== null && (
                 <>
                   {company.founders.length ===

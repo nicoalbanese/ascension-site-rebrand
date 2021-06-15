@@ -2,6 +2,7 @@ import ReactMarkdown from "react-markdown";
 import Layout from "../../components/Layout";
 
 import Link from "next/link";
+import Head from "next/head";
 
 import styled from "styled-components";
 
@@ -17,6 +18,9 @@ const Posts = ({ posts }) => {
   // console.log(posts);
   return (
     <Layout>
+      <Head>
+        <title>Posts</title>
+      </Head>
       <Wrapper>
         <h1>Posts</h1>
         <div>

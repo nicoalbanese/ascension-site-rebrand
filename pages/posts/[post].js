@@ -5,6 +5,7 @@ import { getBlogPosts } from "../../lib/airtable";
 
 import Image from "next/image";
 import Link from "next/link";
+import Head from "next/head";
 
 import styled from "styled-components";
 
@@ -20,7 +21,30 @@ const PostWrapper = styled.article`
     margin-bottom: 1rem;
   }
 
+  h1 {
+    font-size: 2rem;
+  }
+
+  blockquote {
+    font-size: 1.5rem;
+    border-left: solid 1px;
+    border-color: ${({ theme }) => theme.colors.primaryOne};
+    padding: 1rem;
+    margin: 2rem .5rem;
+    p {
+      margin: 0;
+    }
+  }
+
+  #date {
+    margin-top: 2rem;
+    opacity: 0.8;
+    margin-bottom: 0;
+  }
+
   #author-image {
+    display: flex;
+    align-items: center;
     img {
       border-radius: 100%;
     }
@@ -32,11 +56,16 @@ const PostWrapper = styled.article`
   }
 
   .author {
+    display: flex;
+    align-items: center;
     a {
       display: flex;
       align-items: center;
+      height: 100%;
       #name {
         margin-left: 5px;
+        height: 100%;
+        margin-bottom: 0;
       }
     }
     margin-bottom: 1rem;
@@ -51,18 +80,24 @@ const PostWrapper = styled.article`
 const Post = ({ post }) => {
   return (
     <Layout>
+      <Head>
+        <title>{post && post.headline}</title>
+      </Head>
       <PostWrapper>
         <Link href='/posts'>
           <a id='back-button'>Back to posts</a>
         </Link>
+        <h5 id="date">{post.date}</h5>
         <h1>{post.headline}</h1>
         <div className='author'>
           <Link href={`/team/${post.author.slug}`}>
-            <a>
+            <a id='author-link'>
               <div className='' id='author-image'>
                 <Image src={post.author.photo} height={40} width={40} />
               </div>
-              <h4 id='name'>{post.author.name}</h4>
+              <div id='name-container'>
+                <h4 id='name'>{post.author.name}</h4>
+              </div>
             </a>
           </Link>
         </div>

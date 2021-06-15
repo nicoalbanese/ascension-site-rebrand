@@ -101,7 +101,7 @@ const PortfolioDetailed = ({ companies }) => {
   // }, [companiesShown]);
 
   let handleFilterChange = (activeOption) => {
-    console.log(activeOption);
+    // console.log(activeOption);
     if (activeOption) {
       let newCompanies = COMPANIES.filter((company) =>
         company.category.includes(activeOption)

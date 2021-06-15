@@ -29,6 +29,13 @@ const Wrapper = styled.div`
       margin-top: 0.5rem;
     }
 
+    &.disabled {
+      cursor: not-allowed;
+      opacity: 0.2;
+      pointer-events: none;
+      /* background-color: red; */
+    }
+
     padding: 0.75rem 1rem;
     text-align: center;
     display: block;
@@ -79,27 +86,46 @@ const Fund = ({ fund }) => {
           <div id='col-middle'>
             {/* <h1>{fund.name}</h1> */}
             <ReactMarkdown>{fund.detailedSummary}</ReactMarkdown>
+            {fund.taxBenefits && fund.taxBenefits !== "Not applicable" && (
+              <ReactMarkdown>{fund.taxBenefits}</ReactMarkdown>
+            )}
           </div>
-          <div id='col-right'>
-            <div id='inner-container-col-right'>
-              <h3>Next Closing Date</h3>
-              <p>{fund.nextClose}</p>
-              <div id='register-interest-button'>
-                <Link href={fund.registerInterestURL}>
-                  <a className='button' id='register-interest'>
-                    Request Brochure
-                  </a>
-                </Link>
-              </div>
-              <div>
-                <Link href={fund.applicationLink}>
-                  <a className='button' id='apply-button'>
-                    Apply Online
-                  </a>
-                </Link>
+          {fund.type === "Tax Efficient" && (
+            <div id='col-right'>
+              <div id='inner-container-col-right'>
+                <h3>Next Closing Date</h3>
+                <p>{fund.nextClose}</p>
+                <div id='register-interest-button'>
+                  <Link href={fund.registerInterestURL}>
+                    <a className='button' id='register-interest'>
+                      Request Brochure
+                    </a>
+                  </Link>
+                </div>
+                <div>
+                  <Link href={fund.applicationLink}>
+                    <a
+                      className={`button ${
+                        fund.status === "Closed" && "disabled"
+                      }`}
+                      id='apply-button'
+                    >
+                      Apply Online
+                    </a>
+                  </Link>
+                </div>
               </div>
             </div>
-          </div>
+          )}
+          {fund.trustmark !== null && (
+            <div>
+              <Image
+                src={fund.trustmark}
+                height={280 * 0.75}
+                width={650 * 0.75}
+              />
+            </div>
+          )}
         </div>
       </Wrapper>
     </Layout>
