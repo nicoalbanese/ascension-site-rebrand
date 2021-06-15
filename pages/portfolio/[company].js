@@ -169,7 +169,12 @@ const Founder = ({ founder }) => {
         <a>
           <div className='image-container'>
             {founder.photo && (
-              <Image src={founder.photo} height={50} width={50} />
+              <Image
+                src={founder.photo}
+                height={50}
+                width={50}
+                alt={`${founder.name} profile photo`}
+              />
             )}
           </div>
           <div id='founder-name'>{founder.name}</div>

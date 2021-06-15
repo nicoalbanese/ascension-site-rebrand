@@ -182,7 +182,12 @@ const TeamMember = ({ person, type }) => {
       <Link href={`/team/${person.slug}`}>
         <a>
           <div className='image-container'>
-            <Image src={person.picture} layout='fill' objectFit='contain' />
+            <Image
+              src={person.picture}
+              layout='fill'
+              objectFit='contain'
+              alt={`${person.name} profile photo`}
+            />
             <div id='person-name'>
               <h3>{person.name}</h3>
               {type === "operating-team" && <h5>{person.position}</h5>}
@@ -360,7 +365,12 @@ const PersonTile = ({ person, i }) => {
       <Link href={`/team/${person.slug}`}>
         <a id='a-container'>
           <div className='image-container'>
-            <Image src={person.picture} layout='fill' objectFit='contain' />
+            <Image
+              src={person.picture}
+              layout='fill'
+              objectFit='contain'
+              alt={`${person.name} profile photo`}
+            />
           </div>
           <div className='name-container'>
             <Link id='name' href={`/team/${person.slug}`}>

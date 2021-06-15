@@ -114,7 +114,12 @@ const companyDetailed = ({ person }) => {
         </div>
         <div className='profile-container'>
           <div>
-            <Image src={person.picture} height={300} width={300} />
+            <Image
+              src={person.picture}
+              height={300}
+              width={300}
+              alt={`${person.name} profile picture`}
+            />
             <div className='social-container'>
               {person.twitter && (
                 <Link href={person.twitter}>

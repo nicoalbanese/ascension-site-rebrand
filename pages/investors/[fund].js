@@ -123,6 +123,7 @@ const Fund = ({ fund }) => {
                 src={fund.trustmark}
                 height={280 * 0.75}
                 width={650 * 0.75}
+                alt={`${fund.name} trustmark`}
               />
             </div>
           )}

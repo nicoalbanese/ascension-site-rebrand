@@ -30,7 +30,7 @@ const PostWrapper = styled.article`
     border-left: solid 1px;
     border-color: ${({ theme }) => theme.colors.primaryOne};
     padding: 1rem;
-    margin: 2rem .5rem;
+    margin: 2rem 0.5rem;
     p {
       margin: 0;
     }
@@ -87,13 +87,18 @@ const Post = ({ post }) => {
         <Link href='/posts'>
           <a id='back-button'>Back to posts</a>
         </Link>
-        <h5 id="date">{post.date}</h5>
+        <h5 id='date'>{post.date}</h5>
         <h1>{post.headline}</h1>
         <div className='author'>
           <Link href={`/team/${post.author.slug}`}>
             <a id='author-link'>
               <div className='' id='author-image'>
-                <Image src={post.author.photo} height={40} width={40} />
+                <Image
+                  src={post.author.photo}
+                  alt={`${post.author.name} profile photo`}
+                  height={40}
+                  width={40}
+                />
               </div>
               <div id='name-container'>
                 <h4 id='name'>{post.author.name}</h4>
@@ -107,6 +112,7 @@ const Post = ({ post }) => {
               src={post.coverImage}
               width={1500}
               height={700}
+              alt={`${post.headline} - cover photo`}
               objectFit='contain'
             />
           </div>

@@ -176,7 +176,12 @@ const NavBar = () => {
       <div>
         <Link href='/'>
           <a id='logo'>
-            <Image src={"/images/a logo dark.png"} width='35' height='35' />
+            <Image
+              src={"/images/a logo dark.png"}
+              alt='ascension a logo'
+              width='35'
+              height='35'
+            />
           </a>
         </Link>
       </div>
@@ -276,7 +281,12 @@ const OverlayMenu = ({ setShowOverlayMenu }) => {
     >
       <ContainerWrapper>
         <UpperContainer>
-          <Image src={"/images/a logo light.png"} width='35' height='35' />
+          <Image
+            src={"/images/a logo light.png"}
+            width='35'
+            height='35'
+            alt='ascension a logo light'
+          />
           <h1 id='close' onClick={() => setShowOverlayMenu(false)}>
             X
           </h1>

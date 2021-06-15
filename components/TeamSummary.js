@@ -36,7 +36,7 @@ const pageVariants = {
     opacity: 1,
     transition: {
       duration: 0.5,
-      delay: 0.3
+      delay: 0.3,
     },
   },
   out: {
@@ -53,6 +53,7 @@ const TeamSummary = ({ portfolioSize }) => {
             <Image
               src={"/images/ascension-team-zoom.png"}
               width={1249}
+              alt='ascension team picture'
               height={523}
             />
           </a>
