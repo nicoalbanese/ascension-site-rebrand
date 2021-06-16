@@ -102,18 +102,20 @@ const Fund = ({ fund }) => {
                     </a>
                   </Link>
                 </div>
-                <div>
-                  <Link href={fund.applicationLink}>
-                    <a
-                      className={`button ${
-                        fund.status === "Closed" && "disabled"
-                      }`}
-                      id='apply-button'
-                    >
-                      Apply Online
-                    </a>
-                  </Link>
-                </div>
+                {fund.applicationLink !== null && (
+                  <div>
+                    <Link href={fund.applicationLink}>
+                      <a
+                        className={`button ${
+                          fund.status === "Closed" && "disabled"
+                        }`}
+                        id='apply-button'
+                      >
+                        Apply Online
+                      </a>
+                    </Link>
+                  </div>
+                )}
               </div>
             </div>
           )}
