@@ -87,7 +87,7 @@ const index = ({ team, vps }) => {
         <p>
           Run by an experienced and diverse team of successful entrepreneurs, we
           have been relentlessly dedicated to finding the UK’s best Seed-stage
-          tech startups since 2013.{" "}
+          startups since 2014.{" "}
         </p>
         <p>
           Ascension benefits from the active industry connections essential for

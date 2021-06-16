@@ -75,11 +75,12 @@ const HomePageContent = ({ portfolioSize, portfolioNews, posts }) => {
       </section> */}
       <section className='ascension-overview-section'>
         <p>
-          Ascension is one of the most active Seed investors in the UK. We have{" "}
+          Ascension is one of the most active Seed investors in the UK. Since
+          2015, we have{" "}
           <Link href='/portfolio' id='we-have-backed'>
             <a>backed 125+ tech and impact startups</a>
           </Link>{" "}
-          to date through{" "}
+          through{" "}
           <Link href='/investors'>
             <a>our (S)EIS & Institutional Funds</a>
           </Link>

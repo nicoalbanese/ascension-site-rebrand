@@ -9,7 +9,7 @@ const PlatformCards = [
   {
     header: "Mentor Network",
     content:
-      "Over the years, we've been fortunate to partner with people who have defined what success in tech looks like. If we can't directly help with something, we probably know someone who can",
+      "Over the years, we've been fortunate to partner with people who have defined what success in tech looks like. If we can't directly help with something, we probably know someone who can.",
     link: null,
     linkText: "Meet our Mentors",
     id: 0,
@@ -17,7 +17,7 @@ const PlatformCards = [
   {
     header: "Events",
     content:
-      "Across our physical and virtual investor showcases, workshops, social events, and our annual summit, we facilitate knowledge sharing and new connections, through our community driven approach to portfolio management",
+      "Across our physical and virtual investor showcases, workshops, social events, and our annual summit, we facilitate knowledge sharing and new connections, through our community driven approach to portfolio management.",
     link: null,
     linkText: "View Upcoming Events",
     id: 1,
@@ -25,7 +25,7 @@ const PlatformCards = [
   {
     header: "Perks & Suppliers",
     content:
-      "We structure the best deals you can get and vet suppliers across all business functions to power your startup",
+      "We structure the best deals you can get and vet suppliers across all business functions to power your startup.",
     link: "https://airtable.com/shrcsDiHLWFGksW0S/tblvPHMmuB7FP3Jap",
     linkText: "View our Dealbook",
     id: 2,
@@ -122,11 +122,10 @@ const Founders = () => {
           <p>
             If you’re a UK business raising your first or second round, we would
             love to hear from you. Ascension can lead rounds or follow alongside
-            other funds or angels via our SEIS & EIS Funds or our Social Impact
-            Funds (the Fair By Design, Good Food, Conduit and Life Sciences
-            Funds). We've also built the Ascension Syndicate Club, a group of
-            early-stage angels that co-invest with Ascension alongside its
-            Funds.
+            other investors via our SEIS & EIS Funds or Social Impact Funds (the
+            Fair By Design, Good Food, Conduit and Life Sciences Funds). We've
+            also built the Ascension Syndicate Club, a group of early-stage
+            angels that co-invest in deals alongside us.
           </p>
           <p>
             Our goal is to partner with you to accelerate growth towards Series
@@ -162,7 +161,10 @@ const Founders = () => {
                 Strong leveraged marketing / distribution strategies built into
                 the proposition{" "}
               </li>
-              <li>At least 12-18 months runway, assuming no revenue growth </li>
+              <li>
+                At least 12-18 months runway from current anticipated raise,
+                assuming no revenue growth{" "}
+              </li>
               <li>
                 An opportunity for Ascension to add value in supporting your
                 access to revenue and funding

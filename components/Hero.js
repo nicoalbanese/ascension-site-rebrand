@@ -66,12 +66,14 @@ const Hero = () => {
             width={3253 / factor}
             height={355 / factor}
             id='top'
+            alt='Ascension logo big'
           />
         </div>
         <Image
           src={"/images/sub_logo_dark-img.png"}
           width={3061 / (factor * 1.2)}
           height={295 / (factor * 1.2)}
+          alt='Ascension sub logo'
         />
       </div>
       <div id='lower'>

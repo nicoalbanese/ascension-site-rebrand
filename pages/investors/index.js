@@ -1,7 +1,7 @@
 import Layout from "../../components/Layout";
 import styled from "styled-components";
 
-import Head from "next/head"
+import Head from "next/head";
 
 import FundCard from "../../components/FundCard";
 import { getFunds } from "../../lib/airtable";
@@ -42,7 +42,7 @@ const FundGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   @media (max-width: 1200px) {
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
   /* grid-template-columns: 1fr 1fr 1fr; */
   grid-gap: 1rem;
@@ -59,14 +59,14 @@ const FundsPage = ({ funds }) => {
       <TopSection className='top-section'>
         <h1>Funds</h1>
         <p>
-          Since 2013, Ascension has established itself as one of the leading UK
-          Seed investors, participating in some of the most exciting deals
+          Since 2014, Ascension has established itself as one of the leading UK
+          Seed investors, participating in some of the most exciting UK deals
           alongside high calibre angels and VCs.
         </p>
 
         <p>
           As a go-to place for UK entrepreneurs seeking funding, our team gains
-          a ‘first look’ at over 2,000 investment opportunities a year through
+          a ‘first look’ at over 3,000 investment opportunities a year through
           our comprehensive and proven network.
         </p>
 
@@ -82,8 +82,8 @@ const FundsPage = ({ funds }) => {
           <p>
             Ascension is an experienced (S)EIS Fund Manager with a strong track
             record and multiple exits. Our (S)EIS and Syndicate Funds aim to
-            deliver tax-free capital growth via a portfolio of early-stage tech
-            businesses.{" "}
+            deliver tax-free capital growth via a diversified portfolio of
+            early-stage tech businesses.{" "}
           </p>
           <FundGrid>
             {funds.map((fund) => {

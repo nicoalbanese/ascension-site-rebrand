@@ -16,7 +16,7 @@ const portfolio = ({ companies }) => {
         <p>
           We manage (S)EIS and Institutional Seed funds that invest in UK
           technology and impact businesses across these key focus areas: Next
-          Gen Media, New Work, Health, Sustainability, FinTech, Commerce,
+          Gen Media, New Work, Digital Health & Life Sciences, Sustainability, FinTech, Commerce,
           DeepTech.{" "}
         </p>
         {/* <p>Number of portfolio companies {companies.length}</p> */}
