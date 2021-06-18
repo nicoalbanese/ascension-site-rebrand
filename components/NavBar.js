@@ -33,7 +33,7 @@ const Wrapper = styled.nav`
   }
   li {
     margin: none;
-    text-transform: uppercase;
+    text-transform: capitalize;
     font-family: "Montserrat-Regular";
   }
 
@@ -201,6 +201,11 @@ const NavBar = () => {
               <CoolLink text={"Team"} url='/team' />
             </li>
           </ul>
+          {/* <Link href='/apply-for-funding'>
+            <a id='login-button'>
+              <button>Apply</button>
+            </a>
+          </Link> */}
           <Link href='https://ascension.mainspringfs.com/Login'>
             <a id='login-button'>
               <button>log in</button>

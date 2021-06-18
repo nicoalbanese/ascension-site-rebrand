@@ -143,21 +143,37 @@ const Stat = ({ title, stat }) => {
 };
 
 const ArticleWrapper = styled.article`
-  margin-bottom: 1.2rem;
-  p {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  padding: 0.75rem 0rem;
+  display: flex;
+  flex-direction: column;
+
+  #date {
+    font-weight: 300;
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: ${({ theme }) => theme.colors.primaryOne};
+  }
+  #headline {
+    font-size: 1.2rem;
+  }
+  #heading {
+    display: flex;
+  }
+  #heading > * {
+    margin-right: 0.3rem;
   }
 `;
 
 const Article = ({ post }) => {
   return (
     <ArticleWrapper>
-      <h3>{post.headline}</h3>
-      <p>{post.content}</p>
+      <div id='heading'>
+        <p id='date'>{post.author.name}</p>
+        <p id='date'>on</p>
+        <p id='date'>{String(new Date(post.date).toLocaleDateString("EN"))}</p>
+      </div>
       <Link href={`/posts/${post.slug}`}>
-        <a>read more...</a>
+        <a id='headline'>{post.headline}</a>
       </Link>
     </ArticleWrapper>
   );

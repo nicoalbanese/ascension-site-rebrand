@@ -105,7 +105,7 @@ const Footer = ({ pageVariants }) => {
                 </Link>
               </li>
               <li>
-                <Link href='https://www.notion.so/Careers-at-Ascension-Ventures-bd23e6ad5af1466984444ad80e9c1ce2'>
+                <Link href='/apply-for-funding'>
                   <a>Apply for funding</a>
                 </Link>
               </li>
