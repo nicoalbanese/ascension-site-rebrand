@@ -43,7 +43,7 @@ const pageVariants = {
     opacity: 0,
   },
 };
-const TeamSummary = ({ portfolioSize, imageProps }) => {
+const TeamSummary = ({ portfolioSize }) => {
   return (
     <Wrapper initial='initial' animate='in' exit='out' variants={pageVariants}>
       <h2>Our Team</h2>
@@ -56,7 +56,7 @@ const TeamSummary = ({ portfolioSize, imageProps }) => {
               alt='ascension team picture'
               height={523}
             /> */}
-            <Image {...imageProps} placeholder='blur' />
+            {/* <Image {...imageProps} placeholder='blur' /> */}
           </a>
         </Link>
       </div>

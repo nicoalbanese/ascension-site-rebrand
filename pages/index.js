@@ -8,7 +8,6 @@ import PortfolioSection from "../components/PortfolioSection";
 import TeamSummary from "../components/TeamSummary";
 import Layout from "../components/Layout";
 import Head from "next/head";
-import { getPlaiceholder } from "plaiceholder";
 
 // test
 import {
@@ -40,7 +39,7 @@ export default function Home({
       <Layout>
         <Hero />
         <PortfolioSection portfolioCompanies={companyData} />
-        <TeamSummary imageProps={teamImageProps} />
+        <TeamSummary />
         <HomePageContent
           portfolioSize={portfolio.length}
           portfolioNews={portfolioNews}
@@ -83,20 +82,12 @@ export async function getStaticProps() {
   const portfolioNews = await getPortfolioNewsCompact();
   const posts = await getBlogPosts();
 
-  const { base64, img } = await getPlaiceholder(
-    "/images/ascension-team-zoom.png"
-  );
-
   return {
     props: {
       companyData: dataStructured,
       portfolio,
       portfolioNews,
       posts,
-      teamImageProps: {
-        blurDataURL: base64,
-        ...img,
-      },
     }, // will be passed to the page component as props
     revalidate: 1, // In seconds
   };
