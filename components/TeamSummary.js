@@ -43,19 +43,20 @@ const pageVariants = {
     opacity: 0,
   },
 };
-const TeamSummary = ({ portfolioSize }) => {
+const TeamSummary = ({ portfolioSize, imageProps }) => {
   return (
     <Wrapper initial='initial' animate='in' exit='out' variants={pageVariants}>
       <h2>Our Team</h2>
       <div className='image-wrapper'>
         <Link href='/team'>
           <a>
-            <Image
+            {/* <Image
               src={"/images/ascension-team-zoom.png"}
               width={1249}
               alt='ascension team picture'
               height={523}
-            />
+            /> */}
+            <Image {...imageProps} placeholder='blur' />
           </a>
         </Link>
       </div>

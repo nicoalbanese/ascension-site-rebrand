@@ -8,6 +8,7 @@ import PortfolioSection from "../components/PortfolioSection";
 import TeamSummary from "../components/TeamSummary";
 import Layout from "../components/Layout";
 import Head from "next/head";
+import { getPlaiceholder } from "plaiceholder";
 
 import {
   getBlogPosts,
@@ -23,7 +24,13 @@ const AppWrapper = styled.main`
   overflow-y: auto;
 `;
 
-export default function Home({ companyData, portfolio, portfolioNews, posts }) {
+export default function Home({
+  companyData,
+  portfolio,
+  portfolioNews,
+  posts,
+  teamImageProps,
+}) {
   return (
     <AppWrapper>
       <Head>
@@ -32,7 +39,7 @@ export default function Home({ companyData, portfolio, portfolioNews, posts }) {
       <Layout>
         <Hero />
         <PortfolioSection portfolioCompanies={companyData} />
-        <TeamSummary />
+        <TeamSummary imageProps={teamImageProps} />
         <HomePageContent
           portfolioSize={portfolio.length}
           portfolioNews={portfolioNews}
@@ -75,12 +82,20 @@ export async function getStaticProps() {
   const portfolioNews = await getPortfolioNewsCompact();
   const posts = await getBlogPosts();
 
+  const { base64, img } = await getPlaiceholder(
+    "/images/ascension-team-zoom.png"
+  );
+
   return {
     props: {
       companyData: dataStructured,
       portfolio,
       portfolioNews,
       posts,
+      teamImageProps: {
+        blurDataURL: base64,
+        ...img,
+      },
     }, // will be passed to the page component as props
     revalidate: 1, // In seconds
   };

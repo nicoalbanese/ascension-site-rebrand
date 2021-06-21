@@ -172,8 +172,8 @@ const Article = ({ post }) => {
   return (
     <ArticleWrapper>
       <div id='heading'>
-        <Link href={post.author.slug}>
-          <a id="author-slug">
+        <Link href={`/team${post.author.slug}`}>
+          <a id='author-slug'>
             <p id='date'>{post.author.name}</p>
           </a>
         </Link>

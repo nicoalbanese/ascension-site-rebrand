@@ -99,7 +99,7 @@ const Wrapper = styled.nav`
       background-color: ${({ theme }) => theme.colors.primaryThree};
       color: white;
       text-transform: uppercase;
-      font-size: 1.1rem;
+      font-size: 0.9rem;
       cursor: pointer;
       border: solid 1px transparent;
       transition: 0.3s;
@@ -107,19 +107,9 @@ const Wrapper = styled.nav`
       a {
         color: white;
         opacity: 1;
-        &:hover {
-          /* color: ${({ theme }) => theme.colors.primaryThree}; */
-        }
       }
       &:hover {
         opacity: 0.4;
-        /* background-color: white; */
-        /* border: solid 1px; */
-        /* border-color: ${({ theme }) => theme.colors.primaryThree}; */
-        /* color: ${({ theme }) => theme.colors.primaryThree}; */
-        a {
-          /* color: ${({ theme }) => theme.colors.primaryThree}; */
-        }
       }
     }
   }
