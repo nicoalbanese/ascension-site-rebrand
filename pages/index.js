@@ -9,7 +9,7 @@ import TeamSummary from "../components/TeamSummary";
 import Layout from "../components/Layout";
 import Head from "next/head";
 import { getPlaiceholder } from "plaiceholder";
-
+// one change...
 import {
   getBlogPosts,
   getPortfolio,
