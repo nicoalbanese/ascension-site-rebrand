@@ -162,13 +162,21 @@ const ArticleWrapper = styled.article`
   #heading > * {
     margin-right: 0.3rem;
   }
+
+  #author-slug {
+    text-decoration: none;
+  }
 `;
 
 const Article = ({ post }) => {
   return (
     <ArticleWrapper>
       <div id='heading'>
-        <p id='date'>{post.author.name}</p>
+        <Link href={post.author.slug}>
+          <a id="author-slug">
+            <p id='date'>{post.author.name}</p>
+          </a>
+        </Link>
         <p id='date'>on</p>
         <p id='date'>{String(new Date(post.date).toLocaleDateString("EN"))}</p>
       </div>

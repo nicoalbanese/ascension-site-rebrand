@@ -50,6 +50,9 @@ const InnerWrapper = styled.div`
 
   .lower-section {
     font-size: 0.6rem;
+    a {
+      color: ${({ theme }) => theme.colors.primaryTwo};;
+    }
   }
 `;
 
@@ -116,7 +119,7 @@ const Footer = ({ pageVariants }) => {
         <div className='lower-section'>
           <p>
             © 2010 - 2021 Ascension Ventures Limited. All Rights Reserved.{" "}
-            <span>LEGAL | PRIVACY POLICY</span>
+            <span><Link href="/legal"><a>LEGAL</a></Link> | <Link href="/privacy"><a >PRIVACY POLICY</a></Link></span>
           </p>
 
           <p>

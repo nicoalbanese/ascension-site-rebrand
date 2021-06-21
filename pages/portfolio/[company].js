@@ -7,7 +7,9 @@ import Head from "next/head";
 import styled from "styled-components";
 import Pill from "../../components/Pill";
 
-const Wrapper = styled.section`
+import { motion } from "framer-motion";
+
+const Wrapper = styled(motion.section)`
   height: 100%;
   width: 100%;
 
@@ -70,6 +72,22 @@ const Wrapper = styled.section`
   }
 `;
 
+const pageVariants = {
+  initial: {
+    opacity: 0,
+  },
+  in: {
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      // delay: 0.6,
+    },
+  },
+  out: {
+    opacity: 0,
+  },
+};
+
 const companyDetailed = ({ company, articles }) => {
   if (company.name === undefined) {
     console.log("this is undefined", company);
@@ -80,7 +98,12 @@ const companyDetailed = ({ company, articles }) => {
       <Head>
         <title>{company.name && company.name}</title>
       </Head>
-      <Wrapper>
+      <Wrapper
+        initial='initial'
+        animate='in'
+        exit='out'
+        variants={pageVariants}
+      >
         <div id='back-button'>
           <Link href={`/portfolio#${company.slug}`}>
             <a>Back to portfolio</a>
