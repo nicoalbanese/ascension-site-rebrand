@@ -92,7 +92,7 @@ const companyDetailed = ({ company, articles }) => {
   if (company.name === undefined) {
     console.log("this is undefined", company);
   }
-
+  // console.log(company);
   return (
     <Layout>
       <Head>

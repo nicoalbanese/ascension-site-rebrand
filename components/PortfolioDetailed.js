@@ -50,6 +50,8 @@ const Company = styled.div`
     height: 160px;
     img {
       z-index: 3;
+      height: 160px;
+      width: 160px;
     }
     /* flex: 2; */
 
@@ -177,6 +179,7 @@ const CompanyDetailed = styled(motion.div)`
 const CompanyTile = ({ company, i }) => {
   const controls = useAnimation();
   const { ref, inView } = useInView();
+  // console.log(company);
 
   const [isHovering, setIsHovering] = useState(false);
 
@@ -243,10 +246,14 @@ const CompanyTile = ({ company, i }) => {
                 <Image
                   src={company.logoUrl}
                   alt={`${company.name} logo`}
-                  layout='fill'
-                  objectFit='cover'
+                  // layout='fill'
+                  height={80}
+                  width={80}
+                  // objectFit='cover'
+                  quality='40'
                 />
-                <div id='hidden-name'>{company.name}</div>
+                {/* <Image {...company.imageProps} placeholder='blur' /> */}
+                {/* <div id='hidden-name'>{company.name}</div> */}
               </div>
               {/* <h5
                 className={company.name.length > 20 ? "small-text" : undefined}
