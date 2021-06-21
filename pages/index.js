@@ -34,7 +34,7 @@ export default function Home({
   return (
     <AppWrapper>
       <Head>
-        <title>Ascension Hello</title>
+        <title>Ascension</title>
       </Head>
       <Layout>
         <Hero />

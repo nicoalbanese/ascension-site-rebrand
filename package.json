@@ -9,6 +9,7 @@
   "dependencies": {
     "framer-motion": "^4.1.13",
     "next": "latest",
+    "plaiceholder": "^2.0.1",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "react-intersection-observer": "^8.32.0",
