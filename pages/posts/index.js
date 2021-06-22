@@ -46,24 +46,39 @@ const PostWrapper = styled.article`
   p {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    /* white-space: nowrap; */
+    /* overflow: hidden; */
+    /* text-overflow: ellipsis; */
   }
 
   .author {
     margin-bottom: 0.5rem;
     a {
       text-decoration: none;
-      text-transform: uppercase;
+      /* text-transform: uppercase; */
       font-size: 0.9rem;
     }
     h5 {
+      color: ${({ theme }) => theme.colors.primaryOne};
       font-weight: 100;
     }
   }
 
   margin-bottom: 2rem;
+
+  #headline {
+    text-decoration: underline;
+  }
+
+  #content {
+    color: ${({ theme }) => theme.colors.primaryOne};
+    p {
+      text-decoration: none;
+    }
+  }
+  .post-container {
+    text-decoration: none;
+  }
 `;
 
 const Post = ({ post }) => {
@@ -72,16 +87,18 @@ const Post = ({ post }) => {
       <div className='author'>
         <Link href={`/team/${post.author.slug}`}>
           <a>
-            <h5>{post.author.name}</h5>
+            <h5>
+              {post.author.name} on{" "}
+              {String(new Date(post.date).toLocaleDateString("EN"))}
+            </h5>
           </a>
         </Link>
       </div>
-      <h3>{post.headline}</h3>
-      <div className='content'>
-        <p>{post.content}</p>
-      </div>
       <Link href={`/posts/${post.slug}`}>
-        <a>read more...</a>
+        <a className="post-container">
+          <h3 id='headline'>{post.headline}</h3>
+          <p id='content'>{post.snippet}</p>
+        </a>
       </Link>
     </PostWrapper>
   );

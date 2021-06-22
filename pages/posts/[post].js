@@ -18,11 +18,15 @@ const PostWrapper = styled.article`
     margin-bottom: 1rem;
   }
   p {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
   }
 
   h1 {
     font-size: 2rem;
+  }
+
+  img {
+    width: 100%;
   }
 
   blockquote {
@@ -117,7 +121,7 @@ const Post = ({ post }) => {
             />
           </div>
         )}
-        <ReactMarkdown>{post.content}</ReactMarkdown>
+        {post.parsedArt && <ReactMarkdown>{post.parsedArt}</ReactMarkdown>}
       </PostWrapper>
     </Layout>
   );
@@ -143,5 +147,7 @@ export async function getStaticProps({ params }) {
   const posts = await getBlogPosts();
 
   const [post] = posts.filter((p) => p.slug === params.post);
-  return { props: { post } };
+  const res = await fetch(post.mdArticle);
+  const item = await res.text();
+  return { props: { post: { ...post, parsedArt: item } } };
 }
