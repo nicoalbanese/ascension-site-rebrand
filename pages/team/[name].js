@@ -51,6 +51,11 @@ const Wrapper = styled.section`
     }
   }
 
+  #image-container {
+    position: relative;
+    height: 300px;
+    width: 300px;
+  }
   .pill-wrapper {
     margin-top: 1.3rem;
     * {
@@ -114,12 +119,16 @@ const companyDetailed = ({ person }) => {
         </div>
         <div className='profile-container'>
           <div>
-            <Image
-              src={person.picture}
-              height={300}
-              width={300}
-              alt={`${person.name} profile picture`}
-            />
+            <div id='image-container'>
+              <Image
+                src={person.picture}
+                // height={300}
+                // width={300}
+                layout='fill'
+                objectFit='cover'
+                alt={`${person.name} profile picture`}
+              />
+            </div>
             <div className='social-container'>
               {person.twitter && (
                 <Link href={person.twitter}>

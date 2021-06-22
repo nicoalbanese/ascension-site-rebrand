@@ -217,7 +217,7 @@ const NormalCardContainer = styled.section`
     filter: grayscale(100%);
   }
   @media (min-width: 1375px) {
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
   }
 
   .image-container {
@@ -227,8 +227,8 @@ const NormalCardContainer = styled.section`
     width: 225px;
 
     @media (min-width: 1375px) {
-      height: 300px;
-      width: 300px;
+      height: 225px;
+      width: 225px;
     }
 
     @media (max-width: 650px) {
