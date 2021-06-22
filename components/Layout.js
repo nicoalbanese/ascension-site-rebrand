@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { motion } from "framer-motion";
 
 import styled from "styled-components";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
+
+import Cookies from "js-cookie";
 
 // import CookieBanner from "react-cookie-banner";
 
@@ -49,13 +51,16 @@ const ChildrenContainer = styled.div`
 `;
 
 const Layout = ({ children }) => {
+  const [cookiePreference, setUserCookiePreference] = useState();
+
+  useEffect(() => {
+    console.log(Cookies.get("user_accepts_cookies"));
+    if (Cookies.get("user_accepts_cookies")) {
+      setUserCookiePreference(Cookies.get("user_accepts_cookies"));
+    }
+  }, []);
   return (
     <OuterWrapper>
-      {/* <CookieBanner
-        message="Yes, we use cookies. If you don't like it change website, we won't miss you!"
-        onAccept={() => {}}
-        cookie='user-has-accepted-cookies'
-      /> */}
       <InnerWrapper
         className='inner'
         initial='initial'
@@ -67,8 +72,72 @@ const Layout = ({ children }) => {
         <ChildrenContainer>{children}</ChildrenContainer>
       </InnerWrapper>
       <Footer className='footer' pageVariants={pageVariants} />
+      {cookiePreference == null && (
+        <CookieBanner setUserCookiePreference={setUserCookiePreference} />
+      )}
     </OuterWrapper>
   );
 };
 
 export default Layout;
+
+const CookieBannerWrapper = styled(motion.div)`
+  background: white;
+  width: 20rem;
+  position: fixed;
+  bottom: 1rem;
+  border-radius: 10px;
+  right: 2rem;
+  padding: 2rem;
+
+  p {
+    margin: 1rem 0;
+  }
+  button {
+    background-color: ${({ theme }) => theme.colors.primaryThree};
+    color: ${({ theme }) => theme.colors.primaryTwo};
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+  .button-container {
+    display: flex;
+    flex-direction: column;
+  }
+`;
+
+const CookieBanner = ({ setUserCookiePreference }) => {
+  const setCookiePreference = (preference) => {
+    if (preference === "on") {
+      Cookies.set("user_accepts_cookies", "true", { expires: 31 });
+      setUserCookiePreference("on");
+    } else {
+      Cookies.set("user_accepts_cookies", "false", { expires: 31 });
+      setUserCookiePreference("off");
+    }
+  };
+  return (
+    <CookieBannerWrapper
+      initial='initial'
+      animate='in'
+      exit='out'
+      variants={pageVariants}
+    >
+      <h3>Cookie Consent</h3>
+      <p>We use cookies to understand and improve you're experience. </p>
+      <div className='button-container'>
+        <button onClick={() => setCookiePreference("on")}>
+          Ok
+        </button>
+        {/* <button onClick={() => setCookiePreference("off")}>
+          No, please don't track.
+        </button> */}
+      </div>
+    </CookieBannerWrapper>
+  );
+};
