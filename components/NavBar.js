@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -54,6 +55,10 @@ const Wrapper = styled.nav`
     color: inherit;
     opacity: 0.4;
     font-weight: bold;
+
+    #active {
+      opacity: 1;
+    }
 
     &:hover {
       opacity: 1;
@@ -123,11 +128,15 @@ const LinkWrapper = styled.div`
   margin-top: 0.5rem;
   align-items: center;
   transition: 0.3s;
+  opacity: 1;
   &:hover {
     opacity: 1;
     .accent {
       opacity: 1;
     }
+  }
+  .active {
+    opacity: 1;
   }
 `;
 
@@ -140,13 +149,13 @@ const Accentuator = styled.div`
   background-color: ${({ theme }) => theme.colors.primaryThree};
 `;
 
-const CoolLink = ({ text, url }) => {
+const CoolLink = ({ text, url, isActive }) => {
   return (
-    <LinkWrapper>
+    <LinkWrapper isActive={isActive}>
       <Link href={url}>
-        <a>
+        <a className={`${isActive && "active"}`}>
           {text}
-          <Accentuator className='accent' />
+          <Accentuator className={`accent ${isActive && "active"}`} />
         </a>
       </Link>
     </LinkWrapper>
@@ -156,6 +165,7 @@ const CoolLink = ({ text, url }) => {
 const NavBar = () => {
   const [showOverlayMenu, setShowOverlayMenu] = useState(false);
 
+  const router = useRouter();
   return (
     <Wrapper>
       {showOverlayMenu && (
@@ -179,16 +189,32 @@ const NavBar = () => {
         <div className='full-width'>
           <ul>
             <li>
-              <CoolLink text={"For Investors"} url='/investors' />
+              <CoolLink
+                text={"For Investors"}
+                isActive={router.pathname === "/investors"}
+                url='/investors'
+              />
             </li>
             <li>
-              <CoolLink text={"For Founders"} url='/founders' />
+              <CoolLink
+                text={"For Founders"}
+                url='/founders'
+                isActive={router.pathname === "/founders"}
+              />
             </li>
             <li>
-              <CoolLink text={"Portfolio"} url='/portfolio' />
+              <CoolLink
+                text={"Portfolio"}
+                url='/portfolio'
+                isActive={router.pathname === "/portfolio"}
+              />
             </li>
             <li>
-              <CoolLink text={"Team"} url='/team' />
+              <CoolLink
+                text={"Team"}
+                url='/team'
+                isActive={router.pathname === "/team"}
+              />
             </li>
           </ul>
           {/* <Link href='/apply-for-funding'>
