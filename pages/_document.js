@@ -65,6 +65,13 @@ export default class MyDocument extends Document {
             property='twitter:image'
             content='/images/ascension-meta-image.png'
           />
+          <meta
+            name='keywords'
+            content='Ascension, UK, Seed, Fund, Venture, Capital, pre-Seed, SEIS, EIS, Fair, By, Design, FBD'
+          />
+          <meta name='robots' content='index, follow' />
+          <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+          <meta name='language' content='English' />
           <link
             rel='apple-touch-icon'
             sizes='180x180'
