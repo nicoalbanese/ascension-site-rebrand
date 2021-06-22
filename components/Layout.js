@@ -6,12 +6,14 @@ import styled from "styled-components";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
 
+// import CookieBanner from "react-cookie-banner";
+
 const InnerWrapper = styled(motion.div)`
   width: 85%;
   max-width: 1124px;
   margin: auto;
   flex-grow: 1;
-  padding: 1rem; 
+  padding: 1rem;
 
   @media (max-width: 968px) {
     padding: 1rem;
@@ -49,6 +51,11 @@ const ChildrenContainer = styled.div`
 const Layout = ({ children }) => {
   return (
     <OuterWrapper>
+      {/* <CookieBanner
+        message="Yes, we use cookies. If you don't like it change website, we won't miss you!"
+        onAccept={() => {}}
+        cookie='user-has-accepted-cookies'
+      /> */}
       <InnerWrapper
         className='inner'
         initial='initial'

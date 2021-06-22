@@ -86,7 +86,8 @@ const Fund = ({ fund }) => {
           <div id='col-middle'>
             {/* <h1>{fund.name}</h1> */}
             <ReactMarkdown>{fund.detailedSummary}</ReactMarkdown>
-            {fund.taxBenefits && fund.taxBenefits !== "Not applicable" && (
+            {/* {console.log(fund.taxBenefits)} */}
+            {fund.taxBenefits !== "Not applicable" && (
               <ReactMarkdown>{fund.taxBenefits}</ReactMarkdown>
             )}
           </div>
