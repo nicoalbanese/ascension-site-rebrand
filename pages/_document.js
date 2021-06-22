@@ -93,6 +93,19 @@ export default class MyDocument extends Document {
           <link rel='mask-icon' href='/safari-pinned-tab.svg' color='#2d2d41' />
           <meta name='msapplication-TileColor' content='#da532c' />
           <meta name='theme-color' content='#f4ebe5' />
+          <script
+            async
+            src='https://www.googletagmanager.com/gtag/js?id=G-486H7R3NRT'
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+            
+              gtag('config', 'G-486H7R3NRT');`,
+            }}
+          />
         </Head>
         <body>
           <Main />
