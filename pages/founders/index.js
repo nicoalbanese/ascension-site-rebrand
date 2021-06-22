@@ -80,16 +80,17 @@ const Wrapper = styled.div`
     width: max-content;
     margin-top: 2rem;
     text-decoration: none;
-    padding: 7.5px 15px;
+    padding: 1rem 2rem;
     border: none;
     background-color: ${({ theme }) => theme.colors.primaryThree};
     color: white;
     text-transform: uppercase;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     cursor: pointer;
     border: solid 1px transparent;
     transition: 0.3s;
     border-radius: 5px;
+    margin: 4rem auto 0;
     a {
       color: white;
       opacity: 1;
@@ -99,6 +100,7 @@ const Wrapper = styled.div`
     }
     &:hover {
       opacity: 0.4;
+      transform: scale(1.1);
       /* background-color: white; */
       /* border: solid 1px; */
       /* border-color: ${({ theme }) => theme.colors.primaryThree}; */
@@ -128,8 +130,10 @@ const Founders = () => {
             angels that co-invest in deals alongside us.
           </p>
           <p>
-            Our goal is to partner with you to accelerate growth towards Series
-            A and beyond.{" "}
+            <strong>
+              Our goal is to partner with you to accelerate growth towards
+              Series A and beyond.
+            </strong>
           </p>
         </div>
         <div>
@@ -178,9 +182,9 @@ const Founders = () => {
         <div id='our-platform-section'>
           <h2>Our Platform</h2>
           <p>
-            Our Platform We provide crucial post-investment support for
-            early-stage founders, offering the tools and relationships needed to
-            scale their businesses.
+            We provide crucial post-investment support for early-stage founders,
+            offering the tools and relationships needed to scale their
+            businesses.
           </p>
           <p>
             Our community gathers frequently online and off to share learnings,

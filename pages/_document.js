@@ -70,7 +70,7 @@ export default class MyDocument extends Document {
             content='Ascension, UK, Seed, Fund, Venture, Capital, pre-Seed, SEIS, EIS, Fair, By, Design, FBD'
           />
           <meta name='robots' content='index, follow' />
-          <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+          <meta httpEquiv='Content-Type' content='text/html; charset=utf-8' />
           <meta name='language' content='English' />
           <link
             rel='apple-touch-icon'
