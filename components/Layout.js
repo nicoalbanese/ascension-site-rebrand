@@ -6,6 +6,8 @@ import styled from "styled-components";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
 
+import Link from "next/link";
+
 import Cookies from "js-cookie";
 
 // import CookieBanner from "react-cookie-banner";
@@ -82,20 +84,26 @@ const Layout = ({ children }) => {
 export default Layout;
 
 const CookieBannerWrapper = styled(motion.div)`
-  background: white;
-  width: 20rem;
+  background: ${({ theme }) => theme.colors.primaryOne};
+  width: 18rem;
   position: fixed;
   bottom: 1rem;
   border-radius: 10px;
+  color: ${({ theme }) => theme.colors.primaryTwo};
   right: 2rem;
-  padding: 2rem;
+  padding: 1.5rem;
+  font-size: 0.85rem;
+  box-shadow: 0px 1px 1px ${({ theme }) => theme.colors.primaryOne};
 
   p {
     margin: 1rem 0;
+    a {
+      color: ${({ theme }) => theme.colors.primaryTwo};
+    }
   }
   button {
-    background-color: ${({ theme }) => theme.colors.primaryThree};
-    color: ${({ theme }) => theme.colors.primaryTwo};
+    background-color: ${({ theme }) => theme.colors.primaryTwo};
+    color: ${({ theme }) => theme.colors.primaryOne};
     padding: 0.5rem;
     border: none;
     border-radius: 5px;
@@ -129,11 +137,14 @@ const CookieBanner = ({ setUserCookiePreference }) => {
       variants={pageVariants}
     >
       <h3>Cookie Consent</h3>
-      <p>We use cookies to understand and improve you're experience. </p>
+      <p>
+        We use cookies to understand and improve you're experience. View our{" "}
+        <Link href='/privacy'>
+          <a>Privacy Policy</a>
+        </Link>{" "}
+      </p>
       <div className='button-container'>
-        <button onClick={() => setCookiePreference("on")}>
-          Ok
-        </button>
+        <button onClick={() => setCookiePreference("on")}>Ok</button>
         {/* <button onClick={() => setCookiePreference("off")}>
           No, please don't track.
         </button> */}
