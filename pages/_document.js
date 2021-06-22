@@ -45,7 +45,10 @@ export default class MyDocument extends Document {
             property='og:description'
             content='Ascension is an early-stage VC built by exited entrepreneurs to back the next generation of tech and impact founders'
           />
-          <meta property='og:image' content='' />
+          <meta
+            property='og:image'
+            content='/images/ascension-meta-image.png'
+          />
 
           {/* <!-- Twitter --/> */}
           <meta property='twitter:card' content='summary_large_image' />
