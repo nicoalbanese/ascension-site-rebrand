@@ -44,6 +44,9 @@ const Company = styled.div`
   }
 
   .image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 160px;
     position: relative;
     /* width: 300px; */

@@ -29,12 +29,38 @@ const InnerWrapper = styled.div`
     margin-bottom: 2rem;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    ul {
+      padding-left: 0;
+    }
 
-    @media (max-width: 650px) {
-      grid-template-columns: 1fr 1fr;
-      .spacer {
-        display: none;
+    #logo-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 800px) {
+      grid-template-columns: 1fr;
+      li {
+        text-align: center;
       }
+      div {
+        /* margin-bottom: 1rem; */
+      }
+
+      #logo-container {
+        /* display: block; */
+        align-items: center;
+        justify-content: flex-start;
+      }
+
+      .link-container {
+        margin-bottom: 0.5rem;
+      }
+      /* .spacer {
+        display: none;
+      } */
     }
     ul {
       /* margin: 0; */
@@ -51,7 +77,7 @@ const InnerWrapper = styled.div`
   .lower-section {
     font-size: 0.6rem;
     a {
-      color: ${({ theme }) => theme.colors.primaryTwo};;
+      color: ${({ theme }) => theme.colors.primaryTwo};
     }
   }
 `;
@@ -59,14 +85,26 @@ const InnerWrapper = styled.div`
 // initial='initial' animate='in' exit='out' variants={pageVariants} <= for footer animation
 
 const Footer = ({ pageVariants }) => {
+  const factor = 9;
   return (
     <Wrapper>
       <InnerWrapper>
         <div className='upper-section'>
-          <div className='spacer'>
-            {/* <Image src='/images/headline_logo.png' height={30} width={150} /> */}
+          <div className='spacer link-container'>
+            <div id='logo-container'>
+              <Image
+                src='/images/headline_logo_light.png'
+                height={238 / factor}
+                width={1560 / factor}
+              />
+              <Image
+                src='/images/subheader_logo_light.png'
+                height={142 / factor}
+                width={1148 / factor}
+              />
+            </div>
           </div>
-          <div className='main-links'>
+          <div className='main-links link-container'>
             <ul>
               <li>
                 <Link href='/investors'>
@@ -95,7 +133,7 @@ const Footer = ({ pageVariants }) => {
               </li>
             </ul>
           </div>
-          <div className='secondary-links'>
+          <div className='secondary-links link-container'>
             <ul>
               <li>
                 <Link href='/posts'>
@@ -114,17 +152,41 @@ const Footer = ({ pageVariants }) => {
               </li>
             </ul>
           </div>
-          <div className='spacer'></div>
+          <div className='spacer link-container'>
+            <ul>
+              <li>
+                <Link href='https://twitter.com/ascensiongrp'>
+                  <a>Twitter</a>
+                </Link>
+              </li>
+              <li>
+                <Link href='https://www.linkedin.com/company/ascensionventures/'>
+                  <a>LinkedIn</a>
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
         <div className='lower-section'>
           <p>
             © 2010 - 2021 Ascension Ventures Limited. All Rights Reserved.{" "}
-            <span><Link href="/legal"><a>LEGAL</a></Link> | <Link href="/privacy"><a >PRIVACY POLICY</a></Link></span>
+            <span>
+              <Link href='/legal'>
+                <a>LEGAL</a>
+              </Link>{" "}
+              |{" "}
+              <Link href='/privacy'>
+                <a>PRIVACY POLICY</a>
+              </Link>
+            </span>
           </p>
 
           <p>
             Ascension Ventures Ltd is authorised and regulated by the Financial
-            Conduct Authority, (FRN 833108)
+            Conduct Authority,{" "}
+            <Link href='https://register.fca.org.uk/s/firm?id=0010X00004MkTGwQAN'>
+              <a>(FRN 833108)</a>
+            </Link>
           </p>
 
           <p>
