@@ -91,8 +91,8 @@ const CookieBannerWrapper = styled(motion.div)`
   border-radius: 10px;
   color: ${({ theme }) => theme.colors.primaryTwo};
   right: 2rem;
-  padding: 1.5rem;
-  font-size: 0.85rem;
+  padding: 1rem;
+  font-size: 0.8rem;
   box-shadow: 0px 1px 1px ${({ theme }) => theme.colors.primaryOne};
 
   @media (max-width: 500px) {
@@ -118,7 +118,7 @@ const CookieBannerWrapper = styled(motion.div)`
   }
 
   p {
-    margin: 1rem 0;
+    margin: .5rem 0;
     a {
       color: ${({ theme }) => theme.colors.primaryTwo};
     }
@@ -126,7 +126,7 @@ const CookieBannerWrapper = styled(motion.div)`
   button {
     background-color: ${({ theme }) => theme.colors.primaryTwo};
     color: ${({ theme }) => theme.colors.primaryOne};
-    padding: 0.5rem;
+    padding: 0.25rem;
     border: none;
     border-radius: 5px;
     cursor: pointer;
