@@ -47,7 +47,7 @@ export default class MyDocument extends Document {
           />
           <meta
             property='og:image'
-            content='/images/ascension-meta-image.png'
+            content='https://ascension.vc/_next/image?url=%2Fimages%2Fascension-meta-image.png&w=3840&q=75'
           />
 
           {/* <!-- Twitter --/> */}
@@ -63,7 +63,7 @@ export default class MyDocument extends Document {
           />
           <meta
             property='twitter:image'
-            content='/images/ascension-meta-image.png'
+            content='https://ascension.vc/_next/image?url=%2Fimages%2Fascension-meta-image.png&w=3840&q=75'
           />
           <meta
             name='keywords'
