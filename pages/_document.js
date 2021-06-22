@@ -31,6 +31,37 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <meta name='title' content='Ascension | The UK Seed Fund' />
+          <meta
+            name='description'
+            content='Ascension is an early-stage VC built by exited entrepreneurs to back the next generation of tech and impact founders'
+          />
+
+          {/* <!-- Open Graph / Facebook --/> */}
+          <meta property='og:type' content='website' />
+          <meta property='og:url' content='https://www.ascension.vc/' />
+          <meta property='og:title' content='Ascension | The UK Seed Fund' />
+          <meta
+            property='og:description'
+            content='Ascension is an early-stage VC built by exited entrepreneurs to back the next generation of tech and impact founders'
+          />
+          <meta property='og:image' content='' />
+
+          {/* <!-- Twitter --/> */}
+          <meta property='twitter:card' content='summary_large_image' />
+          <meta property='twitter:url' content='https://www.ascension.vc/' />
+          <meta
+            property='twitter:title'
+            content='Ascension | The UK Seed Fund'
+          />
+          <meta
+            property='twitter:description'
+            content='Ascension is an early-stage VC built by exited entrepreneurs to back the next generation of tech and impact founders'
+          />
+          <meta
+            property='twitter:image'
+            content='/images/ascension-meta-image.png'
+          />
           <link
             rel='apple-touch-icon'
             sizes='180x180'
