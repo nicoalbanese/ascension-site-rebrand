@@ -95,6 +95,28 @@ const CookieBannerWrapper = styled(motion.div)`
   font-size: 0.85rem;
   box-shadow: 0px 1px 1px ${({ theme }) => theme.colors.primaryOne};
 
+  @media (max-width: 500px) {
+    width: 90%;
+    font-size: 0.7rem;
+    left: 5%;
+    /* padding: 1rem; */
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 1rem;
+    .main-content {
+      flex: 3;
+      margin: 0;
+      p {
+        margin: .3rem 0 0 0;
+      }
+    }
+    .button-container {
+      flex: 1;
+      height: 100%;
+    }
+  }
+
   p {
     margin: 1rem 0;
     a {
@@ -111,6 +133,9 @@ const CookieBannerWrapper = styled(motion.div)`
     margin-bottom: 0.5rem;
     &:hover {
       opacity: 0.6;
+    }
+    @media (max-width: 500px) {
+      padding: 0.3rem;
     }
   }
   .button-container {
@@ -136,13 +161,15 @@ const CookieBanner = ({ setUserCookiePreference }) => {
       exit='out'
       variants={pageVariants}
     >
-      <h3>Cookie Consent</h3>
-      <p>
-        We use cookies to understand and improve you're experience. View our{" "}
-        <Link href='/privacy'>
-          <a>Privacy Policy</a>
-        </Link>{" "}
-      </p>
+      <div className='main-content'>
+        <h3>Cookie Consent</h3>
+        <p>
+          We use cookies to understand and improve you're experience. View our{" "}
+          <Link href='/privacy'>
+            <a>Privacy Policy</a>
+          </Link>{" "}
+        </p>
+      </div>
       <div className='button-container'>
         <button onClick={() => setCookiePreference("on")}>Ok</button>
         {/* <button onClick={() => setCookiePreference("off")}>
