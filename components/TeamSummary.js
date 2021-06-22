@@ -50,13 +50,13 @@ const TeamSummary = ({ portfolioSize }) => {
       <div className='image-wrapper'>
         <Link href='/team'>
           <a>
-            {/* <Image
+            <Image
               src={"/images/ascension-team-zoom.png"}
               width={1249}
               alt='ascension team picture'
               height={523}
-            /> */}
-            {/* <Image {...imageProps} placeholder='blur' /> */}
+              quality='70'
+            />
           </a>
         </Link>
       </div>
