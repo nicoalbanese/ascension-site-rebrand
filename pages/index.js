@@ -34,7 +34,7 @@ export default function Home({
   return (
     <AppWrapper>
       <Head>
-        <title>Ascension</title>
+        <title>Ascension | The UK Seed Fund</title>
       </Head>
       <Layout>
         <Hero />
