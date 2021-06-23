@@ -86,7 +86,7 @@ const Post = ({ post }) => {
     <Layout>
       <Head>
         <title>{post && post.headline}</title>
-        {post.coverImage && (
+        {post.coverImage !== null && (
           <>
             <meta property='og:image' content={post.coverImage} />
             <meta property='twitter:image' content={post.coverImage} />
