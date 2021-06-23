@@ -87,42 +87,44 @@ const Post = ({ post }) => {
       <Head>
         <title>{post && post.headline}</title>
       </Head>
-      <PostWrapper>
-        <Link href='/posts'>
-          <a id='back-button'>Back to posts</a>
-        </Link>
-        <h5 id='date'>{post.date}</h5>
-        <h1>{post.headline}</h1>
-        <div className='author'>
-          <Link href={`/team/${post.author.slug}`}>
-            <a id='author-link'>
-              <div className='' id='author-image'>
-                <Image
-                  src={post.author.photo}
-                  alt={`${post.author.name} profile photo`}
-                  height={40}
-                  width={40}
-                />
-              </div>
-              <div id='name-container'>
-                <h4 id='name'>{post.author.name}</h4>
-              </div>
-            </a>
+      {post && (
+        <PostWrapper>
+          <Link href='/posts'>
+            <a id='back-button'>Back to posts</a>
           </Link>
-        </div>
-        {post.coverImage !== null && (
-          <div className='image-container'>
-            <Image
-              src={post.coverImage}
-              width={1500}
-              height={700}
-              alt={`${post.headline} - cover photo`}
-              objectFit='contain'
-            />
+          <h5 id='date'>{post.date}</h5>
+          <h1>{post.headline}</h1>
+          <div className='author'>
+            <Link href={`/team/${post.author.slug}`}>
+              <a id='author-link'>
+                <div className='' id='author-image'>
+                  <Image
+                    src={post.author.photo}
+                    alt={`${post.author.name} profile photo`}
+                    height={40}
+                    width={40}
+                  />
+                </div>
+                <div id='name-container'>
+                  <h4 id='name'>{post.author.name}</h4>
+                </div>
+              </a>
+            </Link>
           </div>
-        )}
-        {post.parsedArt && <ReactMarkdown>{post.parsedArt}</ReactMarkdown>}
-      </PostWrapper>
+          {post.coverImage !== null && (
+            <div className='image-container'>
+              <Image
+                src={post.coverImage}
+                width={1500}
+                height={700}
+                alt={`${post.headline} - cover photo`}
+                objectFit='contain'
+              />
+            </div>
+          )}
+          {post.parsedArt && <ReactMarkdown>{post.parsedArt}</ReactMarkdown>}
+        </PostWrapper>
+      )}
     </Layout>
   );
 };
