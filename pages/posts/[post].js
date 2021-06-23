@@ -86,6 +86,18 @@ const Post = ({ post }) => {
     <Layout>
       <Head>
         <title>{post && post.headline}</title>
+        {post.coverImage && (
+          <>
+            <meta property='og:image' content={post.coverImage} />
+            <meta property='twitter:image' content={post.coverImage} />
+          </>
+        )}
+        {post.snippet && (
+          <>
+            <meta property='og:description' content={post.snippet} />
+            <meta property='twitter:description' content={post.snippet} />
+          </>
+        )}
       </Head>
       {post && (
         <PostWrapper>
