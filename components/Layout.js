@@ -164,7 +164,7 @@ const CookieBanner = ({ setUserCookiePreference }) => {
       <div className='main-content'>
         <h3>Cookie Consent</h3>
         <p>
-          We use cookies to understand and improve you're experience. View our{" "}
+          We use cookies to understand and improve your experience. View our{" "}
           <Link href='/privacy'>
             <a>Privacy Policy</a>
           </Link>{" "}
