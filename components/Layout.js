@@ -84,6 +84,7 @@ const Layout = ({ children }) => {
 export default Layout;
 
 const CookieBannerWrapper = styled(motion.div)`
+  z-index: 10;
   background: ${({ theme }) => theme.colors.primaryOne};
   width: 18rem;
   position: fixed;
@@ -108,7 +109,7 @@ const CookieBannerWrapper = styled(motion.div)`
       flex: 3;
       margin: 0;
       p {
-        margin: .3rem 0 0 0;
+        margin: 0.3rem 0 0 0;
       }
     }
     .button-container {
@@ -118,7 +119,7 @@ const CookieBannerWrapper = styled(motion.div)`
   }
 
   p {
-    margin: .5rem 0;
+    margin: 0.5rem 0;
     a {
       color: ${({ theme }) => theme.colors.primaryTwo};
     }
