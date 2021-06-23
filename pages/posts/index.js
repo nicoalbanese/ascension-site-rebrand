@@ -38,7 +38,8 @@ export default Posts;
 export async function getStaticProps() {
   const fetchedPosts = await getBlogPosts();
   return {
-    props: { posts: fetchedPosts }, // will be passed to the page component as props
+    props: { posts: fetchedPosts },
+    revalidate: 2, // will be passed to the page component as props
   };
 }
 
@@ -95,7 +96,7 @@ const Post = ({ post }) => {
         </Link>
       </div>
       <Link href={`/posts/${post.slug}`}>
-        <a className="post-container">
+        <a className='post-container'>
           <h3 id='headline'>{post.headline}</h3>
           <p id='content'>{post.snippet}</p>
         </a>

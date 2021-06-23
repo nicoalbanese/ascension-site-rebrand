@@ -60,6 +60,12 @@ const Wrapper = styled.div`
     margin-bottom: 1rem;
     display: block;
   }
+
+  #accolade-section {
+    h3 {
+      margin-bottom: 0.5rem;
+    }
+  }
 `;
 
 const Fund = ({ fund }) => {
@@ -99,7 +105,9 @@ const Fund = ({ fund }) => {
                 <div id='register-interest-button'>
                   <Link href={fund.registerInterestURL}>
                     <a className='button' id='register-interest'>
-                      Request Brochure
+                      {fund.status === "Open For Subscription"
+                        ? "Request Brochure"
+                        : "Register Interest For Next Close"}
                     </a>
                   </Link>
                 </div>
@@ -120,7 +128,13 @@ const Fund = ({ fund }) => {
               </div>
             </div>
           )}
-          {fund.trustmark !== null && (
+          {fund.accolades !== null && (
+            <div id='accolade-section'>
+              <h3>Accolades</h3>
+              <ReactMarkdown>{fund.accolades}</ReactMarkdown>
+            </div>
+          )}
+          {/* {fund.trustmark !== null && (
             <div>
               <Image
                 src={fund.trustmark}
@@ -129,7 +143,7 @@ const Fund = ({ fund }) => {
                 alt={`${fund.name} trustmark`}
               />
             </div>
-          )}
+          )} */}
         </div>
       </Wrapper>
     </Layout>

@@ -45,7 +45,7 @@ const Wrapper = styled.div`
   }
 
   h2 {
-    margin-top: 4rem;
+    margin-top: 2rem;
   }
 
   line-height: 1.4rem;
@@ -55,15 +55,15 @@ const Wrapper = styled.div`
   }
 
   #founders-section {
-    margin-bottom: 8rem;
+    margin-bottom: 6rem;
     h1 {
       margin-bottom: 2rem;
     }
   }
 
   #our-platform-section {
-    margin-bottom: 8rem;
-    margin-top: 8rem;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
     h1 {
       margin-bottom: 2rem;
     }
@@ -90,7 +90,7 @@ const Wrapper = styled.div`
     border: solid 1px transparent;
     transition: 0.3s;
     border-radius: 5px;
-    margin: 4rem auto 0;
+    margin: 3rem auto 0;
     a {
       color: white;
       opacity: 1;
@@ -124,7 +124,7 @@ const Founders = () => {
           <p>
             If you’re a UK business raising your first or second round, we would
             love to hear from you. Ascension can lead rounds or follow alongside
-            other investors via our SEIS & EIS Funds or Social Impact Funds (the
+            other investors via our S/EIS Funds or Social Impact Funds (the
             Fair By Design, Good Food, Conduit and Life Sciences Funds). We've
             also built the Ascension Syndicate Club, a group of early-stage
             angels that co-invest in deals alongside us.

@@ -147,7 +147,7 @@ const Footer = ({ pageVariants }) => {
               </li>
               <li>
                 <Link href='/apply-for-funding'>
-                  <a>Apply for funding</a>
+                  <a>Apply For Funding</a>
                 </Link>
               </li>
             </ul>

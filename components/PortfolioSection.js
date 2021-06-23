@@ -59,7 +59,7 @@ const PortfolioSection = ({ portfolioCompanies }) => {
     <Wrapper>
       <Seperator />
       <PortfolioSnapshot>
-        <h5>Portflio Includes</h5>
+        <h5>Portfolio Includes</h5>
         <h4 className='companiesWrapper'>
           {portfolioCompanies &&
             portfolioCompanies.map((company, i) => {

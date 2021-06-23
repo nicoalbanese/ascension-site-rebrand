@@ -217,16 +217,16 @@ const NavBar = () => {
               />
             </li>
           </ul>
-          {/* <Link href='/apply-for-funding'>
+          <Link href='/apply-for-funding'>
             <a id='login-button'>
-              <button>Apply</button>
+              <button>apply</button>
             </a>
-          </Link> */}
-          <Link href='https://ascension.mainspringfs.com/Login'>
+          </Link>
+          {/* <Link href='https://ascension.mainspringfs.com/Login'>
             <a id='login-button'>
               <button>log in</button>
             </a>
-          </Link>
+          </Link> */}
         </div>
         <div className='limited' onClick={() => setShowOverlayMenu(true)}>
           <svg
