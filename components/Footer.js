@@ -160,7 +160,7 @@ const Footer = ({ pageVariants }) => {
                 </Link>
               </li>
               <li>
-                <Link href='https://www.linkedin.com/company/ascensionventures/'>
+                <Link href='https://www.linkedin.com/company/ascensionvc/'>
                   <a>LinkedIn</a>
                 </Link>
               </li>
