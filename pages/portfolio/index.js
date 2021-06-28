@@ -37,6 +37,5 @@ export async function getStaticProps() {
     props: {
       companies: structuredData,
     }, // will be passed to the page component as props
-    revalidate: 2,
   };
 }
