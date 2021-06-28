@@ -16,8 +16,8 @@ const portfolio = ({ companies }) => {
         <p>
           We manage (S)EIS and Institutional Seed funds that invest in UK
           technology and impact businesses across these key focus areas: Next
-          Gen Media, New Work, Digital Health & Life Sciences, Sustainability, FinTech, Commerce,
-          DeepTech.{" "}
+          Gen Media, New Work, Digital Health & Life Sciences, Sustainability,
+          FinTech, Commerce, DeepTech.{" "}
         </p>
         {/* <p>Number of portfolio companies {companies.length}</p> */}
       </div>
@@ -37,5 +37,6 @@ export async function getStaticProps() {
     props: {
       companies: structuredData,
     }, // will be passed to the page component as props
+    revalidate: 2,
   };
 }
