@@ -64,6 +64,9 @@ const Wrapper = styled.div`
   #accolade-section {
     h3 {
       margin-bottom: 0.5rem;
+      &:last-of-type {
+        margin-top: 1.5rem;
+      }
     }
   }
 `;
@@ -130,7 +133,11 @@ const Fund = ({ fund }) => {
           )}
           {fund.accolades !== null && (
             <div id='accolade-section'>
-              <h3>Accolades</h3>
+              {fund.name === "Ascension EIS" ? (
+                <h3>Accolades</h3>
+              ) : (
+                <h3>More Info</h3>
+              )}
               <ReactMarkdown>{fund.accolades}</ReactMarkdown>
             </div>
           )}
