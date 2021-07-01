@@ -236,7 +236,7 @@ const CompanyTile = ({ company, i }) => {
               }}
             >
               <h5>{company.name}</h5>
-              <p id='description'>{company.descriptionCondensed}</p>
+              <p id='description'>{company.description}</p>
               <p id='find-out-more'>find out more...</p>
             </CompanyDetailed>
           ) : (
