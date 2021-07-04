@@ -17,7 +17,7 @@ const ApplyForFunding = () => {
       <Wrapper>
         <h1>Apply For Funding</h1>
         <iframe
-          src='https://ascensionventures.typeform.com/to/aP9iNtyk'
+          src='https://ascensionventures.typeform.com/to/zn6ksFHn'
           frameborder='0'
           title='Ascension Funding Application Form'
         ></iframe>
