@@ -19,7 +19,7 @@ const ApplyForFunding = () => {
         <iframe
           src='https://ascensionventures.typeform.com/to/zn6ksFHn'
           frameborder='0'
-          title='Ascension Funding Application Form'
+          title='Ascension Funding - Application Form'
         ></iframe>
       </Wrapper>
     </Layout>
