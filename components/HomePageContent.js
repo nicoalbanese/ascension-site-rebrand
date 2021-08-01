@@ -206,9 +206,9 @@ const PortfolioNewsWrapper = styled.div`
 const PortfolioNewsArticle = ({ article }) => {
   return (
     <PortfolioNewsWrapper>
-      <Link href={`/portfolio/${article.slug}`}>
+      {article.slug !== null && <Link href={`/portfolio/${article.slug}`}>
         <a id='company-name'>{article.companyName}</a>
-      </Link>
+      </Link>}
       <Link href={article.url}>
         <a id='headline'>{article.headline}</a>
       </Link>
