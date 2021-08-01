@@ -11,7 +11,6 @@
     "js-cookie": "^2.2.1",
     "next": "latest",
     "react": "^16.8.0",
-    "react-cookie-banner": "^4.1.0",
     "react-dom": "^16.8.0",
     "react-intersection-observer": "^8.32.0",
     "react-is": "^16.8.0",
