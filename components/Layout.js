@@ -56,7 +56,7 @@ const Layout = ({ children }) => {
   const [cookiePreference, setUserCookiePreference] = useState();
 
   useEffect(() => {
-    console.log(Cookies.get("user_accepts_cookies"));
+    // console.log(Cookies.get("user_accepts_cookies"));
     if (Cookies.get("user_accepts_cookies")) {
       setUserCookiePreference(Cookies.get("user_accepts_cookies"));
     }

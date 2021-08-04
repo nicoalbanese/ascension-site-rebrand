@@ -3,16 +3,19 @@ import { getPortfolioJobs } from "../lib/airtable";
 import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
+import Head from "next/head";
 import { useEffect, useState } from "react";
 
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-const PortfolioJobs = ({ companies }) => {
-  //   console.log(companies);
+const PortfolioJobs = ({ companies, initJobCount }) => {
+//   console.log(initJobCount);
 
   const COMPANIES = companies;
   const [jobsShown, setJobsShown] = useState(COMPANIES);
+
+  const [jobCount, setJobCount] = useState(initJobCount);
 
   const [filter, setFilter] = useState([
     { name: "Marketing", isSelected: false, id: 0 },
@@ -21,6 +24,8 @@ const PortfolioJobs = ({ companies }) => {
     { name: "Product", isSelected: false, id: 3 },
     { name: "Operations", isSelected: false, id: 4 },
     { name: "Business Development", isSelected: false, id: 5 },
+    { name: "People", isSelected: false, id: 6 },
+    { name: "Customer Success", isSelected: false, id: 7 },
   ]);
 
   // useEffect(() => {
@@ -30,13 +35,18 @@ const PortfolioJobs = ({ companies }) => {
   let handleFilterChange = (activeOption) => {
     // console.log(activeOption);
     if (activeOption) {
+      let newJobCount = 0;
       let newCompanies = COMPANIES.map((company) => {
         return {
           ...company,
           jobs: company.jobs.filter((job) => job.type === activeOption),
         };
       });
-    //   console.log(newCompanies);
+      //   console.log(newCompanies);
+      newCompanies.forEach((company) =>
+        company.jobs.forEach((job) => newJobCount++)
+      );
+      setJobCount(newJobCount);
       setJobsShown(newCompanies);
       const newFilterSet = filter.map((option) => {
         if (option.name === activeOption) {
@@ -47,17 +57,25 @@ const PortfolioJobs = ({ companies }) => {
       setFilter(newFilterSet);
     } else {
       setJobsShown(COMPANIES);
+      setJobCount(initJobCount);
     }
   };
 
   return (
     <Layout>
+      <Head>
+        <title>Portfolio Jobs</title>
+      </Head>
       <h1>Portfolio Jobs</h1>
-      <p style={{marginTop: ".5rem"}}>Active job opportunities at Ascension portfolio companies.</p>
+      <p style={{ marginTop: ".5rem" }}>
+        Check out the open roles in our 130+ portfolio companies and join us in
+        the mission to change the world for good.
+      </p>
       <PortfolioFilter
         handleFilterChange={handleFilterChange}
         filter={filter}
       />
+      <p style={{textAlign: "center", paddingTop: "1rem", opacity: ".5"}}>Showing {jobCount} {jobCount == 1 ? "job" : "jobs"}</p>
       {jobsShown.map(
         (company, i) =>
           company.jobs.length > 0 && <Company company={company} key={i} />
@@ -249,6 +267,7 @@ export async function getStaticProps() {
   return {
     props: {
       companies,
+      initJobCount: jobs.length,
     }, // will be passed to the page component as props
     revalidate: 1, // In seconds
   };
