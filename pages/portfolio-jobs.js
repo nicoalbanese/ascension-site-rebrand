@@ -215,7 +215,7 @@ const Company = ({ company }) => {
         <div>
           <div className="company-description">
             <Link href={company.company.website}>
-              <a id="company-website">
+              <a target="_blank" id="company-website">
                 <h2>{company.company.name}</h2>
               </a>
             </Link>
@@ -241,7 +241,7 @@ const Job = ({ job }) => {
   return (
     <JobWrapper>
       <Link href={job.link}>
-        <a>{job.name}</a>
+        <a target="_blank">{job.name}</a>
       </Link>
     </JobWrapper>
   );
