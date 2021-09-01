@@ -210,7 +210,7 @@ const PortfolioNewsArticle = ({ article }) => {
         <a id='company-name'>{article.companyName}</a>
       </Link>}
       <Link href={article.url}>
-        <a id='headline'>{article.headline}</a>
+        <a id='headline' target="_blank">{article.headline}</a>
       </Link>
     </PortfolioNewsWrapper>
   );
