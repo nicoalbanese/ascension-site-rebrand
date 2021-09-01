@@ -99,19 +99,19 @@ const companyDetailed = ({ company, articles }) => {
         <title>{company.name && company.name}</title>
       </Head>
       <Wrapper
-        initial='initial'
-        animate='in'
-        exit='out'
+        initial="initial"
+        animate="in"
+        exit="out"
         variants={pageVariants}
       >
-        <div id='back-button'>
+        <div id="back-button">
           <Link href={`/portfolio#${company.slug}`}>
             <a>Back to portfolio</a>
           </Link>
         </div>
         {company && (
-          <div className='main-container'>
-            <div className='image-container'>
+          <div className="main-container">
+            <div className="image-container">
               <Image
                 src={company.logoUrl}
                 alt={`${company.name} logo`}
@@ -122,8 +122,8 @@ const companyDetailed = ({ company, articles }) => {
                 <>
                   {company.founders.length ===
                     company.founderLinkedins.length && (
-                    <div id='founders'>
-                      <h3 id='founder-title'>Founders</h3>
+                    <div id="founders">
+                      <h3 id="founder-title">Founders</h3>
                       {company.founders.map((founder, i) => (
                         <Founder
                           key={i}
@@ -143,15 +143,17 @@ const companyDetailed = ({ company, articles }) => {
             </div>
             <div>
               <h1>{company.name && company.name}</h1>
-              <a href={company.url}>{company.url}</a>
-              <div className='pill-wrapper'>
+              <a href={company.url} target="_blank">
+                {company.url}
+              </a>
+              <div className="pill-wrapper">
                 {company.category.map((cat, idx) => (
                   <Pill key={idx} category={cat} />
                 ))}
               </div>
               <p>{company.description}</p>
               {articles.length > 0 && (
-                <div id='in-the-news'>
+                <div id="in-the-news">
                   <h3>In the News</h3>
                   {articles.map((article, i) => (
                     <Article article={article} key={i} />
@@ -189,8 +191,8 @@ const Founder = ({ founder }) => {
   return (
     <FounderWrapper>
       <Link href={founder.linkedin}>
-        <a>
-          <div className='image-container'>
+        <a target="_blank">
+          <div className="image-container">
             {founder.photo && (
               <Image
                 src={founder.photo}
@@ -200,7 +202,7 @@ const Founder = ({ founder }) => {
               />
             )}
           </div>
-          <div id='founder-name'>{founder.name}</div>
+          <div id="founder-name">{founder.name}</div>
         </a>
       </Link>
     </FounderWrapper>
