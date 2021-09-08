@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 
 const Wrapper = styled.section``;
 
+const change = "hello";
 // const portfolioCompanies = [
 //   { name: "Wagestream", id: 0, url: "https://wagestream.com" },
 //   { name: "Lick", id: 1, url: "https://lickhome.com" },
