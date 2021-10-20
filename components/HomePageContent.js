@@ -17,6 +17,10 @@ const Wrapper = styled(motion.section)`
     /* font-weight: 900; */
   }
 
+  #subscribe {
+    margin-top: 2rem;
+  }
+
   .ascension-overview-section {
     margin-top: 1.2rem;
     font-size: 1.2rem;
@@ -69,19 +73,19 @@ const pageVariants = {
 
 const HomePageContent = ({ portfolioSize, portfolioNews, posts }) => {
   return (
-    <Wrapper initial='initial' animate='in' exit='out' variants={pageVariants}>
+    <Wrapper initial="initial" animate="in" exit="out" variants={pageVariants}>
       {/* <section className='stat-section'>
         <Stat title='Unique Investments' stat={String(portfolioSize)} />
       </section> */}
-      <section className='ascension-overview-section'>
+      <section className="ascension-overview-section">
         <p>
           Ascension is one of the most active Seed investors in the UK. Since
           2015, we have{" "}
-          <Link href='/portfolio' id='we-have-backed'>
+          <Link href="/portfolio" id="we-have-backed">
             <a>backed 125+ tech and impact startups</a>
           </Link>{" "}
           through{" "}
-          <Link href='/investors'>
+          <Link href="/investors">
             <a>our (S)EIS & Institutional Funds</a>
           </Link>
           . Beyond our capital, we devote our proven operational expertise,
@@ -89,9 +93,9 @@ const HomePageContent = ({ portfolioSize, portfolioNews, posts }) => {
           journey to Series A and beyond.
         </p>
       </section>
-      <section id='portfolio-news'>
+      <section id="portfolio-news">
         <h2>Portfolio News</h2>
-        <div className='article-container'>
+        <div className="article-container">
           {portfolioNews &&
             portfolioNews.map((article, i) => (
               <PortfolioNewsArticle article={article} key={i} />
@@ -99,13 +103,19 @@ const HomePageContent = ({ portfolioSize, portfolioNews, posts }) => {
         </div>
       </section>
       {posts && (
-        <section id='news'>
+        <section id="news">
           <h2>Recent Posts</h2>
-          <div className='article-container'>
+          <div className="article-container">
             {posts.map((post, i) => (
               <Article post={post} key={i} />
             ))}
           </div>
+          <p id="subscribe">
+            <Link href="http://eepurl.com/duVhRX">
+              <a>Join our newsletter</a>
+            </Link>{" "}
+            for the most up to date news from the Ascension community
+          </p>
         </section>
       )}
     </Wrapper>
@@ -136,8 +146,8 @@ const StatWrapper = styled.div`
 const Stat = ({ title, stat }) => {
   return (
     <StatWrapper>
-      <h3 className='title'>{title}</h3>
-      <h1 className='stat'>{stat}</h1>
+      <h3 className="title">{title}</h3>
+      <h1 className="stat">{stat}</h1>
     </StatWrapper>
   );
 };
@@ -171,17 +181,17 @@ const ArticleWrapper = styled.article`
 const Article = ({ post }) => {
   return (
     <ArticleWrapper>
-      <div id='heading'>
+      <div id="heading">
         <Link href={`/team/${post.author.slug}`}>
-          <a id='author-slug'>
-            <p id='date'>{post.author.name}</p>
+          <a id="author-slug">
+            <p id="date">{post.author.name}</p>
           </a>
         </Link>
-        <p id='date'>on</p>
-        <p id='date'>{String(new Date(post.date).toLocaleDateString("EN"))}</p>
+        <p id="date">on</p>
+        <p id="date">{String(new Date(post.date).toLocaleDateString("EN"))}</p>
       </div>
       <Link href={`/posts/${post.slug}`}>
-        <a id='headline'>{post.headline}</a>
+        <a id="headline">{post.headline}</a>
       </Link>
     </ArticleWrapper>
   );
@@ -206,11 +216,15 @@ const PortfolioNewsWrapper = styled.div`
 const PortfolioNewsArticle = ({ article }) => {
   return (
     <PortfolioNewsWrapper>
-      {article.slug !== null && <Link href={`/portfolio/${article.slug}`}>
-        <a id='company-name'>{article.companyName}</a>
-      </Link>}
+      {article.slug !== null && (
+        <Link href={`/portfolio/${article.slug}`}>
+          <a id="company-name">{article.companyName}</a>
+        </Link>
+      )}
       <Link href={article.url}>
-        <a id='headline' target="_blank">{article.headline}</a>
+        <a id="headline" target="_blank">
+          {article.headline}
+        </a>
       </Link>
     </PortfolioNewsWrapper>
   );
