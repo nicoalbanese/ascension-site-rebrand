@@ -174,7 +174,7 @@ const Footer = ({ pageVariants }) => {
         </div>
         <div className='lower-section'>
           <p>
-            © 2010 - 2021 Ascension Ventures Limited. All Rights Reserved.{" "}
+            © 2010 - 2022 Ascension Ventures Limited. All Rights Reserved.{" "}
             <span>
               <Link href='/legal'>
                 <a>LEGAL</a>

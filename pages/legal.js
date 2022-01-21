@@ -31,7 +31,7 @@ const legal = () => {
           <h3>Company Information</h3>
           <p>
             Ascension Ventures is an investment advisory firm whose registered
-            office is at 20 Air Street, 4th Floor, London, England, W1B 5AN.
+            office is at Tintagel House, 9th floor, 92 Albert Embankment, London SE1 7TY.
             Ascension Ventures Limited is registered in England and Wales No
             07766902 and which is authorised and regulated in the UK by the
             Financial Conduct Authority (“FCA”), Firm Reference Number 833108.

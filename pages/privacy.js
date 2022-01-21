@@ -83,8 +83,7 @@ const privacy = () => {
         <p>Name or title of data privacy manager: COO</p>
         <p>Email address: rakesh@ascensionventures.com</p>
         <p>
-          Postal address: 4th Floor, C/O Ascension Ventures, 20 Air Street,
-          London, United Kingdom, W1B 5AB
+          Postal address: 4th Floor, C/O Ascension Ventures, Tintagel House, 9th floor, 92 Albert Embankment, London SE1 7TY
         </p>
         <p>
           You have the right to make a complaint at any time to the Information
@@ -730,15 +729,13 @@ const privacy = () => {
           Ascension Ventures Limited
           <br />
           <br />
-          4th Floor 20 Air Street
+          Tintagel House, 9th floor, 92 Albert Embankment
           <br />
-          London W1B 5AN,
+          London SE1 7TY
           <br />
           <br />
           United Kingdom
           <br />
-          <br />
-          info@ascensionventures.com
         </p>
       </Wrapper>
     </Layout>
