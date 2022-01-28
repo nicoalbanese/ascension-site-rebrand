@@ -9,6 +9,11 @@ module.exports = {
         destination: "https://apps.mainspringfs.com/forms/ascension/",
         permanent: true,
       },
+      {
+        source: "/careers",
+        destination: "https://ascension-vc.notion.site/Careers-at-Ascension-bd23e6ad5af1466984444ad80e9c1ce2",
+        permanent: true,
+      },
     ];
   },
 };
