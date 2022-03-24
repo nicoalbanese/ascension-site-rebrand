@@ -4,6 +4,8 @@ import Layout from "../components/Layout";
 
 import styled from "styled-components";
 
+import Head from "next/head"
+
 const LegalWrapper = styled.div`
   h1 {
     margin-bottom: 2rem;
