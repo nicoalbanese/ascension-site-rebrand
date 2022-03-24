@@ -89,98 +89,103 @@ const Footer = ({ pageVariants }) => {
   return (
     <Wrapper>
       <InnerWrapper>
-        <div className='upper-section'>
-          <div className='spacer link-container'>
-            <div id='logo-container'>
+        <div className="upper-section">
+          <div className="spacer link-container">
+            <div id="logo-container">
               <Image
-                src='/images/headline_logo_light.png'
+                src="/images/headline_logo_light.png"
                 height={238 / factor}
                 width={1560 / factor}
               />
               <Image
-                src='/images/subheader_logo_light.png'
+                src="/images/subheader_logo_light.png"
                 height={142 / factor}
                 width={1148 / factor}
               />
             </div>
           </div>
-          <div className='main-links link-container'>
+          <div className="main-links link-container">
             <ul>
               <li>
-                <Link href='/investors'>
+                <Link href="/investors">
                   <a>For Investors</a>
                 </Link>
               </li>
               <li>
-                <Link href='/founders'>
+                <Link href="/founders">
                   <a>For Founders</a>
                 </Link>
               </li>
               <li>
-                <Link href='/portfolio'>
+                <Link href="/portfolio">
                   <a>Portfolio</a>
                 </Link>
               </li>
               <li>
-                <Link href='/team'>
+                <Link href="/team">
                   <a>Team</a>
                 </Link>
               </li>
               <li>
-                <Link href='https://ascension.mainspringfs.com/Login'>
+                <Link href="https://ascension.mainspringfs.com/Login">
                   <a>Investor Login</a>
                 </Link>
               </li>
             </ul>
           </div>
-          <div className='secondary-links link-container'>
+          <div className="secondary-links link-container">
             <ul>
               <li>
-                <Link href='/posts'>
+                <Link href="/posts">
                   <a>Recent Posts</a>
                 </Link>
               </li>
               <li>
-                <Link href='https://www.notion.so/Careers-at-Ascension-Ventures-bd23e6ad5af1466984444ad80e9c1ce2'>
+                <Link href="https://www.notion.so/Careers-at-Ascension-Ventures-bd23e6ad5af1466984444ad80e9c1ce2">
                   <a>Careers</a>
                 </Link>
               </li>
               <li>
-                <Link href='/portfolio-jobs'>
+                <Link href="/portfolio-jobs">
                   <a>Portfolio Jobs</a>
                 </Link>
               </li>
               <li>
-                <Link href='/apply-for-funding'>
+                <Link href="/apply-for-funding">
                   <a>Apply For Funding</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/offers">
+                  <a>Offers</a>
                 </Link>
               </li>
             </ul>
           </div>
-          <div className='spacer link-container'>
+          <div className="spacer link-container">
             <ul>
               <li>
-                <Link href='https://twitter.com/ascensiongrp'>
+                <Link href="https://twitter.com/ascensiongrp">
                   <a>Twitter</a>
                 </Link>
               </li>
               <li>
-                <Link href='https://www.linkedin.com/company/ascensionvc/'>
+                <Link href="https://www.linkedin.com/company/ascensionvc/">
                   <a>LinkedIn</a>
                 </Link>
               </li>
             </ul>
           </div>
         </div>
-        <div className='lower-section'>
+        <div className="lower-section">
           <p>
             © 2010 - 2022 Ascension Ventures Limited. All Rights Reserved.{" "}
             <span>
-              <Link href='/legal'>
+              <Link href="/legal">
                 <a>LEGAL</a>
               </Link>{" "}
               |{" "}
-              <Link href='/privacy'>
+              <Link href="/privacy">
                 <a>PRIVACY POLICY</a>
               </Link>
             </span>
@@ -189,7 +194,7 @@ const Footer = ({ pageVariants }) => {
           <p>
             Ascension Ventures Ltd is authorised and regulated by the Financial
             Conduct Authority,{" "}
-            <Link href='https://register.fca.org.uk/s/firm?id=0010X00004MkTGwQAN'>
+            <Link href="https://register.fca.org.uk/s/firm?id=0010X00004MkTGwQAN">
               <a>(FRN 833108)</a>
             </Link>
           </p>
