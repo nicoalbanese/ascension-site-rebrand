@@ -11,7 +11,7 @@ import Head from "next/head";
 
 // test
 import {
-  getBlogPosts,
+  getRecentBlogPosts,
   getPortfolio,
   getPortfolioNewsCompact,
 } from "../lib/airtable";
@@ -80,7 +80,7 @@ export async function getStaticProps() {
 
   const portfolio = await getPortfolio();
   const portfolioNews = await getPortfolioNewsCompact();
-  const posts = await getBlogPosts();
+  const posts = await getRecentBlogPosts();
 
   return {
     props: {

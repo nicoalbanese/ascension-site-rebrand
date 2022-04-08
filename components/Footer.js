@@ -155,11 +155,6 @@ const Footer = ({ pageVariants }) => {
                   <a>Apply For Funding</a>
                 </Link>
               </li>
-              <li>
-                <Link href="/offers">
-                  <a>Offers</a>
-                </Link>
-              </li>
             </ul>
           </div>
           <div className="spacer link-container">
@@ -172,6 +167,11 @@ const Footer = ({ pageVariants }) => {
               <li>
                 <Link href="https://www.linkedin.com/company/ascensionvc/">
                   <a>LinkedIn</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="https://medium.com/@ascension_vc">
+                  <a>Medium</a>
                 </Link>
               </li>
             </ul>

@@ -95,7 +95,7 @@ const Post = ({ post }) => {
           </a>
         </Link>
       </div>
-      <Link href={`/posts/${post.slug}`}>
+      <Link href={post.mediumLink}>
         <a className='post-container'>
           <h3 id='headline'>{post.headline}</h3>
           <p id='content'>{post.snippet}</p>
