@@ -190,7 +190,7 @@ const Article = ({ post }) => {
         <p id="date">on</p>
         <p id="date">{String(new Date(post.date).toLocaleDateString("EN"))}</p>
       </div>
-      <Link href={`/posts/${post.slug}`}>
+      <Link href={post.mediumLink}>
         <a id="headline">{post.headline}</a>
       </Link>
     </ArticleWrapper>
