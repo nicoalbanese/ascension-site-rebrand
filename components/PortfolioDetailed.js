@@ -12,6 +12,18 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 
+const Badge = styled.div`
+  background-color: #16a34a;
+  color: white;
+  padding: .5rem 1rem;
+  /* font-family: sans-serif; */
+  font-size: .7rem;
+  font-weight: 900;
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  text-transform: uppercase;
+  border-radius: 5px;
+`;
+
 const CollectionWrapper = styled(motion.div)`
   /* background: wh/ite; */
   margin-top: 2rem;
@@ -87,6 +99,7 @@ const Company = styled.div`
 const PortfolioDetailed = ({ companies }) => {
   const COMPANIES = companies;
   const [companiesShown, setCompaniesShown] = useState(COMPANIES);
+  // console.log(COMPANIES)
 
   const [filter, setFilter] = useState([
     { name: "FinTech", isSelected: false, id: 0 },
@@ -242,6 +255,7 @@ const CompanyTile = ({ company, i }) => {
           ) : (
             <>
               {/* <Image src={company.logoUrl} height={125} width={125} /> */}
+              {company.status !== "Live" && <Badge>{company.status}</Badge>}
               <div className='image-container'>
                 <Image
                   src={company.logoUrl}
