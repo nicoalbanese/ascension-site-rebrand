@@ -391,5 +391,5 @@ const PersonTile = ({ person, i }) => {
 export async function getStaticProps() {
   const team = await getTeam();
   const vps = await getVenturePartners();
-  return { props: { team, vps } };
+  return { props: { team, vps }, revalidate: 1 };
 }
