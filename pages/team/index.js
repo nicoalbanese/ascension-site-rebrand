@@ -124,7 +124,7 @@ const index = ({ team, vps }) => {
 export default index;
 
 // NORMAL DESIGN BELOW START
-const NormalStyle = ({ team, type }) => {
+export const NormalStyle = ({ team, type }) => {
   return (
     <>
       {" "}
@@ -178,6 +178,7 @@ const TeamMember = ({ person, type }) => {
       animate={controls}
       variants={boxVariants}
       id={person.slug}
+      className="profile-card"
     >
       <Link href={`/team/${person.slug}`}>
         <a>

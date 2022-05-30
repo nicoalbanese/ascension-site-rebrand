@@ -1,5 +1,5 @@
 import Layout from "../../components/Layout";
-import { getTeam, getVenturePartners } from "../../lib/airtable";
+import { getLFTeam, getTeam, getVenturePartners } from "../../lib/airtable";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -207,7 +207,8 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const team = await getTeam();
   const vps = await getVenturePartners();
-  const fullTeam = [...team, ...vps];
+  const lfteam = await getLFTeam();
+  const fullTeam = [...team, ...vps, ...lfteam];
   const [person] = fullTeam.filter((p) => p.slug === params.name);
   return { props: { person }, revalidate: 1 };
 }

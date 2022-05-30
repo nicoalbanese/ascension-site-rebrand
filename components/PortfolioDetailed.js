@@ -15,9 +15,9 @@ const Wrapper = styled.div`
 const Badge = styled.div`
   background-color: #16a34a;
   color: white;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
   /* font-family: sans-serif; */
-  font-size: .7rem;
+  font-size: 0.7rem;
   font-weight: 900;
   box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
   text-transform: uppercase;
@@ -142,8 +142,8 @@ const PortfolioDetailed = ({ companies }) => {
         filter={filter}
       />
       <CollectionWrapper
-        initial='hidden'
-        animate='visible'
+        initial="hidden"
+        animate="visible"
         variants={{
           hidden: {
             scale: 0.8,
@@ -155,16 +155,27 @@ const PortfolioDetailed = ({ companies }) => {
           },
         }}
       >
-        {companiesShown &&
+        {/* {companiesShown &&
           companiesShown.map((company, i) => {
             return <CompanyTile company={company} i={i} key={company.id} />;
-          })}
+          })} */}
+        {companiesShown && <PortfolioContainer companies={companiesShown} />}
       </CollectionWrapper>
     </Wrapper>
   );
 };
 
 export default PortfolioDetailed;
+
+export const PortfolioContainer = ({ companies }) => {
+  return (
+    <>
+      {companies.map((company, i) => {
+        return <CompanyTile company={company} i={i} key={company.id} />;
+      })}
+    </>
+  );
+};
 
 const CompanyDetailed = styled(motion.div)`
   height: 12rem;
@@ -232,9 +243,9 @@ const CompanyTile = ({ company, i }) => {
         >
           {isHovering ? (
             <CompanyDetailed
-              initial='initial'
-              animate='in'
-              exit='out'
+              initial="initial"
+              animate="in"
+              exit="out"
               variants={{
                 initial: {
                   opacity: 0,
@@ -249,28 +260,28 @@ const CompanyTile = ({ company, i }) => {
               }}
             >
               <h5>{company.name}</h5>
-              <p id='description'>{company.description}</p>
-              <p id='find-out-more'>find out more...</p>
+              <p id="description">{company.description}</p>
+              <p id="find-out-more">find out more...</p>
             </CompanyDetailed>
           ) : (
             <>
               {/* <Image src={company.logoUrl} height={125} width={125} /> */}
               {company.status !== "Live" && <Badge>{company.status}</Badge>}
-              <div className='image-container'>
+              <div className="image-container">
                 <Image
                   src={company.logoUrl}
                   alt={`${company.name} logo`}
-                  layout='fill'
-                  objectFit='cover'
+                  layout="fill"
+                  objectFit="cover"
                 />
-                <div id='hidden-name'>{company.name}</div>
+                <div id="hidden-name">{company.name}</div>
               </div>
               {/* <h5
                 className={company.name.length > 20 ? "small-text" : undefined}
               >
                 {company.name}
               </h5> */}
-              <div className='pill-wrapper'>
+              <div className="pill-wrapper">
                 {company.category.map((cat) => (
                   <Pill key={cat.id} category={cat} />
                 ))}

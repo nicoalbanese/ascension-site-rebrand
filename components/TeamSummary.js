@@ -51,10 +51,10 @@ const TeamSummary = ({ portfolioSize }) => {
         <Link href='/team'>
           <a>
             <Image
-              src={"/images/ascension-team-zoom.png"}
-              width={1249}
+              src={"/images/bg-new-site-team.png"}
+              width={2660}
               alt='ascension team picture'
-              height={523}
+              height={1440}
               quality='70'
             />
           </a>

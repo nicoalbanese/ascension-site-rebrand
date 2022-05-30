@@ -1,4 +1,4 @@
-import { getFunds } from "../../lib/airtable";
+import { getFunds, getLFPortfolio, getLFTeam } from "../../lib/airtable";
 
 import Layout from "../../components/Layout";
 
@@ -7,6 +7,8 @@ import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
 import ReactMarkdown from "react-markdown";
+import { NormalStyle } from "../team";
+import { PortfolioContainer } from "../../components/PortfolioDetailed";
 
 const Wrapper = styled.div`
   #page-info {
@@ -71,20 +73,22 @@ const Wrapper = styled.div`
   }
 `;
 
-const Fund = ({ fund }) => {
+const Fund = ({ fund, team, portfolio }) => {
   // console.log(fund);
+  console.log(portfolio);
+
   return (
     <Layout>
       <Head>
         <title>{fund.name}</title>
       </Head>
       <Wrapper>
-        <Link href='/investors'>
-          <a id='back-button'>Back to funds</a>
+        <Link href="/investors">
+          <a id="back-button">Back to funds</a>
         </Link>
         <h1>{fund.name}</h1>
-        <div id='page-info'>
-          <div id='col-left'>
+        <div id="page-info">
+          <div id="col-left">
             {/* {fund.coverImage != null ? (
               <Image src={fund.coverImage} height={490} width={350} />
             ) : (
@@ -92,7 +96,7 @@ const Fund = ({ fund }) => {
             )} */}
             <FundStats fund={fund} />
           </div>
-          <div id='col-middle'>
+          <div id="col-middle">
             {/* <h1>{fund.name}</h1> */}
             <ReactMarkdown>{fund.detailedSummary}</ReactMarkdown>
             {/* {console.log(fund.taxBenefits)} */}
@@ -101,13 +105,13 @@ const Fund = ({ fund }) => {
             )}
           </div>
           {fund.type === "Tax Efficient" && (
-            <div id='col-right'>
-              <div id='inner-container-col-right'>
+            <div id="col-right">
+              <div id="inner-container-col-right">
                 <h3>Next Closing Date</h3>
                 <p>{fund.nextClose}</p>
-                <div id='register-interest-button'>
+                <div id="register-interest-button">
                   <Link href={fund.registerInterestURL}>
-                    <a className='button' id='register-interest'>
+                    <a className="button" id="register-interest">
                       {fund.status === "Open For Subscription"
                         ? "Request Brochure"
                         : "Register Interest For Next Close"}
@@ -121,7 +125,7 @@ const Fund = ({ fund }) => {
                         className={`button ${
                           fund.status === "Closed" && "disabled"
                         }`}
-                        id='apply-button'
+                        id="apply-button"
                       >
                         Apply Online
                       </a>
@@ -132,13 +136,19 @@ const Fund = ({ fund }) => {
             </div>
           )}
           {fund.accolades !== null && (
-            <div id='accolade-section'>
+            <div id="accolade-section">
               {fund.name === "Ascension EIS" ? (
                 <h3>Accolades</h3>
               ) : (
                 <h3>More Info</h3>
               )}
               <ReactMarkdown>{fund.accolades}</ReactMarkdown>
+              {fund.name === "Ascension Life Fund" && (
+                <>
+                  <LifeFundTeam team={team} />
+                  <LifeFundPortfolio portfolio={portfolio} />
+                </>
+              )}
             </div>
           )}
           {/* {fund.trustmark !== null && (
@@ -162,7 +172,10 @@ export default Fund;
 export async function getStaticProps({ params }) {
   const funds = await getFunds();
   const [fund] = funds.filter((f) => f.slug === params.fund);
-  return { props: { fund } };
+
+  const team = await getLFTeam();
+  const portfolio = await getLFPortfolio();
+  return { props: { fund, team, portfolio } };
 }
 
 export async function getStaticPaths() {
@@ -231,26 +244,68 @@ const FundStats = ({ fund }) => {
   // console.log(fund);
   return (
     <Card>
-      <div className='stat-container'>
-        <div className='title'>Stage</div>
-        <div className='content'>{stage}</div>
+      <div className="stat-container">
+        <div className="title">Stage</div>
+        <div className="content">{stage}</div>
       </div>
-      <div className='stat-container'>
-        <div className='title'>Ticket Size</div>
-        <div className='content'>{ticketSize}</div>
+      <div className="stat-container">
+        <div className="title">Ticket Size</div>
+        <div className="content">{ticketSize}</div>
       </div>
-      <div className='stat-container'>
-        <div className='title'>Round Size</div>
-        <div className='content'>{roundRange}</div>
+      <div className="stat-container">
+        <div className="title">Round Size</div>
+        <div className="content">{roundRange}</div>
       </div>
-      <div className='stat-container'>
-        <div className='title'>Business Characteristics</div>
-        <div className='content'>{businessCharacteristics}</div>
+      <div className="stat-container">
+        <div className="title">Business Characteristics</div>
+        <div className="content">{businessCharacteristics}</div>
       </div>
-      <div className='stat-container'>
-        <div className='title'>Leads?</div>
-        <div className='content'>{leadingPreference}</div>
+      <div className="stat-container">
+        <div className="title">Leads?</div>
+        <div className="content">{leadingPreference}</div>
       </div>
     </Card>
+  );
+};
+
+const LifeWrapper = styled.div`
+  margin-top: 6rem;
+`;
+
+const OverRider = styled.div`
+  .team-container {
+    justify-items: start !important;
+  }
+`;
+
+const LifeFundTeam = ({ team }) => {
+  return (
+    <LifeWrapper>
+      <h2>Investment Team</h2>
+      <OverRider>
+        <NormalStyle type="operating-team" team={team} />
+      </OverRider>
+    </LifeWrapper>
+  );
+};
+
+const CollectionWrapper = styled.div`
+  /* background: wh/ite; */
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 1rem;
+  transition: 0.3s;
+`;
+
+const LifeFundPortfolio = ({ portfolio }) => {
+  return (
+    <LifeWrapper>
+      {" "}
+      <h2>Current Portfolio</h2>
+      <CollectionWrapper>
+        <PortfolioContainer companies={portfolio} />
+      </CollectionWrapper>
+    </LifeWrapper>
   );
 };
