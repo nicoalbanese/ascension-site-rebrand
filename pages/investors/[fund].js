@@ -175,7 +175,7 @@ export async function getStaticProps({ params }) {
 
   const team = await getLFTeam();
   const portfolio = await getLFPortfolio();
-  return { props: { fund, team, portfolio } };
+  return { props: { fund, team, portfolio }, revalidate: 1 };
 }
 
 export async function getStaticPaths() {
