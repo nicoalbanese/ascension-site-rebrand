@@ -138,6 +138,12 @@ const LinkWrapper = styled.div`
   .active {
     opacity: 1;
   }
+
+  .apply-link {
+    /* font-size: 1.05rem; */
+    color: ${({ theme }) => theme.colors.primaryThree};
+    opacity: 1;
+  }
 `;
 
 const Accentuator = styled.div`
@@ -149,11 +155,11 @@ const Accentuator = styled.div`
   background-color: ${({ theme }) => theme.colors.primaryThree};
 `;
 
-const CoolLink = ({ text, url, isActive }) => {
+const CoolLink = ({ text, url, isActive, isApplyLink = false }) => {
   return (
     <LinkWrapper isActive={isActive}>
       <Link href={url}>
-        <a className={`${isActive && "active"}`}>
+        <a className={`${isActive && "active"} ${isApplyLink && "apply-link"}`}>
           {text}
           <Accentuator className={`accent ${isActive && "active"}`} />
         </a>
@@ -174,74 +180,82 @@ const NavBar = () => {
         </AnimatePresence>
       )}
       <div>
-        <Link href='/'>
-          <a id='logo'>
+        <Link href="/">
+          <a id="logo">
             <Image
               src={"/images/a logo dark.png"}
-              alt='ascension a logo'
-              width='35'
-              height='35'
+              alt="ascension a logo"
+              width="35"
+              height="35"
             />
           </a>
         </Link>
       </div>
-      <div className='nav-right'>
-        <div className='full-width'>
+      <div className="nav-right">
+        <div className="full-width">
           <ul>
             <li>
               <CoolLink
                 text={"For Investors"}
                 isActive={router.pathname === "/investors"}
-                url='/investors'
+                url="/investors"
               />
             </li>
             <li>
               <CoolLink
                 text={"For Founders"}
-                url='/founders'
+                url="/founders"
                 isActive={router.pathname === "/founders"}
               />
             </li>
             <li>
               <CoolLink
                 text={"Portfolio"}
-                url='/portfolio'
+                url="/portfolio"
                 isActive={router.pathname === "/portfolio"}
               />
             </li>
             <li>
               <CoolLink
                 text={"Team"}
-                url='/team'
+                url="/team"
                 isActive={router.pathname === "/team"}
               />
             </li>
+            <li>
+              <CoolLink
+                text={"Apply for funding"}
+                url="/apply-for-funding"
+                isActive={router.pathname === "/apply-for-funding"}
+                isApplyLink
+              />
+            </li>
           </ul>
-          <Link href='/apply-for-funding'>
+          {/* <Link href='/apply-for-funding'>
             <a id='login-button'>
               <button>apply</button>
             </a>
-          </Link>
+          </Link> */}
           {/* <Link href='https://ascension.mainspringfs.com/Login'>
             <a id='login-button'>
               <button>log in</button>
             </a>
           </Link> */}
         </div>
-        <div className='limited' onClick={() => setShowOverlayMenu(true)}>
+        <div className="limited" onClick={() => setShowOverlayMenu(true)}>
           <svg
-            xmlns='http://www.w3.org/2000/svg'
-            width='32'
-            height='32'
-            viewBox='0 0 24 24'
-            fill='none'
-            strokeWidth='2'
-            strokeLinecap='round'
-            strokeLinejoin='round'
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="none"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
-            <line x1='3' y1='12' x2='21' y2='12'></line>
-            <line x1='3' y1='6' x2='21' y2='6'></line>
-            <line x1='3' y1='18' x2='21' y2='18'></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
           </svg>
         </div>
       </div>
@@ -304,37 +318,37 @@ const OverlayMenu = ({ setShowOverlayMenu }) => {
         <UpperContainer>
           <Image
             src={"/images/a logo light.png"}
-            width='35'
-            height='35'
-            alt='ascension a logo light'
+            width="35"
+            height="35"
+            alt="ascension a logo light"
           />
-          <h1 id='close' onClick={() => setShowOverlayMenu(false)}>
+          <h1 id="close" onClick={() => setShowOverlayMenu(false)}>
             X
           </h1>
         </UpperContainer>
         <InnerContainer>
           <h2>
-            <Link href='/'>
+            <Link href="/">
               <a>Home</a>
             </Link>
           </h2>
           <h2>
-            <Link href='/investors'>
+            <Link href="/investors">
               <a>For Investors</a>
             </Link>
           </h2>
           <h2>
-            <Link href='/founders'>
+            <Link href="/founders">
               <a>For Founders</a>
             </Link>
           </h2>
           <h2>
-            <Link href='/portfolio'>
+            <Link href="/portfolio">
               <a>Portfolio</a>
             </Link>
           </h2>
           <h2>
-            <Link href='/team'>
+            <Link href="/team">
               <a>Team</a>
             </Link>
           </h2>
