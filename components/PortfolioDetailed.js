@@ -1,3 +1,6 @@
+// TOOD: FIX ALGINMENT ON MOBILE FOR FILTERS - change to column
+// Try and fix formatting for when less than 5 results
+
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { motion, useAnimation } from "framer-motion";
@@ -29,15 +32,13 @@ const CollectionWrapper = styled(motion.div)`
   margin-top: 2rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  /* grid-auto-flow: column; */
-  align-items: flex-end;
+  /* grid-template-columns: repeat(5, 1fr); */
   grid-gap: 1rem;
   transition: 0.3s;
 
   .companyTile {
     max-width: 340px;
   }
-
 `;
 
 const Company = styled.div`
@@ -130,9 +131,9 @@ const PortfolioDetailed = ({ companies }) => {
   });
 
   const updateActiveCompanies = (type, value) => {
-    console.log(type, value);
+    // console.log(type, value);
     setActiveCompanies({ ...activeCompanies, [type]: value });
-    console.log(activeCompanies);
+    // console.log(activeCompanies);
   };
 
   // useEffect(() => {
@@ -140,7 +141,7 @@ const PortfolioDetailed = ({ companies }) => {
   // }, [companiesShown]);
 
   useEffect(() => {
-    console.log("new params", activeCompanies);
+    // console.log("new params", activeCompanies);
 
     // if (activeCompanies.sector == "all" && activeCompanies.fund == "all" && activeCompanies.status == "all") {
     //   setCompaniesShown
@@ -156,7 +157,7 @@ const PortfolioDetailed = ({ companies }) => {
     // first filter by sector
     let filteredBySector = COMPANIES.filter((company) => {
       if (activeCompanies.sector != "all") {
-        return company.category.includes(activeCompanies.sector)
+        return company.category.includes(activeCompanies.sector);
       } else {
         return true;
       }
@@ -166,12 +167,11 @@ const PortfolioDetailed = ({ companies }) => {
 
     let filteredByStatus = filteredBySector.filter((company) => {
       if (activeCompanies.status != "all") {
-        return company.simplifiedStatus == activeCompanies.status
+        return company.simplifiedStatus == activeCompanies.status;
       } else {
         return true;
       }
     });
-
 
     // then filter by fund
 
@@ -179,8 +179,8 @@ const PortfolioDetailed = ({ companies }) => {
       if (activeCompanies.fund != "all") {
         // console.log(company.name, company.simplifiedFund, activeCompanies.fund)
 
-        return company.simplifiedFund.includes(activeCompanies.fund)
-        return true
+        return company.simplifiedFund.includes(activeCompanies.fund);
+        return true;
       } else {
         return true;
       }
@@ -234,7 +234,9 @@ const PortfolioDetailed = ({ companies }) => {
             return <CompanyTile company={company} i={i} key={company.id} />;
           })} */}
         {companiesShown && <PortfolioContainer companies={companiesShown} />}
-        {companiesShown.length == 0 && <NoResults>no companies fit the search critera</NoResults>}
+        {companiesShown.length == 0 && (
+          <NoResults>no companies fit the search critera</NoResults>
+        )}
       </CollectionWrapper>
     </Wrapper>
   );
@@ -358,8 +360,8 @@ const CompanyTile = ({ company, i }) => {
                 {company.name}
               </h5> */}
               <div className="pill-wrapper">
-                {company.category.map((cat) => (
-                  <Pill key={cat.id} category={cat} />
+                {company.category.map((cat, i) => (
+                  <Pill key={i} category={cat} />
                 ))}
               </div>
             </>
@@ -435,16 +437,34 @@ const SelectWrapper = styled.div`
     font-size: 0.8rem;
   }
   select {
-    padding: 1rem;
-    font-size: 2rem;
-    margin-right: 1rem;
+    /* -webkit-appearance:none; */
+    background: url(data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0Ljk1IDEwIj48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6I2ZmZjt9LmNscy0ye2ZpbGw6IzQ0NDt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPmFycm93czwvdGl0bGU+PHJlY3QgY2xhc3M9ImNscy0xIiB3aWR0aD0iNC45NSIgaGVpZ2h0PSIxMCIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtMiIgcG9pbnRzPSIxLjQxIDQuNjcgMi40OCAzLjE4IDMuNTQgNC42NyAxLjQxIDQuNjciLz48cG9seWdvbiBjbGFzcz0iY2xzLTIiIHBvaW50cz0iMy41NCA1LjMzIDIuNDggNi44MiAxLjQxIDUuMzMgMy41NCA1LjMzIi8+PC9zdmc+) no-repeat 95% 50%;
+    background-color: white;
+	-moz-appearance: none; 
+	-webkit-appearance: none; 
+	appearance: none;
+    padding: 0.5rem;
+    font-size: 1rem;
+    /* margin-right: 1rem; */
   }
+
+  @media (max-width: 670px) {
+    margin-bottom: 1rem;
+  }
+
 `;
 
 const FilterOuterWrapper = styled.div`
   margin-top: 1rem;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+
+  @media (min-width: 671px) {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1rem;
+  }
+  @media (max-width: 670px) {
+    grid-template-rows: 1fr 1fr 1fr;
+  }
 `;
 
 const PortfolioFilterDropDown = ({ updateActiveCompanies }) => {

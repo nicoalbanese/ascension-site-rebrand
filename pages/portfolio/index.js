@@ -2,8 +2,14 @@ import Layout from "../../components/Layout";
 import Head from "next/head";
 import Link from "next/link";
 
+import styled from 'styled-components';
+
 import PortfolioDetailed from "../../components/PortfolioDetailed";
 import { getPortfolio } from "../../lib/airtable";
+
+const Heading = styled.h1`
+  margin-bottom: 1rem;
+`;
 
 const portfolio = ({ companies }) => {
   //   console.log(companies, moreData);
@@ -13,7 +19,7 @@ const portfolio = ({ companies }) => {
         <title>Portfolio</title>
       </Head>
       <div className="description">
-        <h1>Portfolio</h1>
+        <Heading>Portfolio</Heading>
         <p>
           We manage (S)EIS and Institutional Seed funds that invest in UK
           technology and impact businesses across these key focus areas: Next
