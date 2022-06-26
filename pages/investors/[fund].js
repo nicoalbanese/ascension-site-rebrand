@@ -75,7 +75,7 @@ const Wrapper = styled.div`
 
 const Fund = ({ fund, team, portfolio }) => {
   // console.log(fund);
-  console.log(portfolio);
+  // console.log(portfolio);
 
   return (
     <Layout>
