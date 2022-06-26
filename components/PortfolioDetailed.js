@@ -29,8 +29,15 @@ const CollectionWrapper = styled(motion.div)`
   margin-top: 2rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  /* grid-auto-flow: column; */
+  align-items: flex-end;
   grid-gap: 1rem;
   transition: 0.3s;
+
+  .companyTile {
+    max-width: 340px;
+  }
+
 `;
 
 const Company = styled.div`
@@ -96,10 +103,14 @@ const Company = styled.div`
   }
 `;
 
+const NoResults = styled.div`
+  text-align: center;
+`;
+
 const PortfolioDetailed = ({ companies }) => {
   const COMPANIES = companies;
   const [companiesShown, setCompaniesShown] = useState(COMPANIES);
-  // console.log(COMPANIES)
+  // console.log(COMPANIES);
 
   const [filter, setFilter] = useState([
     { name: "FinTech", isSelected: false, id: 0 },
@@ -112,9 +123,71 @@ const PortfolioDetailed = ({ companies }) => {
     { name: "Fair By Design", isSelected: false, id: 7 },
   ]);
 
+  const [activeCompanies, setActiveCompanies] = useState({
+    sector: "all",
+    status: "all",
+    fund: "all",
+  });
+
+  const updateActiveCompanies = (type, value) => {
+    console.log(type, value);
+    setActiveCompanies({ ...activeCompanies, [type]: value });
+    console.log(activeCompanies);
+  };
+
   // useEffect(() => {
   //   console.log("new companies", companiesShown);
   // }, [companiesShown]);
+
+  useEffect(() => {
+    console.log("new params", activeCompanies);
+
+    // if (activeCompanies.sector == "all" && activeCompanies.fund == "all" && activeCompanies.status == "all") {
+    //   setCompaniesShown
+    // }
+
+    // if (activeCompanies.sector == "all") {
+    //   let newCompaniesShown = COMPANIES.filter((company) =>
+    //     company.fundSimplified.includes(activeCompanies.fund)
+    //   );
+    //   setCompaniesShown(newCompaniesShown);
+    // }
+
+    // first filter by sector
+    let filteredBySector = COMPANIES.filter((company) => {
+      if (activeCompanies.sector != "all") {
+        return company.category.includes(activeCompanies.sector)
+      } else {
+        return true;
+      }
+    });
+
+    // then filter by status
+
+    let filteredByStatus = filteredBySector.filter((company) => {
+      if (activeCompanies.status != "all") {
+        return company.simplifiedStatus == activeCompanies.status
+      } else {
+        return true;
+      }
+    });
+
+
+    // then filter by fund
+
+    let filteredByFund = filteredByStatus.filter((company) => {
+      if (activeCompanies.fund != "all") {
+        // console.log(company.name, company.simplifiedFund, activeCompanies.fund)
+
+        return company.simplifiedFund.includes(activeCompanies.fund)
+        return true
+      } else {
+        return true;
+      }
+    });
+
+    setCompaniesShown(filteredByFund);
+  }, [activeCompanies]);
 
   let handleFilterChange = (activeOption) => {
     // console.log(activeOption);
@@ -137,10 +210,11 @@ const PortfolioDetailed = ({ companies }) => {
 
   return (
     <Wrapper>
-      <PortfolioFilter
+      {/* <PortfolioFilter
         handleFilterChange={handleFilterChange}
         filter={filter}
-      />
+      /> */}
+      <PortfolioFilterDropDown updateActiveCompanies={updateActiveCompanies} />
       <CollectionWrapper
         initial="hidden"
         animate="visible"
@@ -160,6 +234,7 @@ const PortfolioDetailed = ({ companies }) => {
             return <CompanyTile company={company} i={i} key={company.id} />;
           })} */}
         {companiesShown && <PortfolioContainer companies={companiesShown} />}
+        {companiesShown.length == 0 && <NoResults>no companies fit the search critera</NoResults>}
       </CollectionWrapper>
     </Wrapper>
   );
@@ -232,6 +307,7 @@ const CompanyTile = ({ company, i }) => {
       ref={ref}
       animate={controls}
       variants={boxVariants}
+      className="companyTile"
       id={company.slug}
     >
       <Link href={`/portfolio/${company.slug}`}>
@@ -346,5 +422,73 @@ const PortfolioFilter = ({ handleFilterChange, filter }) => {
         </Button>
       ))}
     </FilterWrapper>
+  );
+};
+
+const SelectWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  label {
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+  }
+  select {
+    padding: 1rem;
+    font-size: 2rem;
+    margin-right: 1rem;
+  }
+`;
+
+const FilterOuterWrapper = styled.div`
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+`;
+
+const PortfolioFilterDropDown = ({ updateActiveCompanies }) => {
+  const handleChange = (e) => {
+    updateActiveCompanies(e.target.name, e.target.value);
+    // console.log("after", activeCompanies);
+    // console.log(e.target.name, e.target.value);
+  };
+
+  return (
+    <FilterOuterWrapper>
+      <SelectWrapper>
+        <label htmlFor="category">Sector</label>
+        <select name="sector" id="sector" onChange={handleChange}>
+          <option value="all">All</option>
+          <option value="FinTech">FinTech</option>
+          <option value="Commerce">Commerce</option>
+          <option value="Sustainability">Sustainability</option>
+          <option value="New Work">New Work</option>
+          <option value="Next Gen Media">Next Gen Media</option>
+          <option value="Health">Health</option>
+          <option value="DeepTech">DeepTech</option>
+        </select>
+      </SelectWrapper>
+      <SelectWrapper>
+        <label htmlFor="status">Status</label>
+        <select name="status" id="status" onChange={handleChange}>
+          <option value="all">All</option>
+          <option value="Active">Active</option>
+          <option value="Exited / Acquired">Exited / Acquired</option>
+        </select>
+      </SelectWrapper>
+      <SelectWrapper>
+        <label htmlFor="fund">Fund</label>
+        <select name="fund" id="fund" onChange={handleChange}>
+          <option value="all">All</option>
+          <option value="Pre-Seed (SEIS) Fund">Pre-Seed (SEIS) Fund</option>
+          <option value="Seed (EIS) Fund">Seed (EIS) Fund</option>
+          <option value="Fair By Design Fund">Fair By Design Fund</option>
+          <option value="Good Food Fund">Good Food Fund</option>
+          <option value="Conduit EIS Fund">Conduit EIS Fund</option>
+          <option value="Ascension Life Fund">Ascension Life Fund</option>
+        </select>
+      </SelectWrapper>
+    </FilterOuterWrapper>
   );
 };
