@@ -135,6 +135,17 @@ const Fund = ({ fund, team, portfolio }) => {
               </div>
             </div>
           )}
+          {fund.name === "Ascension Fund III" && (
+            <div id="register-interest-button">
+              <Link href={fund.registerInterestURL}>
+                <a className="button" id="register-interest">
+                  {fund.status === "Open For Subscription"
+                    ? "Request Brochure"
+                    : "Register Interest For Next Close"}
+                </a>
+              </Link>
+            </div>
+          )}
           {fund.accolades !== null && (
             <div id="accolade-section">
               {fund.name === "Ascension EIS" ? (
