@@ -54,7 +54,7 @@ const TeamSummary = ({ portfolioSize }) => {
               src={"/images/bg-new-site-team.png"}
               width={2660}
               alt='ascension team picture'
-              height={1440}
+              height={1200}
               quality='70'
             />
           </a>
