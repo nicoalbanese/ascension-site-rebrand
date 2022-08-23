@@ -6,6 +6,8 @@ import styled from "styled-components";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
+import { useRouter } from "next/router";
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -14,6 +16,29 @@ import Pill from "../components/Pill";
 const Wrapper = styled.div`
   width: 100%;
 `;
+
+const FILTEROPTIONS = {
+  sector: [
+    "all",
+    "FinTech",
+    "Commerce",
+    "Sustainability",
+    "New Work",
+    "Next Gen Media",
+    "Health",
+    "DeepTech",
+  ],
+  status: ["all", "Active", "Exited / Acquired"],
+  fund: [
+    "all",
+    "Pre-Seed (SEIS) Fund",
+    "Seed (EIS) Fund",
+    "Fair By Design Fund",
+    "Good Food Fund",
+    "Conduit EIS Fund",
+    "Ascension Life Fund",
+  ],
+};
 
 const Badge = styled.div`
   background-color: #16a34a;
@@ -109,6 +134,8 @@ const NoResults = styled.div`
 `;
 
 const PortfolioDetailed = ({ companies }) => {
+  const router = useRouter();
+
   const COMPANIES = companies;
   const [companiesShown, setCompaniesShown] = useState(COMPANIES);
   // console.log(COMPANIES);
@@ -130,11 +157,32 @@ const PortfolioDetailed = ({ companies }) => {
     fund: "all",
   });
 
+  const [firstLoad, setFirstLoad] = useState(true);
+
   const updateActiveCompanies = (type, value) => {
     // console.log(type, value);
     setActiveCompanies({ ...activeCompanies, [type]: value });
     // console.log(activeCompanies);
   };
+
+  useEffect(() => {
+    if (
+      (router.query.sector || router.query.status || router.query.fund) &&
+      firstLoad == true
+    ) {
+      // console.log(router.query);
+      if (
+        FILTEROPTIONS.sector.includes(router.query.sector) &&
+        FILTEROPTIONS.status.includes(router.query.status) &&
+        FILTEROPTIONS.fund.includes(router.query.fund)
+      ) {
+        setActiveCompanies(router.query);
+      } else {
+        router.push({ query: {} });
+      }
+      setFirstLoad(false);
+    }
+  }, [router.query]);
 
   // useEffect(() => {
   //   console.log("new companies", companiesShown);
@@ -153,6 +201,14 @@ const PortfolioDetailed = ({ companies }) => {
     //   );
     //   setCompaniesShown(newCompaniesShown);
     // }
+    if (
+      activeCompanies.sector !== "all" ||
+      activeCompanies.fund !== "all" ||
+      activeCompanies.status !== "all"
+    ) {
+      router.push({ query: activeCompanies });
+    }
+    // console.log(router);
 
     // first filter by sector
     let filteredBySector = COMPANIES.filter((company) => {
@@ -214,7 +270,10 @@ const PortfolioDetailed = ({ companies }) => {
         handleFilterChange={handleFilterChange}
         filter={filter}
       /> */}
-      <PortfolioFilterDropDown updateActiveCompanies={updateActiveCompanies} />
+      <PortfolioFilterDropDown
+        activeCompanies={activeCompanies}
+        updateActiveCompanies={updateActiveCompanies}
+      />
       <CollectionWrapper
         initial="hidden"
         animate="visible"
@@ -438,11 +497,12 @@ const SelectWrapper = styled.div`
   }
   select {
     /* -webkit-appearance:none; */
-    background: url(data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0Ljk1IDEwIj48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6I2ZmZjt9LmNscy0ye2ZpbGw6IzQ0NDt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPmFycm93czwvdGl0bGU+PHJlY3QgY2xhc3M9ImNscy0xIiB3aWR0aD0iNC45NSIgaGVpZ2h0PSIxMCIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtMiIgcG9pbnRzPSIxLjQxIDQuNjcgMi40OCAzLjE4IDMuNTQgNC42NyAxLjQxIDQuNjciLz48cG9seWdvbiBjbGFzcz0iY2xzLTIiIHBvaW50cz0iMy41NCA1LjMzIDIuNDggNi44MiAxLjQxIDUuMzMgMy41NCA1LjMzIi8+PC9zdmc+) no-repeat 95% 50%;
+    background: url(data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0Ljk1IDEwIj48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6I2ZmZjt9LmNscy0ye2ZpbGw6IzQ0NDt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPmFycm93czwvdGl0bGU+PHJlY3QgY2xhc3M9ImNscy0xIiB3aWR0aD0iNC45NSIgaGVpZ2h0PSIxMCIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtMiIgcG9pbnRzPSIxLjQxIDQuNjcgMi40OCAzLjE4IDMuNTQgNC42NyAxLjQxIDQuNjciLz48cG9seWdvbiBjbGFzcz0iY2xzLTIiIHBvaW50cz0iMy41NCA1LjMzIDIuNDggNi44MiAxLjQxIDUuMzMgMy41NCA1LjMzIi8+PC9zdmc+)
+      no-repeat 95% 50%;
     background-color: white;
-	-moz-appearance: none; 
-	-webkit-appearance: none; 
-	appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
     padding: 0.5rem;
     font-size: 1rem;
     /* margin-right: 1rem; */
@@ -451,7 +511,6 @@ const SelectWrapper = styled.div`
   @media (max-width: 670px) {
     margin-bottom: 1rem;
   }
-
 `;
 
 const FilterOuterWrapper = styled.div`
@@ -467,7 +526,11 @@ const FilterOuterWrapper = styled.div`
   }
 `;
 
-const PortfolioFilterDropDown = ({ updateActiveCompanies }) => {
+const PortfolioFilterDropDown = ({
+  updateActiveCompanies,
+  activeCompanies,
+}) => {
+  // console.log(FILTEROPTIONS);
   const handleChange = (e) => {
     updateActiveCompanies(e.target.name, e.target.value);
     // console.log("after", activeCompanies);
@@ -479,34 +542,43 @@ const PortfolioFilterDropDown = ({ updateActiveCompanies }) => {
       <SelectWrapper>
         <label htmlFor="category">Sector</label>
         <select name="sector" id="sector" onChange={handleChange}>
-          <option value="all">All</option>
-          <option value="FinTech">FinTech</option>
-          <option value="Commerce">Commerce</option>
-          <option value="Sustainability">Sustainability</option>
-          <option value="New Work">New Work</option>
-          <option value="Next Gen Media">Next Gen Media</option>
-          <option value="Health">Health</option>
-          <option value="DeepTech">DeepTech</option>
+          {FILTEROPTIONS.sector.map((sectorOption, i) => (
+            <option
+              value={sectorOption}
+              selected={activeCompanies.sector == sectorOption}
+              key={i}
+            >
+              {sectorOption == "all" ? "All" : sectorOption}
+            </option>
+          ))}
         </select>
       </SelectWrapper>
       <SelectWrapper>
         <label htmlFor="status">Status</label>
         <select name="status" id="status" onChange={handleChange}>
-          <option value="all">All</option>
-          <option value="Active">Active</option>
-          <option value="Exited / Acquired">Exited / Acquired</option>
+          {FILTEROPTIONS.status.map((statusOption, i) => (
+            <option
+              value={statusOption}
+              selected={activeCompanies.status == statusOption}
+              key={i}
+            >
+              {statusOption == "all" ? "All" : statusOption}
+            </option>
+          ))}
         </select>
       </SelectWrapper>
       <SelectWrapper>
         <label htmlFor="fund">Fund</label>
         <select name="fund" id="fund" onChange={handleChange}>
-          <option value="all">All</option>
-          <option value="Pre-Seed (SEIS) Fund">Pre-Seed (SEIS) Fund</option>
-          <option value="Seed (EIS) Fund">Seed (EIS) Fund</option>
-          <option value="Fair By Design Fund">Fair By Design Fund</option>
-          <option value="Good Food Fund">Good Food Fund</option>
-          <option value="Conduit EIS Fund">Conduit EIS Fund</option>
-          <option value="Ascension Life Fund">Ascension Life Fund</option>
+          {FILTEROPTIONS.fund.map((fundOption, i) => (
+            <option
+              value={fundOption}
+              selected={activeCompanies.fund == fundOption}
+              key={i}
+            >
+              {fundOption == "all" ? "All" : fundOption}
+            </option>
+          ))}
         </select>
       </SelectWrapper>
     </FilterOuterWrapper>
