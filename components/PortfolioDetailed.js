@@ -166,19 +166,19 @@ const PortfolioDetailed = ({ companies }) => {
   };
 
   useEffect(() => {
-    if (firstLoad == true) {
-      // console.log(router.query);
-
-      if (router.query.sector || router.query.status || router.query.fund) {
-        if (
-          FILTEROPTIONS.sector.includes(router.query.sector) &&
-          FILTEROPTIONS.status.includes(router.query.status) &&
-          FILTEROPTIONS.fund.includes(router.query.fund)
-        ) {
-          setActiveCompanies(router.query);
-        } else {
-          router.push({ query: {} });
-        }
+    if (
+      (router.query.sector || router.query.status || router.query.fund) &&
+      firstLoad == true
+    ) {
+      console.log(router.query);
+      if (
+        FILTEROPTIONS.sector.includes(router.query.sector) &&
+        FILTEROPTIONS.status.includes(router.query.status) &&
+        FILTEROPTIONS.fund.includes(router.query.fund)
+      ) {
+        setActiveCompanies(router.query);
+      } else {
+        router.push({ query: {} });
       }
       setFirstLoad(false);
     }
