@@ -201,7 +201,13 @@ const PortfolioDetailed = ({ companies }) => {
     //   );
     //   setCompaniesShown(newCompaniesShown);
     // }
-    if (firstLoad == false) {
+    if (
+      activeCompanies.fund == "all" &&
+      activeCompanies.sector == "all" &&
+      activeCompanies.status == "all"
+    ) {
+      router.push({ query: {} });
+    } else {
       router.push({ query: activeCompanies });
     }
     // console.log(router);
