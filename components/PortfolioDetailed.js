@@ -166,19 +166,19 @@ const PortfolioDetailed = ({ companies }) => {
   };
 
   useEffect(() => {
-    if (
-      (router.query.sector || router.query.status || router.query.fund) &&
-      firstLoad == true
-    ) {
+    if (firstLoad == true) {
       // console.log(router.query);
-      if (
-        FILTEROPTIONS.sector.includes(router.query.sector) &&
-        FILTEROPTIONS.status.includes(router.query.status) &&
-        FILTEROPTIONS.fund.includes(router.query.fund)
-      ) {
-        setActiveCompanies(router.query);
-      } else {
-        router.push({ query: {} });
+
+      if (router.query.sector || router.query.status || router.query.fund) {
+        if (
+          FILTEROPTIONS.sector.includes(router.query.sector) &&
+          FILTEROPTIONS.status.includes(router.query.status) &&
+          FILTEROPTIONS.fund.includes(router.query.fund)
+        ) {
+          setActiveCompanies(router.query);
+        } else {
+          router.push({ query: {} });
+        }
       }
       setFirstLoad(false);
     }
@@ -201,11 +201,7 @@ const PortfolioDetailed = ({ companies }) => {
     //   );
     //   setCompaniesShown(newCompaniesShown);
     // }
-    if (
-      activeCompanies.sector !== "all" ||
-      activeCompanies.fund !== "all" ||
-      activeCompanies.status !== "all"
-    ) {
+    if (firstLoad == false) {
       router.push({ query: activeCompanies });
     }
     // console.log(router);
