@@ -86,11 +86,11 @@ const Hero = () => {
         </p>
         <p>
           We were voted {" "}
-          <a href="https://ukbaa.org.uk/awards/seed-vc-of-the-year/">
+          <a href="https://ukbaa.org.uk/awards/seed-vc-of-the-year/" target="_blank">
             Seed VC of the Year
           </a>{" "}
           in 2022 (UK Business Angels Association) and have been the{" "}
-          <a href="https://www.beauhurst.com/blog/most-active-venture-capital-firms-in-london">
+          <a href="https://www.beauhurst.com/blog/most-active-venture-capital-firms-in-london" target="_blank">
             most active investor
           </a>{" "}
           in London over the past decade (Beauhurst)
