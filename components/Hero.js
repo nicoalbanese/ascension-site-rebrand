@@ -37,6 +37,9 @@ const Wrapper = styled(motion.section)`
     span {
       font-weight: 800;
     }
+    p:first-child {
+      margin-bottom: 1rem;
+    }
   }
 `;
 
@@ -58,28 +61,39 @@ const pageVariants = {
 const Hero = () => {
   const factor = 7;
   return (
-    <Wrapper initial='initial' animate='in' exit='out' variants={pageVariants}>
-      <div id='upper'>
-        <div id='top-image'>
+    <Wrapper initial="initial" animate="in" exit="out" variants={pageVariants}>
+      <div id="upper">
+        <div id="top-image">
           <Image
             src={"/images/full_logo_dark-img.png"}
             width={3253 / factor}
             height={355 / factor}
-            id='top'
-            alt='Ascension logo big'
+            id="top"
+            alt="Ascension logo big"
           />
         </div>
         <Image
           src={"/images/sub_logo_dark-img.png"}
           width={3061 / (factor * 1.2)}
           height={295 / (factor * 1.2)}
-          alt='Ascension sub logo'
+          alt="Ascension sub logo"
         />
       </div>
-      <div id='lower'>
+      <div id="lower">
         <p>
           <span>Ascension</span> is an early-stage VC built by exited
           entrepreneurs to back the next generation of tech and impact founders
+        </p>
+        <p>
+          We were voted {" "}
+          <a href="https://ukbaa.org.uk/awards/seed-vc-of-the-year/">
+            Seed VC of the Year
+          </a>{" "}
+          in 2022 (UK Business Angels Association) and have been the{" "}
+          <a href="https://www.beauhurst.com/blog/most-active-venture-capital-firms-in-london">
+            most active investor
+          </a>{" "}
+          in London over the past decade (Beauhurst)
         </p>
       </div>
     </Wrapper>
