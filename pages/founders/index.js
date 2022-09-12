@@ -26,7 +26,7 @@ const PlatformCards = [
     header: "Perks & Suppliers",
     content:
       "We structure the best deals you can get and vet suppliers across all business functions to power your startup.",
-    link: "https://airtable.com/shrcsDiHLWFGksW0S/tblvPHMmuB7FP3Jap",
+    link: "https://airtable.com/shrehKLgbkpGiiuqa",
     linkText: "View our Dealbook",
     id: 2,
   },
