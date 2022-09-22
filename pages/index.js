@@ -86,7 +86,6 @@ export async function getStaticProps() {
   const portfolioNews = await getPortfolioNewsCompact();
   const posts = await getRecentBlogPosts();
   const testimonials = await getTestimonials();
-  console.log(testimonials);
 
   return {
     props: {

@@ -71,8 +71,8 @@ const Testimonials = ({ testimonials }) => {
         showStatus={false}
         showArrows={false}
       >
-        {testimonials.map((testimonial) => (
-          <ItemWrapper>
+        {testimonials.map((testimonial, i) => (
+          <ItemWrapper key={i}>
             <NextLink href={`/portfolio/${testimonial.slug}`}>
               <a>
                 <p className="quote">"{testimonial.quote}"</p>

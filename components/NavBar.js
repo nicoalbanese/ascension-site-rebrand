@@ -16,7 +16,7 @@ const Wrapper = styled.nav`
     margin: 0;
   } */
 
-  margin-bottom: 6rem;
+  margin: 0;
   margin-top: 40px;
   padding: 0;
   display: flex;

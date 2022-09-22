@@ -7,7 +7,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 const Wrapper = styled(motion.section)`
-  height: 400px;
+  min-height: 400px;
   /* background: white; */
   width: 100%;
   display: flex;
