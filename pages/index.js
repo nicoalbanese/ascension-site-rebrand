@@ -14,8 +14,10 @@ import {
   getRecentBlogPosts,
   getPortfolio,
   getPortfolioNewsCompact,
+  getTestimonials,
 } from "../lib/airtable";
 import HomePageContent from "../components/HomePageContent";
+import Testimonials from "../components/Testimonials";
 
 const AppWrapper = styled.main`
   width: 100%;
@@ -30,6 +32,7 @@ export default function Home({
   portfolioNews,
   posts,
   teamImageProps,
+  testimonials
 }) {
   return (
     <AppWrapper>
@@ -39,6 +42,7 @@ export default function Home({
       <Layout>
         <Hero />
         <PortfolioSection portfolioCompanies={companyData} />
+        <Testimonials testimonials={testimonials} />
         <TeamSummary />
         <HomePageContent
           portfolioSize={portfolio.length}
@@ -81,6 +85,8 @@ export async function getStaticProps() {
   const portfolio = await getPortfolio();
   const portfolioNews = await getPortfolioNewsCompact();
   const posts = await getRecentBlogPosts();
+  const testimonials = await getTestimonials();
+  console.log(testimonials);
 
   return {
     props: {
@@ -88,6 +94,7 @@ export async function getStaticProps() {
       portfolio,
       portfolioNews,
       posts,
+      testimonials,
     }, // will be passed to the page component as props
     revalidate: 1, // In seconds
   };
