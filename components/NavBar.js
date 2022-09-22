@@ -12,7 +12,11 @@ const Wrapper = styled.nav`
     stroke: ${({ theme }) => theme.colors.primaryOne};
   }
 
-  margin: 0;
+  /* @media (min-width: 850px) {
+    margin: 0;
+  } */
+
+  margin-bottom: 6rem;
   margin-top: 40px;
   padding: 0;
   display: flex;

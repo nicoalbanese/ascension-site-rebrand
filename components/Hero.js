@@ -15,12 +15,13 @@ const Wrapper = styled(motion.section)`
   justify-content: flex-end;
   align-items: flex-start;
 
+
   #upper {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    margin-bottom: 5rem;
+    padding-bottom: 5rem;
 
     #top-image {
       margin-bottom: 0.5rem;
@@ -86,11 +87,17 @@ const Hero = () => {
         </p>
         <p>
           We were voted {" "}
-          <a href="https://ukbaa.org.uk/awards/seed-vc-of-the-year/" target="_blank">
+          <a
+            href="https://ukbaa.org.uk/awards/seed-vc-of-the-year/"
+            target="_blank"
+          >
             Seed VC of the Year
           </a>{" "}
           in 2022 (UK Business Angels Association) and have been the{" "}
-          <a href="https://www.beauhurst.com/blog/most-active-venture-capital-firms-in-london" target="_blank">
+          <a
+            href="https://www.beauhurst.com/blog/most-active-venture-capital-firms-in-london"
+            target="_blank"
+          >
             most active investor
           </a>{" "}
           in London over the past decade (Beauhurst)

@@ -28,7 +28,7 @@ const ItemWrapper = styled.div`
 
   @media (max-width: 650px) {
     .quote {
-        font-size: 1.35rem;
+      font-size: 1.35rem;
     }
   }
 
@@ -61,7 +61,16 @@ const Testimonials = ({ testimonials }) => {
   return (
     <Wrapper>
       <h1>What Our Portfolio Says</h1>
-      <Carousel autoPlay={true} showThumbs={false} swipeable={true} interval={5000} transitionTime={1000} infiniteLoop={true} showStatus={false} showArrows={false}>
+      <Carousel
+        autoPlay={true}
+        showThumbs={false}
+        swipeable={true}
+        interval={5000}
+        transitionTime={1000}
+        infiniteLoop={true}
+        showStatus={false}
+        showArrows={false}
+      >
         {testimonials.map((testimonial) => (
           <ItemWrapper>
             <NextLink href={`/portfolio/${testimonial.slug}`}>
