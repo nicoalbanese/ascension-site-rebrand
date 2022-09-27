@@ -9,9 +9,32 @@ import Pill from "../../components/Pill";
 
 import { motion } from "framer-motion";
 
+const Badge = styled.div`
+  background-color: #16a34a;
+  color: white;
+  padding: 0.5rem 1rem;
+  /* font-family: sans-serif; */
+  font-size: 0.7rem;
+  font-weight: 900;
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  text-transform: uppercase;
+  border-radius: 5px;
+  max-width: 6rem;
+  z-index: 1;
+`;
+
 const Wrapper = styled(motion.section)`
   height: 100%;
   width: 100%;
+
+  .badge-container {
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: -4rem;
+  }
 
   h1 {
     font-size: 2rem;
@@ -47,6 +70,10 @@ const Wrapper = styled(motion.section)`
       text-decoration: underline;
     }
   } */
+
+  img {
+    z-index: 0;
+  }
 
   .pill-wrapper {
     margin-top: 1.3rem;
@@ -112,12 +139,18 @@ const companyDetailed = ({ company, articles }) => {
         {company && (
           <div className="main-container">
             <div className="image-container">
+              {company.status !== "Live" && (
+                <div className="badge-container">
+                  <Badge>{company.status}</Badge>
+                </div>
+              )}
               <Image
                 src={company.logoUrl}
                 alt={`${company.name} logo`}
                 height={300}
                 width={300}
               />
+
               {company.founders !== null && company.founderLinkedins !== null && (
                 <>
                   {company.founders.length ===

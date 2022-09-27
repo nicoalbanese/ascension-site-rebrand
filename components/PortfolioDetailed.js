@@ -40,7 +40,7 @@ const FILTEROPTIONS = {
   ],
 };
 
-const Badge = styled.div`
+export const Badge = styled.div`
   background-color: #16a34a;
   color: white;
   padding: 0.5rem 1rem;

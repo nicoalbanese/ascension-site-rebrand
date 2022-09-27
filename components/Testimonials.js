@@ -60,7 +60,7 @@ const ItemWrapper = styled.div`
 const Testimonials = ({ testimonials }) => {
   return (
     <Wrapper>
-      <h1>What Our Portfolio Says</h1>
+      <h1 style={{ fontSize: "2.5rem" }}>What Our Founders Think</h1>
       <Carousel
         autoPlay={true}
         showThumbs={false}
