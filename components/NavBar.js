@@ -159,11 +159,20 @@ const Accentuator = styled.div`
   background-color: ${({ theme }) => theme.colors.primaryThree};
 `;
 
-const CoolLink = ({ text, url, isActive, isApplyLink = false }) => {
+const CoolLink = ({
+  text,
+  url,
+  isActive,
+  isApplyLink = false,
+  targetblank = false,
+}) => {
   return (
     <LinkWrapper isActive={isActive}>
       <Link href={url}>
-        <a className={`${isActive && "active"} ${isApplyLink && "apply-link"}`}>
+        <a
+          className={`${isActive && "active"} ${isApplyLink && "apply-link"}`}
+          target={targetblank ? "_blank" :undefined}
+        >
           {text}
           <Accentuator className={`accent ${isActive && "active"}`} />
         </a>
@@ -229,9 +238,10 @@ const NavBar = () => {
             <li>
               <CoolLink
                 text={"Apply for funding"}
-                url="/apply-for-funding"
+                url="https://airtable.com/shriviOtroIyf78wi"
                 isActive={router.pathname === "/apply-for-funding"}
                 isApplyLink
+                targetblank
               />
             </li>
           </ul>
@@ -354,6 +364,11 @@ const OverlayMenu = ({ setShowOverlayMenu }) => {
           <h2>
             <Link href="/team">
               <a>Team</a>
+            </Link>
+          </h2>
+          <h2>
+            <Link href="https://airtable.com/shriviOtroIyf78wi">
+              <a target={"_blank"}>Apply For Funding</a>
             </Link>
           </h2>
         </InnerContainer>

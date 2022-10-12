@@ -151,8 +151,8 @@ const Footer = ({ pageVariants }) => {
                 </Link>
               </li>
               <li>
-                <Link href="/apply-for-funding">
-                  <a>Apply For Funding</a>
+                <Link href="https://airtable.com/shriviOtroIyf78wi">
+                  <a target={"_blank"}>Apply For Funding</a>
                 </Link>
               </li>
             </ul>

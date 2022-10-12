@@ -14,6 +14,11 @@ module.exports = {
         destination: "https://ascension-vc.notion.site/Careers-at-Ascension-bd23e6ad5af1466984444ad80e9c1ce2",
         permanent: true,
       },
+      {
+        source: "/apply-for-funding",
+        destination: "https://airtable.com/shriviOtroIyf78wi",
+        permanent: true,
+      },
     ];
   },
 };

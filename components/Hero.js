@@ -3,6 +3,7 @@ import React from "react";
 import styled from "styled-components";
 
 import Image from "next/image";
+import Link from "next/link"
 
 import { motion } from "framer-motion";
 
@@ -14,7 +15,6 @@ const Wrapper = styled(motion.section)`
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-start;
-
 
   #upper {
     display: flex;
@@ -86,7 +86,7 @@ const Hero = () => {
           entrepreneurs to back the next generation of tech and impact founders
         </p>
         <p>
-          We were voted {" "}
+          We were voted{" "}
           <a
             href="https://ukbaa.org.uk/awards/seed-vc-of-the-year/"
             target="_blank"
