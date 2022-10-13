@@ -6,7 +6,7 @@ import Link from "next/link"
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 48rem;
+  /* height: 48rem; */
   iframe {
     width: 100%;
     height: 100%;
