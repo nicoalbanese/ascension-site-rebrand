@@ -198,7 +198,7 @@ const DisclaimerWrapper = styled.div`
 const InnerDisclaimerWrapper = styled(InnerWrapper)`
   /* background: #000 !important; */
   
-  font-size: .75rem;
+  font-size: .9rem;
   font-weight: 600;
   padding: .75rem 0 !important;
   color: ${({ theme }) => theme.colors.primaryOne};
@@ -207,6 +207,12 @@ const InnerDisclaimerWrapper = styled(InnerWrapper)`
   /* margin-top: .2rem; */
   text-align: center;
 
+
+
+  @media (max-width: 500px) {
+    font-size: .8rem;
+  }
+
 `;
 
 const Disclaimer = () => {
@@ -214,7 +220,7 @@ const Disclaimer = () => {
     <DisclaimerWrapper>
       <InnerDisclaimerWrapper>
         <p>Don't invest unless you're prepared to lose all the money you invest. This is a high-risk investment, and you are unlikely to be protected if something goes wrong.</p>
-        <p><Link href="https://www.fca.org.uk/publication/policy/ps22-10.pdf" ><a target="_blank">Take two minutes to learn more.</a></Link></p>
+        <p><Link href="/fca-disclaimer" ><a target="_blank">Take two minutes to learn more.</a></Link></p>
       </InnerDisclaimerWrapper>
     </DisclaimerWrapper>
   );
