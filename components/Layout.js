@@ -198,7 +198,7 @@ const DisclaimerWrapper = styled.div`
 const InnerDisclaimerWrapper = styled(InnerWrapper)`
   /* background: #000 !important; */
   
-  font-size: .9rem;
+  font-size: .92rem;
   font-weight: 600;
   padding: .75rem 0 !important;
   color: ${({ theme }) => theme.colors.primaryOne};
