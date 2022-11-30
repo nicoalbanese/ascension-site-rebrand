@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Layout from "../components/Layout";
+import Head from "next/head"
 
 const Wrapper = styled.div`
   #key-risk-header {
@@ -26,6 +27,9 @@ const Wrapper = styled.div`
 const FCADisclaimer = () => {
   return (
     <Layout>
+      <Head>
+        <title>Ascension - FCA Disclaimer</title>
+      </Head>
       <Wrapper>
         <h2>
           Risk summary for non-readily realisable securities which are shares:
