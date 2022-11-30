@@ -17,7 +17,8 @@ const Wrapper = styled.nav`
   } */
 
   margin: 0;
-  margin-top: 40px;
+  /* margin-top: 40px; removed for sticky disclaimer banner */
+  margin-top: 5px;
   padding: 0;
   display: flex;
   height: 50px;

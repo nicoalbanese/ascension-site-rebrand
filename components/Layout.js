@@ -42,7 +42,7 @@ const pageVariants = {
 };
 
 const OuterWrapper = styled.div`
-  height: 100vh;
+  /* height: 100vh; // removed so that sticky banner can work... */
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -63,17 +63,18 @@ const Layout = ({ children }) => {
   }, []);
   return (
     <OuterWrapper>
+      <Disclaimer />
       <InnerWrapper
-        className='inner'
-        initial='initial'
-        animate='in'
-        exit='out'
+        className="inner"
+        initial="initial"
+        animate="in"
+        exit="out"
         variants={pageVariants}
       >
         <NavBar />
         <ChildrenContainer>{children}</ChildrenContainer>
       </InnerWrapper>
-      <Footer className='footer' pageVariants={pageVariants} />
+      <Footer className="footer" pageVariants={pageVariants} />
       {cookiePreference == null && (
         <CookieBanner setUserCookiePreference={setUserCookiePreference} />
       )}
@@ -157,26 +158,64 @@ const CookieBanner = ({ setUserCookiePreference }) => {
   };
   return (
     <CookieBannerWrapper
-      initial='initial'
-      animate='in'
-      exit='out'
+      initial="initial"
+      animate="in"
+      exit="out"
       variants={pageVariants}
     >
-      <div className='main-content'>
+      <div className="main-content">
         <h3>Cookie Consent</h3>
         <p>
           We use cookies to understand and improve your experience. View our{" "}
-          <Link href='/privacy'>
+          <Link href="/privacy">
             <a>Privacy Policy</a>
           </Link>{" "}
         </p>
       </div>
-      <div className='button-container'>
+      <div className="button-container">
         <button onClick={() => setCookiePreference("on")}>Ok</button>
         {/* <button onClick={() => setCookiePreference("off")}>
           No, please don't track.
         </button> */}
       </div>
     </CookieBannerWrapper>
+  );
+};
+
+const DisclaimerWrapper = styled.div`
+  /* background-color: #fff; */
+  width: 100%;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 100; 
+  background: ${({ theme }) => theme.colors.primaryTwo};
+  border-bottom: solid 1px lightgrey;
+  /* box-shadow: 0 1px 1px -10px gray; */
+`;
+
+const InnerDisclaimerWrapper = styled(InnerWrapper)`
+  /* background: #000 !important; */
+  
+  font-size: .75rem;
+  font-weight: 600;
+  padding: .75rem 0 !important;
+  color: ${({ theme }) => theme.colors.primaryOne};
+  padding: .75rem;
+  border-radius: 10px;
+  /* margin-top: .2rem; */
+  text-align: center;
+
+`;
+
+const Disclaimer = () => {
+  return (
+    <DisclaimerWrapper>
+      <InnerDisclaimerWrapper>
+        <p>Don't invest unless you're prepared to lose all the money you invest. This is a high-risk investment, and you are unlikely to be protected if something goes wrong.</p>
+        <p><Link href="https://www.fca.org.uk/publication/policy/ps22-10.pdf" ><a target="_blank">Take two minutes to learn more.</a></Link></p>
+      </InnerDisclaimerWrapper>
+    </DisclaimerWrapper>
   );
 };
