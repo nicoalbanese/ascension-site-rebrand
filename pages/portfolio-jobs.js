@@ -210,7 +210,7 @@ const Company = ({ company }) => {
     <CompanyWrapper animate={controls} variants={boxVariants} ref={ref}>
       <div className="company">
         <div id="logo">
-          <Image src={company.company.logo} width={125} height={125} />
+          <Image src={company.company.logo} width={125} height={125} unoptimized/>
         </div>
         <div>
           <div className="company-description">

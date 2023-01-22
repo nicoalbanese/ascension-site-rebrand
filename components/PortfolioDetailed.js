@@ -412,6 +412,7 @@ const CompanyTile = ({ company, i }) => {
                   alt={`${company.name} logo`}
                   layout="fill"
                   objectFit="cover"
+                  unoptimized
                 />
                 <div id="hidden-name">{company.name}</div>
               </div>
