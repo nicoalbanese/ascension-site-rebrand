@@ -96,11 +96,13 @@ const Footer = ({ pageVariants }) => {
                 src="/images/headline_logo_light.png"
                 height={238 / factor}
                 width={1560 / factor}
+                unoptimized
               />
               <Image
                 src="/images/subheader_logo_light.png"
                 height={142 / factor}
                 width={1148 / factor}
+                unoptimized
               />
             </div>
           </div>

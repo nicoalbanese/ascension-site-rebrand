@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components";
 
 import Image from "next/image";
-import Link from "next/link"
+import Link from "next/link";
 
 import { motion } from "framer-motion";
 
@@ -71,6 +71,7 @@ const Hero = () => {
             height={355 / factor}
             id="top"
             alt="Ascension logo big"
+            unoptimized
           />
         </div>
         <Image
@@ -78,6 +79,7 @@ const Hero = () => {
           width={3061 / (factor * 1.2)}
           height={295 / (factor * 1.2)}
           alt="Ascension sub logo"
+          unoptimized
         />
       </div>
       <div id="lower">

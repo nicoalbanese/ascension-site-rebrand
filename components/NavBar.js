@@ -172,7 +172,7 @@ const CoolLink = ({
       <Link href={url}>
         <a
           className={`${isActive && "active"} ${isApplyLink && "apply-link"}`}
-          target={targetblank ? "_blank" :undefined}
+          target={targetblank ? "_blank" : undefined}
         >
           {text}
           <Accentuator className={`accent ${isActive && "active"}`} />
@@ -201,6 +201,7 @@ const NavBar = () => {
               alt="ascension a logo"
               width="35"
               height="35"
+              unoptimized
             />
           </a>
         </Link>
@@ -336,6 +337,7 @@ const OverlayMenu = ({ setShowOverlayMenu }) => {
             width="35"
             height="35"
             alt="ascension a logo light"
+            unoptimized
           />
           <h1 id="close" onClick={() => setShowOverlayMenu(false)}>
             X

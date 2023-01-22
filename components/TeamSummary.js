@@ -45,17 +45,18 @@ const pageVariants = {
 };
 const TeamSummary = ({ portfolioSize }) => {
   return (
-    <Wrapper initial='initial' animate='in' exit='out' variants={pageVariants}>
+    <Wrapper initial="initial" animate="in" exit="out" variants={pageVariants}>
       <h2>Our Team</h2>
-      <div className='image-wrapper'>
-        <Link href='/team'>
+      <div className="image-wrapper">
+        <Link href="/team">
           <a>
             <Image
+              unoptimized
               src={"/images/bg-new-site-team.png"}
               width={2660}
-              alt='ascension team picture'
+              alt="ascension team picture"
               height={1200}
-              quality='70'
+              quality="70"
             />
           </a>
         </Link>
