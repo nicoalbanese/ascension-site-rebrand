@@ -1,7 +1,9 @@
 module.exports = {
   images: {
     domains: ["dl.airtable.com", "v5.airtableusercontent.com"],
+    unoptimized: true,
   },
+
   async redirects() {
     return [
       {
@@ -11,7 +13,8 @@ module.exports = {
       },
       {
         source: "/careers",
-        destination: "https://ascension-vc.notion.site/Careers-at-Ascension-bd23e6ad5af1466984444ad80e9c1ce2",
+        destination:
+          "https://ascension-vc.notion.site/Careers-at-Ascension-bd23e6ad5af1466984444ad80e9c1ce2",
         permanent: true,
       },
       {
