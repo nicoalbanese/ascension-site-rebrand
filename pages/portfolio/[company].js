@@ -145,34 +145,36 @@ const companyDetailed = ({ company, articles }) => {
                 </div>
               )}
               <Image
+                unoptimized
                 src={company.logoUrl}
                 alt={`${company.name} logo`}
                 height={300}
                 width={300}
               />
 
-              {company.founders !== null && company.founderLinkedins !== null && (
-                <>
-                  {company.founders.length ===
-                    company.founderLinkedins.length && (
-                    <div id="founders">
-                      <h3 id="founder-title">Founders</h3>
-                      {company.founders.map((founder, i) => (
-                        <Founder
-                          key={i}
-                          founder={{
-                            name: founder,
-                            photo: company.founderPhotos[i]
-                              ? company.founderPhotos[i]
-                              : null,
-                            linkedin: company.founderLinkedins[i],
-                          }}
-                        />
-                      ))}
-                    </div>
-                  )}
-                </>
-              )}
+              {company.founders !== null &&
+                company.founderLinkedins !== null && (
+                  <>
+                    {company.founders.length ===
+                      company.founderLinkedins.length && (
+                      <div id="founders">
+                        <h3 id="founder-title">Founders</h3>
+                        {company.founders.map((founder, i) => (
+                          <Founder
+                            key={i}
+                            founder={{
+                              name: founder,
+                              photo: company.founderPhotos[i]
+                                ? company.founderPhotos[i]
+                                : null,
+                              linkedin: company.founderLinkedins[i],
+                            }}
+                          />
+                        ))}
+                      </div>
+                    )}
+                  </>
+                )}
             </div>
             <div>
               <h1>{company.name && company.name}</h1>
@@ -228,6 +230,7 @@ const Founder = ({ founder }) => {
           <div className="image-container">
             {founder.photo && (
               <Image
+                unoptimized
                 src={founder.photo}
                 height={50}
                 width={50}

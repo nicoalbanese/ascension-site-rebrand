@@ -83,7 +83,7 @@ const index = ({ team, vps }) => {
       </Head>
       <h1>Operating Team</h1>
       {/* <ZoomStyle team={team} /> */}
-      <TeamBackground id='team-background'>
+      <TeamBackground id="team-background">
         <p>
           Run by an experienced and diverse team of successful entrepreneurs, we
           have been relentlessly dedicated to finding the UK’s best Seed-stage
@@ -102,8 +102,8 @@ const index = ({ team, vps }) => {
           conviction, integrity, humour, and humility.{" "}
         </p>
       </TeamBackground>
-      <NormalStyle team={team} type='operating-team' />
-      <VenturePartnerSection id='venture-partners'>
+      <NormalStyle team={team} type="operating-team" />
+      <VenturePartnerSection id="venture-partners">
         <h1>Venture Partners</h1>
         <TeamBackground>
           <p>
@@ -115,7 +115,7 @@ const index = ({ team, vps }) => {
             relevant portfolio businesses.
           </p>
         </TeamBackground>
-        <NormalStyle team={vps} type='venture-partners' />
+        <NormalStyle team={vps} type="venture-partners" />
       </VenturePartnerSection>
     </Layout>
   );
@@ -128,7 +128,7 @@ export const NormalStyle = ({ team, type }) => {
   return (
     <>
       {" "}
-      <NormalCardContainer className='team-container'>
+      <NormalCardContainer className="team-container">
         {team.map((person, i) => (
           <TeamMember person={person} key={person.id} type={type} />
         ))}
@@ -182,20 +182,21 @@ const TeamMember = ({ person, type }) => {
     >
       <Link href={`/team/${person.slug}`}>
         <a>
-          <div className='image-container'>
+          <div className="image-container">
             <Image
+              unoptimized
               src={person.picture}
-              layout='fill'
-              objectFit='contain'
+              layout="fill"
+              objectFit="contain"
               alt={`${person.name} profile photo`}
             />
-            <div id='person-name'>
+            <div id="person-name">
               <h3>{person.name}</h3>
               {type === "operating-team" && <h5>{person.position}</h5>}
               {type === "venture-partners" && (
                 <PositionContainer>
-                  <h6 id='top'>{person.headline}</h6>
-                  <h6 id='bottom'>{person.position}</h6>
+                  <h6 id="top">{person.headline}</h6>
+                  <h6 id="bottom">{person.position}</h6>
                 </PositionContainer>
               )}
             </div>
@@ -291,12 +292,12 @@ const ZoomStyle = ({ team }) => {
   return (
     <>
       <ZoomStatusBar>
-        <div id='window-options'>
-          <Circle color='red' />
-          <Circle color='orange' />
-          <Circle color='green' />
+        <div id="window-options">
+          <Circle color="red" />
+          <Circle color="orange" />
+          <Circle color="green" />
         </div>
-        <div id='zoom-meeting'>Ascension Team Meeting</div>
+        <div id="zoom-meeting">Ascension Team Meeting</div>
       </ZoomStatusBar>
       <TeamZoomContainer>
         {team.map((person, i) => (
@@ -347,8 +348,8 @@ const Card = styled(motion.div)`
 const PersonTile = ({ person, i }) => {
   return (
     <Card
-      initial='hidden'
-      animate='visible'
+      initial="hidden"
+      animate="visible"
       variants={{
         hidden: {
           scale: 0.8,
@@ -364,17 +365,18 @@ const PersonTile = ({ person, i }) => {
       }}
     >
       <Link href={`/team/${person.slug}`}>
-        <a id='a-container'>
-          <div className='image-container'>
+        <a id="a-container">
+          <div className="image-container">
             <Image
+              unoptimized
               src={person.picture}
-              layout='fill'
-              objectFit='contain'
+              layout="fill"
+              objectFit="contain"
               alt={`${person.name} profile photo`}
             />
           </div>
-          <div className='name-container'>
-            <Link id='name' href={`/team/${person.slug}`}>
+          <div className="name-container">
+            <Link id="name" href={`/team/${person.slug}`}>
               <a>
                 <h4>{person.name}</h4>
                 <p>{person.position}</p>

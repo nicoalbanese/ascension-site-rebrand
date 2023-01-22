@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import Link from "next/link";
 import Image from "next/image";
-import Head from "next/head"
+import Head from "next/head";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -28,9 +28,7 @@ const ApplyForFunding = () => {
   return (
     <Layout>
       <Head>
-        <title>
-          Thanks for your application!
-        </title>
+        <title>Thanks for your application!</title>
       </Head>
       <Wrapper>
         <h1>Thanks for your application!</h1>
@@ -43,6 +41,7 @@ const ApplyForFunding = () => {
         </ApplySection>
         <div className="image-container">
           <Image
+            unoptimized
             src={"/images/bg-new-site-team.png"}
             width={2660}
             alt="ascension team picture"
@@ -60,7 +59,8 @@ const ApplyForFunding = () => {
             and{" "}
             <Link href="https://twitter.com/ascensiongrp">
               <a target={"_blank"}>Twitter</a>
-            </Link>.
+            </Link>
+            .
           </p>
         </ApplySection>
       </Wrapper>

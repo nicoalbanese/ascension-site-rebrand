@@ -126,6 +126,7 @@ const companyDetailed = ({ person }) => {
                 // width={300}
                 layout="fill"
                 objectFit="cover"
+                unoptimized
                 alt={`${person.name} profile picture`}
               />
             </div>
