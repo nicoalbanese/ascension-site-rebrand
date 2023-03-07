@@ -5,6 +5,7 @@ import ReactMarkdown from "react-markdown";
 
 const Card = styled.div`
   display: flex;
+  flex: 1;
   flex-direction: column;
   /* width: 16rem; */
   background: white;
@@ -60,6 +61,26 @@ const Button = styled.a`
   }
 `;
 
+const FundHeader = styled.div`
+  display: inline-block;
+  min-width: max-content;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  padding: .3rem .8rem;
+  color: #287aa9;
+  width: max-content;
+  /* text-transform: uppercase; */
+  margin: 0;
+  font-weight: 300;
+`;
+
+const CardContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  /* width: 100%; */
+  /* height: 100%; */
+`;
+
 const FundCard = ({ fund }) => {
   const {
     name,
@@ -71,11 +92,19 @@ const FundCard = ({ fund }) => {
     businessCharacteristics,
   } = fund;
   return (
-    <Card>
-      <div className='main-content'>
-        <h3>{name}</h3>
-        <ReactMarkdown className="stat-container">{fund.summary}</ReactMarkdown>
-        {/* <div className='stat-container'>
+    <CardContainer>
+      {fund.headerText ? (
+        <FundHeader style={{ color: fund.headerTextColor, backgroundColor: fund.headerBGColor }}>
+          {fund.headerText}
+        </FundHeader>
+      ) : null}
+      <Card>
+        <div className="main-content">
+          <h3>{name}</h3>
+          <ReactMarkdown className="stat-container">
+            {fund.summary}
+          </ReactMarkdown>
+          {/* <div className='stat-container'>
           <div className='title'>Stage</div>
           <div className='content'>{stage}</div>
         </div>
@@ -87,13 +116,14 @@ const FundCard = ({ fund }) => {
           <div className='title'>Stage</div>
           <div className='content'>Pre-Seed</div>
         </div> */}
-      </div>
-      <div className='button-container'>
-        <Link href={`/investors/${slug}`}>
-          <Button>Find out more</Button>
-        </Link>
-      </div>
-    </Card>
+        </div>
+        <div className="button-container">
+          <Link href={`/investors/${slug}`}>
+            <Button>Find out more</Button>
+          </Link>
+        </div>
+      </Card>
+    </CardContainer>
   );
 };
 
