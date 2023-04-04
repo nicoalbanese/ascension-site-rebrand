@@ -82,7 +82,7 @@ const HomePageContent = ({ portfolioSize, portfolioNews, posts }) => {
           Ascension is one of the most active Seed investors in the UK. Since
           2015, we have{" "}
           <Link href="/portfolio" id="we-have-backed">
-            <a>backed 125+ tech and impact startups</a>
+            <a>backed 175+ tech and impact startups</a>
           </Link>{" "}
           through{" "}
           <Link href="/investors">
